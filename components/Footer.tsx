@@ -10,7 +10,9 @@ export default function Footer() {
       <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr", gap: "3rem", marginBottom: "3rem" }}>
         <div>
           <a href="#hero" style={{ display: "inline-flex", alignItems: "center", textDecoration: "none", marginBottom: "1rem" }}>
-            <Image src="/logo.png" alt="AI Flux logo" width={120} height={34} style={{ objectFit: "contain", height: 34, width: "auto" }} />
+            <Image src="/logo.png" alt="AI Flux logo"
+                width={0} height={0} sizes="100vw"
+                style={{ width: "auto", height: "32px" }} />
           </a>
           <p style={{ color: "var(--muted)", fontSize: ".88rem", lineHeight: 1.8, maxWidth: 280 }}>
             Magyar AI-natív fejlesztő ügynökség. Intelligens weboldalak, automatizált folyamatok és chatbot rendszerek — a jövő eszközei, ma.

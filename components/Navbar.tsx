@@ -41,8 +41,8 @@ export default function Navbar() {
       }}>
         {/* Logo */}
         <a href="#hero" onClick={closeMenu} style={{ display: "inline-flex", alignItems: "center", textDecoration: "none" }}>
-          <Image src="/logo.png" alt="AI Flux logo" 
-            width={140} height={40}
+          <Image src="/logo.png" alt="AI Flux logo"
+            width={0} height={0} sizes="100vw"
             style={{ width: "auto", height: "36px" }} priority />
         </a>
 
