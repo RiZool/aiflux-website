@@ -54,7 +54,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      aria-label="Főoldal — AI Flux fejlesztő stúdió"
+      aria-label="Főoldal — AI Flux fejlesztő ügynökség"
       style={{
         position: "relative", width: "100%", height: "100vh",
         minHeight: 700, display: "flex", alignItems: "center",
@@ -63,7 +63,7 @@ export default function Hero() {
     >
       <Image
         src="/hero.jpg"
-        alt="Mélykék óceán — az AI Flux kreatív technológiai stúdió háttere"
+        alt="Mélykék óceán — az AI Flux kreatív technológiai ügynökség háttere"
         fill priority
         style={{ objectFit: "cover", objectPosition: "center 30%" }}
       />
@@ -91,7 +91,7 @@ export default function Hero() {
           background: "rgba(0,229,255,.09)", border: "1px solid rgba(0,229,255,.28)",
         }}>
           <span className="pulse-dot" style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--cyan)", display: "inline-block" }} />
-          AI-Natív Fejlesztő Stúdió · Magyarország
+          AI-Natív Fejlesztő Ügynökség · Magyarország
         </div>
 
         {/* H1 — SEO főcím */}
@@ -100,10 +100,10 @@ export default function Hero() {
           fontWeight: 700, lineHeight: 1.1, marginBottom: "1.2rem", letterSpacing: "-.01em",
         }}>
           <span style={{ display: "block", color: "#fff" }}>
-            Nem csak weboldalt építünk.
+            Az AI nem helyettesít,
           </span>
-          <span className="gradient-text" style={{ display: "block" }}>
-            Intelligens rendszereket.
+          <span style={{ display: "block", color: "#fff" }}>
+            csupán <span className="gradient-text">FELERŐSÍT.</span>
           </span>
         </h1>
 
@@ -122,7 +122,7 @@ export default function Hero() {
           color: "rgba(255,255,255,.72)",
           maxWidth: 580, margin: "0 auto 2.8rem", lineHeight: 1.85,
         }}>
-          Az AI Flux az a stúdió, ahol a mesterséges intelligencia nem egy extra funkció —
+          Az AI Flux az az ügynökség, ahol a mesterséges intelligencia nem egy extra funkció —
           hanem az alapja mindennek. Gyorsabb fejlesztés, okosabb rendszerek,
           mérhető üzleti eredmények.
         </p>
@@ -159,7 +159,7 @@ export default function Hero() {
         color: "rgba(255,255,255,.45)", fontSize: ".7rem",
         letterSpacing: ".12em", textTransform: "uppercase",
       }}>
-        <span>Scroll</span>
+        <span>Tovább</span>
         <div className="scroll-arrow" style={{
           width: 16, height: 16,
           borderRight: "1px solid rgba(255,255,255,.35)",

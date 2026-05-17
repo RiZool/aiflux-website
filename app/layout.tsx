@@ -17,9 +17,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "AI Flux | AI Fejlesztő Stúdió — Weboldal, Automatizáció, Chatbot",
+  title: "AI Flux | AI Fejlesztő Ügynökség — Weboldal, Automatizáció, Chatbot",
   description:
-    "Az AI Flux magyar AI-natív fejlesztő stúdió. Intelligens weboldalak, üzleti folyamat automatizáció és chatbot megoldások, amelyek valódi eredményeket hoznak. Ingyenes konzultáció.",
+    "Az AI Flux magyar AI-natív fejlesztő ügynökség. Intelligens weboldalak, üzleti folyamat automatizáció és chatbot megoldások, amelyek valódi eredményeket hoznak. Ingyenes konzultáció.",
   keywords: [
     "AI fejlesztés", "mesterséges intelligencia", "weboldal fejlesztés",
     "AI automatizáció", "chatbot fejlesztés", "folyamat optimalizáció",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     "vállalati AI megoldások", "intelligens weboldal", "üzleti automatizáció",
   ],
   openGraph: {
-    title: "AI Flux | AI-Natív Fejlesztő Stúdió",
+    title: "AI Flux | AI-Natív Fejlesztő Ügynökség",
     description:
       "Nem csak weboldalt építünk — intelligens rendszereket alkotunk. Webfejlesztés, AI automatizáció és chatbot megoldások magyar vállalkozásoknak.",
     url: "https://aiflux.hu",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Flux | AI-Natív Fejlesztő Stúdió",
+    title: "AI Flux | AI-Natív Fejlesztő Ügynökség",
     description: "Intelligens weboldalak, automatizáció és chatbotok magyar vállalkozásoknak.",
   },
   alternates: {

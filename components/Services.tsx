@@ -19,8 +19,8 @@ const services = [
   {
     tag: "02",
     title: "Üzleti Folyamat Automatizáció",
-    desc: "Az ismétlődő feladatok elvégzik magukat. Összekötjük a rendszereidet, automatizáljuk a munkafolyamatokat és AI-ügynököket telepítünk, amelyek 24/7 dolgoznak helyetted — emberi beavatkozás nélkül.",
-    features: ["Make & n8n workflow", "AI-ügynök rendszerek", "CRM & ERP integráció"],
+    desc: "Képzeld el, hogy a hírleveled magától megy ki, az e-mailek automatikusan válaszolnak, a chatbotod 0-24 kiszolgálja az ügyfeleidet — mindezt mesterséges intelligencia hajtja. Te csak a növekedésre fókuszálsz, a rendszer dolgozik helyetted.",
+    features: ["Make & n8n folyamatok", "AI automatizmusok", "Hírlevél & e-mail automatizálás"],
     icon: (
       <svg viewBox="0 0 26 26" fill="none" stroke="url(#ic2)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ width: 26, height: 26 }}>
         <defs><linearGradient id="ic2" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#00E5FF" /><stop offset="1" stopColor="#0066FF" /></linearGradient></defs>

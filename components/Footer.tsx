@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -8,19 +9,11 @@ export default function Footer() {
 
       <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr", gap: "3rem", marginBottom: "3rem" }}>
         <div>
-          <a href="#hero" style={{ display: "inline-flex", alignItems: "center", gap: ".5rem", textDecoration: "none", marginBottom: "1rem" }}>
-            <svg width="28" height="32" viewBox="0 0 36 40" fill="none">
-              <defs><linearGradient id="lg-f" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stopColor="#00E5FF" /><stop offset="100%" stopColor="#0066FF" /></linearGradient></defs>
-              <path d="M4 36 C4 36 7 21 19 15 C11 18 8 30 22 27 C14 29 12 38 24 35" stroke="url(#lg-f)" strokeWidth="3.5" strokeLinecap="round" fill="none" />
-              <path d="M11 30 C11 30 14 15 26 9 C18 12 15 24 29 21 C21 23 19 32 31 29" stroke="url(#lg-f)" strokeWidth="2.2" strokeLinecap="round" fill="none" opacity=".6" />
-            </svg>
-            <span style={{ fontFamily: "var(--font-heading)", fontSize: "1.15rem", fontWeight: 700 }}>
-              <span style={{ color: "#fff" }}>AI</span>
-              <span style={{ background: "linear-gradient(90deg,var(--cyan),var(--blue))", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Flux</span>
-            </span>
+          <a href="#hero" style={{ display: "inline-flex", alignItems: "center", textDecoration: "none", marginBottom: "1rem" }}>
+            <Image src="/logo.png" alt="AI Flux logo" width={120} height={34} style={{ objectFit: "contain", height: 34, width: "auto" }} />
           </a>
           <p style={{ color: "var(--muted)", fontSize: ".88rem", lineHeight: 1.8, maxWidth: 280 }}>
-            Magyar AI-natív fejlesztő stúdió. Intelligens weboldalak, automatizált folyamatok és chatbot rendszerek — a jövő eszközei, ma.
+            Magyar AI-natív fejlesztő ügynökség. Intelligens weboldalak, automatizált folyamatok és chatbot rendszerek — a jövő eszközei, ma.
           </p>
         </div>
 
