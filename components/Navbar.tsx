@@ -41,8 +41,9 @@ export default function Navbar() {
       }}>
         {/* Logo */}
         <a href="#hero" onClick={closeMenu} style={{ display: "inline-flex", alignItems: "center", textDecoration: "none" }}>
-          <Image src="/logo.png" alt="AI Flux logo" width={140} height={40}
-            style={{ objectFit: "contain", height: 36, width: "auto" }} priority />
+          <Image src="/logo.png" alt="AI Flux logo" 
+            width={140} height={40}
+            style={{ width: "auto", height: "36px" }} priority />
         </a>
 
         {/* Desktop nav links */}
