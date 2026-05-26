@@ -51,7 +51,7 @@ export default function WorkflowConfigurator() {
       ? `Plusz egyedi folyamatok:%0A${chosenWorkflows.map((w) => `- ${w.title}`).join("%0A")}`
       : "";
     const body = `Sziasztok!%0A%0A${planLine}${planLine && wfLines ? "%0A%0A" : ""}${wfLines}%0A%0AKérem az ajánlatot!%0A%0AKöszönettel,`;
-    window.location.href = `mailto:hello@aiflux.hu?subject=Ajánlatkérés%20|%20AIFlux%20konfigurátor&body=${body}`;
+    window.location.href = `mailto:info@aiflux.hu?subject=Ajánlatkérés%20|%20AIFlux%20konfigurátor&body=${body}`;
   }
 
   const planDone = selectedPlan !== null;

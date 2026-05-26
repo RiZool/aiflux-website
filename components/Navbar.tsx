@@ -173,14 +173,14 @@ export default function Navbar() {
         </a>
 
         {/* Email link alul */}
-        <a href="mailto:hello@aiflux.hu" onClick={closeMenu} style={{
+        <a href="mailto:info@aiflux.hu" onClick={closeMenu} style={{
           marginTop: "2rem",
           opacity: menuOpen ? 1 : 0,
           transition: "opacity .4s ease .42s",
           color: "rgba(255,255,255,.35)",
           fontSize: ".85rem", textDecoration: "none",
         }}>
-          hello@aiflux.hu
+          info@aiflux.hu
         </a>
       </div>
 

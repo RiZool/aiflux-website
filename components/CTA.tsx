@@ -43,7 +43,7 @@ export default function CTA() {
         </p>
 
         <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
-          <a href="mailto:hello@aiflux.hu" style={{
+          <a href="mailto:info@aiflux.hu" style={{
             display: "inline-flex", alignItems: "center", gap: ".6rem",
             background: "linear-gradient(90deg,var(--cyan),var(--blue))",
             color: "#000", fontWeight: 700, padding: "1rem 2.6rem",
@@ -54,13 +54,13 @@ export default function CTA() {
           }}>
             Ingyenes konzultáció foglalása →
           </a>
-          <a href="mailto:hello@aiflux.hu" style={{
+          <a href="mailto:info@aiflux.hu" style={{
             display: "inline-flex", alignItems: "center",
             border: "1px solid rgba(255,255,255,.2)", color: "rgba(255,255,255,.75)",
             padding: "1rem 2rem", borderRadius: 6, fontSize: ".95rem",
             textDecoration: "none", fontWeight: 500, transition: "all .25s",
           }}>
-            hello@aiflux.hu
+            info@aiflux.hu
           </a>
         </div>
       </div>

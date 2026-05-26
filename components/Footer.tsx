@@ -41,7 +41,7 @@ export default function Footer() {
             Kapcsolat
           </h3>
           <ul style={{ listStyle: "none" }}>
-            {[["hello@aiflux.hu","mailto:hello@aiflux.hu"],["ÁSZF","#"],["Adatvédelmi irányelvek","#"],["Cookie szabályzat","#"]].map(([l,h]) => (
+            {[["info@aiflux.hu","mailto:info@aiflux.hu"],["ÁSZF","#"],["Adatvédelmi irányelvek","#"],["Cookie szabályzat","#"]].map(([l,h]) => (
               <li key={l} style={{ marginBottom: ".55rem" }}>
                 <a href={h} style={{ color: "var(--muted)", textDecoration: "none", fontSize: ".88rem", transition: "color .2s" }}
                   onMouseEnter={e => (e.currentTarget.style.color = "var(--cyan)")}
