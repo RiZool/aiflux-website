@@ -3,11 +3,10 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 
 const navLinks = [
-  { label: "Szolgáltatások", href: "#services" },
-  { label: "Folyamatunk", href: "#process" },
-  { label: "Miért mi?", href: "#stats" },
-  { label: "Árazás", href: "#pricing" },
-  { label: "Kapcsolat", href: "#contact" },
+  { label: "Szolgáltatások", href: "/#services" },
+  { label: "Folyamatok", href: "/folyamatok" },
+  { label: "Árazás", href: "/#pricing" },
+  { label: "Kapcsolat", href: "/#contact" },
 ];
 
 export default function Navbar() {
