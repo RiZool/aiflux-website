@@ -238,11 +238,11 @@ export default function WorkflowConfigurator() {
 
                   <div style={{
                     fontFamily: "var(--font-heading)", fontSize: "1.4rem", fontWeight: 800,
-                    background: isSel
-                      ? "linear-gradient(90deg,var(--cyan),var(--blue))"
-                      : "linear-gradient(90deg,rgba(255,255,255,.85),rgba(255,255,255,.85))",
-                    WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
                     marginBottom: ".2rem",
+                    ...(isSel
+                      ? { background: "linear-gradient(90deg,var(--cyan),var(--blue))", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }
+                      : { color: "rgba(255,255,255,.85)" }
+                    ),
                   }}>
                     {formatPrice(plan.price)}
                   </div>
