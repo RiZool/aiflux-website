@@ -7,25 +7,28 @@ function CountUp({ target, suffix, fixed }: { target?: number; suffix?: string; 
   const started = useRef(false);
 
   useEffect(() => {
-    if (fixed) { setVal(fixed); return; }
+    if (fixed) return; // fix érték — a useState már beállította
+    let raf = 0;
     const obs = new IntersectionObserver(([e]) => {
       if (!e.isIntersecting || started.current) return;
       started.current = true;
-      let c = 0;
-      const inc = (target ?? 0) / 60;
-      const tmr = setInterval(() => {
-        c = Math.min(c + inc, target ?? 0);
-        setVal(Math.round(c) + (suffix ?? ""));
-        if (c >= (target ?? 0)) clearInterval(tmr);
-      }, 1600 / 60);
+      const duration = 1800;
+      const start = performance.now();
+      const tick = (now: number) => {
+        const t = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - t, 4); // easeOutQuart — a vége felé lassul
+        setVal(Math.round(eased * (target ?? 0)) + (suffix ?? ""));
+        if (t < 1) raf = requestAnimationFrame(tick);
+      };
+      raf = requestAnimationFrame(tick);
     }, { threshold: .5 });
     if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
+    return () => { obs.disconnect(); cancelAnimationFrame(raf); };
   }, [target, suffix, fixed]);
 
   return (
     <div ref={ref} className="stat-num"
-      style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(2.4rem,5vw,3.6rem)", fontWeight: 700, lineHeight: 1, marginBottom: ".6rem" }}>
+      style={{ fontFamily: "var(--font-display), var(--font-heading)", fontSize: "clamp(2.1rem,4.4vw,3.2rem)", fontWeight: 700, lineHeight: 1, marginBottom: ".6rem" }}>
       {val}
     </div>
   );
@@ -62,7 +65,7 @@ export default function Stats() {
         </p>
         <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(1.8rem,4vw,2.8rem)", fontWeight: 700, marginBottom: "1.2rem", lineHeight: 1.15 }}>
           Mérhetően{" "}
-          <span style={{ background: "linear-gradient(90deg,var(--cyan),var(--blue))", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+          <span className="accent-display" style={{ background: "linear-gradient(90deg,var(--cyan),var(--blue))", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
             jobb eredmények
           </span>
         </h2>

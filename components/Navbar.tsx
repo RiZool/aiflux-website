@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const navLinks = [
   { label: "Szolgáltatások", href: "/#services" },
@@ -12,9 +13,15 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 60);
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      setProgress(max > 0 ? Math.min(window.scrollY / max, 1) : 0);
+    };
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -38,32 +45,44 @@ export default function Navbar() {
         borderBottom: scrolled || menuOpen ? "1px solid rgba(0,229,255,.08)" : "1px solid transparent",
         transition: "all .4s ease",
       }}>
+        {/* Scroll progress bar */}
+        <div aria-hidden="true" style={{
+          position: "absolute", bottom: -1, left: 0,
+          width: "100%", height: 2,
+          background: "linear-gradient(90deg, var(--cyan), var(--blue))",
+          transform: `scaleX(${progress})`,
+          transformOrigin: "left center",
+          opacity: scrolled ? 1 : 0,
+          transition: "opacity .3s ease",
+          boxShadow: "0 0 8px rgba(0,229,255,.5)",
+          pointerEvents: "none",
+        }} />
         {/* Logo */}
-        <a href="#hero" onClick={closeMenu} style={{ display: "inline-flex", alignItems: "center", textDecoration: "none" }}>
+        <Link href="/#hero" onClick={closeMenu} style={{ display: "inline-flex", alignItems: "center", textDecoration: "none" }}>
           <Image src="/logo.png" alt="AI Flux logo"
             width={0} height={0} sizes="100vw"
             style={{ width: "auto", height: "36px" }} priority />
-        </a>
+        </Link>
 
         {/* Desktop nav links */}
         <ul style={{ display: "flex", gap: "2rem", listStyle: "none", margin: 0, padding: 0 }}
           className="hidden-mobile">
           {navLinks.map(({ label, href }) => (
             <li key={label}>
-              <a href={href} style={{
+              <Link href={href} className="nav-link" style={{
                 color: "rgba(255,255,255,.78)", textDecoration: "none",
                 fontSize: ".88rem", fontWeight: 500, letterSpacing: ".02em", transition: "color .2s",
               }}
                 onMouseEnter={e => (e.currentTarget.style.color = "var(--cyan)")}
                 onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,.78)")}>
                 {label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
 
         {/* Desktop CTA */}
-        <a href="#contact" className="hidden-mobile" style={{
+        <Link href="/#contact" className="hidden-mobile" style={{
           border: "1px solid var(--cyan)", color: "var(--cyan)",
           padding: ".48rem 1.25rem", borderRadius: 4,
           fontSize: ".83rem", fontWeight: 600,
@@ -72,7 +91,7 @@ export default function Navbar() {
           onMouseEnter={e => { e.currentTarget.style.background = "var(--cyan)"; e.currentTarget.style.color = "#000"; }}
           onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "var(--cyan)"; }}>
           Ajánlatot kérek
-        </a>
+        </Link>
 
         {/* Hamburger gomb — csak mobilon */}
         <button
@@ -130,7 +149,7 @@ export default function Navbar() {
               transform: menuOpen ? "translateY(0)" : "translateY(20px)",
               transition: `opacity .4s ease ${i * 0.07}s, transform .4s ease ${i * 0.07}s`,
             }}>
-              <a
+              <Link
                 href={href}
                 onClick={closeMenu}
                 style={{
@@ -148,14 +167,14 @@ export default function Navbar() {
                 onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,.85)")}
               >
                 {label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
 
         {/* Mobil CTA gomb */}
-        <a
-          href="#contact"
+        <Link
+          href="/#contact"
           onClick={closeMenu}
           style={{
             opacity: menuOpen ? 1 : 0,
@@ -170,7 +189,7 @@ export default function Navbar() {
           }}
         >
           Ajánlatot kérek →
-        </a>
+        </Link>
 
         {/* Email link alul */}
         <a href="mailto:info@aiflux.hu" onClick={closeMenu} style={{

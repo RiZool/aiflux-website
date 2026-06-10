@@ -1,7 +1,9 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, type MouseEvent, type ReactNode } from "react";
+import Link from "next/link";
 import { workflows, categories, type Workflow } from "@/data/workflows";
 import { plans, formatPrice } from "@/data/plans";
+import PlanIcon from "@/components/PlanIcon";
 
 const CAT_RGB: Record<string, string> = {
   Elemzés: "0,153,255",
@@ -9,6 +11,34 @@ const CAT_RGB: Record<string, string> = {
   Értékesítés: "124,58,237",
   Admin: "5,150,105",
 };
+
+// Egér-követő spotlight pozíció
+function trackSpotlight(e: MouseEvent<HTMLElement>) {
+  const r = e.currentTarget.getBoundingClientRect();
+  e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
+  e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
+}
+
+// Folyamat-ikonok (emoji helyett SVG vonal-ikonok, 24×24 viewBox)
+const wfIcons: Record<string, ReactNode> = {
+  chart:     <><path d="M3 3v18h18" /><path d="M8 17v-6M13 17V7M18 17v-3" /></>,
+  bot:       <><rect x="5" y="8" width="14" height="11" rx="2" /><path d="M12 8V5" /><circle cx="12" cy="3.5" r="1.5" /><path d="M9.5 13h.01M14.5 13h.01" /><path d="M2 12v4M22 12v4" /></>,
+  mail:      <><rect x="2" y="4" width="20" height="16" rx="2" /><path d="m2 7 10 6 10-6" /></>,
+  target:    <><circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="5" /><circle cx="12" cy="12" r="1.2" /></>,
+  inbox:     <><path d="M22 12h-6l-2 3h-4l-2-3H2" /><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z" /></>,
+  doc:       <><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><path d="M14 2v6h6" /><path d="M8 13h8M8 17h5" /></>,
+  handshake: <><path d="M22 2 11 13" /><path d="M22 2 15 22l-4-9-9-4 20-7z" /></>,
+  invoice:   <><path d="M5 2h14v20l-2.3-1.6L14.4 22l-2.4-1.6L9.6 22l-2.3-1.6L5 22V2z" /><path d="M9 8h6M9 12h6" /></>,
+};
+
+function WfIcon({ name, rgb }: { name: string; rgb: string }) {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={`rgba(${rgb},.85)`}
+      strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      {wfIcons[name]}
+    </svg>
+  );
+}
 
 export default function WorkflowConfigurator() {
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
@@ -30,7 +60,11 @@ export default function WorkflowConfigurator() {
     if (w.status === "soon") return;
     setSelectedWorkflows((prev) => {
       const next = new Set(prev);
-      next.has(w.id) ? next.delete(w.id) : next.add(w.id);
+      if (next.has(w.id)) {
+        next.delete(w.id);
+      } else {
+        next.add(w.id);
+      }
       return next;
     });
   }
@@ -45,13 +79,13 @@ export default function WorkflowConfigurator() {
 
   function requestQuote() {
     const planLine = chosenPlan
-      ? `Kiválasztott csomag: ${chosenPlan.emoji} ${chosenPlan.name} — ${formatPrice(chosenPlan.price)} egyszeri, ${formatPrice(chosenPlan.monthly)}/hó`
+      ? `Kiválasztott csomag: ${chosenPlan.name} — ${formatPrice(chosenPlan.price)} egyszeri, ${formatPrice(chosenPlan.monthly)}/hó`
       : "";
     const wfLines = chosenWorkflows.length > 0
       ? `Plusz egyedi folyamatok:%0A${chosenWorkflows.map((w) => `- ${w.title}`).join("%0A")}`
       : "";
     const body = `Sziasztok!%0A%0A${planLine}${planLine && wfLines ? "%0A%0A" : ""}${wfLines}%0A%0AKérem az ajánlatot!%0A%0AKöszönettel,`;
-    window.location.href = `mailto:info@aiflux.hu?subject=Ajánlatkérés%20|%20AIFlux%20konfigurátor&body=${body}`;
+    window.location.assign(`mailto:info@aiflux.hu?subject=Ajánlatkérés%20|%20AIFlux%20konfigurátor&body=${body}`);
   }
 
   const planDone = selectedPlan !== null;
@@ -65,9 +99,9 @@ export default function WorkflowConfigurator() {
       overflow: "hidden",
     }}>
 
-      {/* Background depth */}
-      <div style={{ position: "absolute", width: 1000, height: 1000, borderRadius: "50%", background: "radial-gradient(circle, rgba(0,80,200,.055) 0%, transparent 65%)", top: "-20%", left: "55%", transform: "translateX(-50%)", pointerEvents: "none" }} />
-      <div style={{ position: "absolute", width: 600, height: 600, borderRadius: "50%", background: "radial-gradient(circle, rgba(0,180,255,.035) 0%, transparent 70%)", bottom: "15%", left: "2%", pointerEvents: "none" }} />
+      {/* Background depth — lassan lebegő orbok */}
+      <div className="orb-a" style={{ position: "absolute", width: 1000, height: 1000, borderRadius: "50%", background: "radial-gradient(circle, rgba(0,80,200,.055) 0%, transparent 65%)", top: "-20%", left: "55%", pointerEvents: "none" }} />
+      <div className="orb-b" style={{ position: "absolute", width: 600, height: 600, borderRadius: "50%", background: "radial-gradient(circle, rgba(0,180,255,.035) 0%, transparent 70%)", bottom: "15%", left: "2%", pointerEvents: "none" }} />
 
       {/* Dot grid */}
       <div style={{
@@ -87,7 +121,7 @@ export default function WorkflowConfigurator() {
             marginBottom: "1.5rem", padding: ".35rem 1.05rem", borderRadius: 100,
             background: "rgba(0,229,255,.06)", border: "1px solid rgba(0,229,255,.2)",
           }}>
-            <div style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--cyan)", boxShadow: "0 0 6px rgba(0,229,255,.7)" }} />
+            <div className="pulse-dot" style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--cyan)", boxShadow: "0 0 6px rgba(0,229,255,.7)" }} />
             <span style={{ fontSize: ".72rem", fontWeight: 600, letterSpacing: ".16em", textTransform: "uppercase", color: "var(--cyan)" }}>
               Konfigurátor
             </span>
@@ -99,7 +133,7 @@ export default function WorkflowConfigurator() {
             marginBottom: "1.25rem", letterSpacing: "-.02em",
           }}>
             Rakd össze a{" "}
-            <span style={{ background: "linear-gradient(90deg,var(--cyan),var(--blue))", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+            <span className="accent-display" style={{ background: "linear-gradient(90deg,var(--cyan),var(--blue))", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               saját csomagodat
             </span>
           </h1>
@@ -169,14 +203,18 @@ export default function WorkflowConfigurator() {
               Válassz alap csomagot
               <span style={{ fontSize: ".82rem", fontWeight: 500, color: "var(--muted)", marginLeft: ".6rem" }}>— opcionális</span>
             </h2>
-            <a
+            <Link
               href="/#pricing"
-              style={{ fontSize: ".8rem", color: "var(--cyan)", textDecoration: "none", fontWeight: 600, opacity: .65, transition: "opacity .2s" }}
+              className="arrow-link"
+              style={{ fontSize: ".8rem", color: "var(--cyan)", textDecoration: "none", fontWeight: 600, opacity: .65, transition: "opacity .2s", display: "inline-flex", alignItems: "center", gap: ".4rem" }}
               onMouseEnter={e => (e.currentTarget.style.opacity = "1")}
               onMouseLeave={e => (e.currentTarget.style.opacity = ".65")}
             >
-              Részletes összehasonlítás →
-            </a>
+              Részletes összehasonlítás
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </Link>
           </div>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "1rem" }}>
@@ -186,12 +224,14 @@ export default function WorkflowConfigurator() {
               return (
                 <div
                   key={plan.id}
+                  className="spotlight-card"
                   role="button"
                   tabIndex={0}
                   onClick={() => setSelectedPlan(isSel ? null : plan.id)}
                   onKeyDown={e => e.key === "Enter" && setSelectedPlan(isSel ? null : plan.id)}
                   onMouseEnter={() => setHoveredCard(`plan-${plan.id}`)}
                   onMouseLeave={() => setHoveredCard(null)}
+                  onMouseMove={trackSpotlight}
                   style={{
                     position: "relative", borderRadius: 16, padding: "1.75rem 1.5rem",
                     cursor: "pointer", outline: "none",
@@ -230,7 +270,7 @@ export default function WorkflowConfigurator() {
                     ✓
                   </div>
 
-                  <div style={{ fontSize: "1.7rem", marginBottom: ".6rem", lineHeight: 1 }}>{plan.emoji}</div>
+                  <div style={{ marginBottom: ".8rem" }}><PlanIcon id={plan.id} highlight={plan.highlight} size={42} /></div>
                   <div style={{ fontFamily: "var(--font-heading)", fontSize: "1.05rem", fontWeight: 700, marginBottom: ".2rem" }}>{plan.name}</div>
                   <div style={{ fontSize: ".78rem", color: "var(--muted)", marginBottom: "1.1rem" }}>{plan.tagline}</div>
 
@@ -329,7 +369,8 @@ export default function WorkflowConfigurator() {
               return (
                 <article
                   key={w.id}
-                  className={`reveal ${["", "delay-1", "delay-2"][i % 3]}`}
+                  className={`reveal reveal-scale spotlight-card ${["", "delay-1", "delay-2"][i % 3]}`}
+                  onMouseMove={trackSpotlight}
                   role="button"
                   tabIndex={isSoon ? -1 : 0}
                   onClick={() => toggleWorkflow(w)}
@@ -364,14 +405,13 @@ export default function WorkflowConfigurator() {
 
                   {/* Icon + category */}
                   <div style={{ display: "flex", alignItems: "center", gap: ".7rem", marginBottom: "1rem" }}>
-                    <div style={{
+                    <div className="icon-box" style={{
                       width: 46, height: 46, borderRadius: 12, flexShrink: 0,
                       background: `rgba(${rgb},.08)`,
                       border: `1px solid rgba(${rgb},.2)`,
                       display: "flex", alignItems: "center", justifyContent: "center",
-                      fontSize: "1.3rem",
                     }}>
-                      {w.icon}
+                      <WfIcon name={w.icon} rgb={rgb} />
                     </div>
                     <span style={{ fontSize: ".68rem", fontWeight: 700, color: `rgba(${rgb},.75)`, letterSpacing: ".1em", textTransform: "uppercase" }}>
                       {w.category}
@@ -438,7 +478,7 @@ export default function WorkflowConfigurator() {
 
             {chosenPlan && (
               <div style={{ display: "inline-flex", alignItems: "center", gap: ".45rem", background: "rgba(0,229,255,.1)", border: "1px solid rgba(0,229,255,.3)", borderRadius: 100, padding: ".3rem .7rem .3rem .95rem", fontSize: ".82rem", fontWeight: 600, color: "var(--cyan)", whiteSpace: "nowrap" }}>
-                {chosenPlan.emoji} {chosenPlan.name}
+                {chosenPlan.name}
                 <button
                   onClick={() => setSelectedPlan(null)}
                   style={{ background: "rgba(0,229,255,.15)", border: "none", borderRadius: "50%", width: 18, height: 18, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", color: "var(--cyan)", fontSize: ".6rem", flexShrink: 0, lineHeight: 1 }}
@@ -451,7 +491,7 @@ export default function WorkflowConfigurator() {
 
             {chosenWorkflows.map((w) => (
               <div key={w.id} style={{ display: "inline-flex", alignItems: "center", gap: ".45rem", background: "rgba(255,255,255,.06)", border: "1px solid rgba(255,255,255,.12)", borderRadius: 100, padding: ".3rem .7rem .3rem .95rem", fontSize: ".8rem", fontWeight: 600, color: "rgba(255,255,255,.7)", whiteSpace: "nowrap" }}>
-                {w.icon} {w.title}
+                {w.title}
                 <button
                   onClick={() => toggleWorkflow(w)}
                   style={{ background: "rgba(255,255,255,.1)", border: "none", borderRadius: "50%", width: 18, height: 18, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", color: "rgba(255,255,255,.5)", fontSize: ".6rem", flexShrink: 0, lineHeight: 1 }}
@@ -466,6 +506,7 @@ export default function WorkflowConfigurator() {
           {/* Right: CTA */}
           <button
             onClick={requestQuote}
+            className="btn-shine btn-glow arrow-link"
             style={{
               background: "linear-gradient(90deg,var(--cyan),var(--blue))",
               color: "#000", fontFamily: "var(--font-heading)",

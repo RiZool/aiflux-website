@@ -1,5 +1,12 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, type MouseEvent } from "react";
+
+// Egér-követő spotlight pozíció beállítása CSS változókkal
+function trackSpotlight(e: MouseEvent<HTMLElement>) {
+  const r = e.currentTarget.getBoundingClientRect();
+  e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
+  e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
+}
 
 const services = [
   {
@@ -70,7 +77,7 @@ export default function Services() {
         </p>
         <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(1.8rem,4vw,2.8rem)", fontWeight: 700, marginBottom: "1.2rem", lineHeight: 1.15 }}>
           Három terület,{" "}
-          <span style={{ background: "linear-gradient(90deg,var(--cyan),var(--blue))", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+          <span className="accent-display" style={{ background: "linear-gradient(90deg,var(--cyan),var(--blue))", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
             egy közös cél
           </span>
         </h2>
@@ -81,10 +88,11 @@ export default function Services() {
 
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "1.5rem", maxWidth: 1100, margin: "0 auto" }}>
         {services.map((s, i) => (
-          <article key={i} className={`glass-card reveal ${["", "delay-1", "delay-2"][i]}`}
+          <article key={i} className={`glass-card spotlight-card reveal reveal-scale ${["", "delay-1", "delay-2"][i]}`}
+            onMouseMove={trackSpotlight}
             style={{ padding: "2.4rem" }}>
-            <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: "1.5rem" }}>
-              <div style={{ width: 52, height: 52, background: "rgba(0,229,255,.08)", border: "1px solid rgba(0,229,255,.2)", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: "1.5rem", position: "relative", zIndex: 1 }}>
+              <div className="icon-box" style={{ width: 52, height: 52, background: "rgba(0,229,255,.08)", border: "1px solid rgba(0,229,255,.2)", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center" }}>
                 {s.icon}
               </div>
               <span style={{ fontSize: ".72rem", fontWeight: 700, color: "rgba(0,229,255,.4)", letterSpacing: ".1em" }}>
@@ -114,13 +122,16 @@ export default function Services() {
               ))}
             </div>
 
-            <a href="#contact" style={{
+            <a href="#contact" className="arrow-link" style={{
               color: "var(--cyan)", fontSize: ".85rem", fontWeight: 600,
               textDecoration: "none", letterSpacing: ".04em",
-              display: "inline-flex", alignItems: "center", gap: ".4rem",
-              transition: "gap .2s",
+              display: "inline-flex", alignItems: "center", gap: ".45rem",
+              position: "relative", zIndex: 1,
             }}>
-              Érdekel → 
+              Érdekel
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
             </a>
           </article>
         ))}

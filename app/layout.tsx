@@ -1,18 +1,27 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Inter } from "next/font/google";
+import { Space_Grotesk, Inter, Unbounded } from "next/font/google";
 import "./globals.css";
 
+// latin-ext subset kell mindenhol a magyar ő/ű karakterekhez!
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-heading",
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   weight: ["500", "600", "700"],
   display: "swap",
 });
 
 const inter = Inter({
   variable: "--font-inter",
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   weight: ["400", "500", "600"],
+  display: "swap",
+});
+
+// Display font — kiemelt szavakhoz (hero accent, címek gradient része)
+const unbounded = Unbounded({
+  variable: "--font-display",
+  subsets: ["latin", "latin-ext"],
+  weight: ["700", "800"],
   display: "swap",
 });
 
@@ -51,7 +60,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="hu" className={`${spaceGrotesk.variable} ${inter.variable}`}>
+    <html lang="hu" className={`${spaceGrotesk.variable} ${inter.variable} ${unbounded.variable}`}>
       <body>{children}</body>
     </html>
   );

@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import Image from "next/image";
 
 const TEXTS = [
@@ -36,6 +36,16 @@ function useTypewriter(texts: string[]) {
   }, [ci, deleting, ti, texts, wait]);
 
   return display;
+}
+
+// Lépcsőzetes belépő animáció — minden elem kicsit később úszik be
+function stagger(visible: boolean, i: number): CSSProperties {
+  return {
+    opacity: visible ? 1 : 0,
+    transform: visible ? "translateY(0)" : "translateY(26px)",
+    filter: visible ? "blur(0)" : "blur(6px)",
+    transition: `opacity .9s cubic-bezier(.22,1,.36,1) ${i * 0.13}s, transform .9s cubic-bezier(.22,1,.36,1) ${i * 0.13}s, filter .9s cubic-bezier(.22,1,.36,1) ${i * 0.13}s`,
+  };
 }
 
 // ── Fő Hero komponens ──────────────────────────────────────────
@@ -124,14 +134,15 @@ export default function Hero() {
       <div style={{ position: "absolute", inset: 0, zIndex: 2, pointerEvents: "none", background: "radial-gradient(ellipse 65% 55% at 50% 52%, rgba(0,100,255,.14) 0%, transparent 70%)" }} />
       <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, zIndex: 2, height: "55%", pointerEvents: "none", background: "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,.88) 70%, #000 100%)" }} />
 
-      {/* Fő tartalom */}
-      <div style={{
-        position: "relative", zIndex: 3, textAlign: "center",
-        padding: "0 1.5rem", maxWidth: 860,
-        opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(28px)",
-        transition: "opacity .9s ease, transform .9s ease",
-      }}>
+      {/* Finom rács-háttér */}
+      <div className="grid-bg" aria-hidden="true" style={{ position: "absolute", inset: 0, zIndex: 2, pointerEvents: "none" }} />
+
+      {/* Lebegő fény-orbok */}
+      <div className="orb orb-a" aria-hidden="true" style={{ width: 380, height: 380, top: "12%", left: "8%", zIndex: 2, background: "radial-gradient(circle, rgba(0,229,255,.13) 0%, transparent 70%)" }} />
+      <div className="orb orb-b" aria-hidden="true" style={{ width: 460, height: 460, bottom: "8%", right: "5%", zIndex: 2, background: "radial-gradient(circle, rgba(0,102,255,.16) 0%, transparent 70%)" }} />
+
+      {/* Fő tartalom — lépcsőzetes belépő animáció */}
+      <div style={{ position: "relative", zIndex: 3, textAlign: "center", padding: "0 1.5rem", maxWidth: 860 }}>
         {/* Badge */}
         <div style={{
           display: "inline-flex", alignItems: "center", gap: ".5rem",
@@ -139,6 +150,7 @@ export default function Hero() {
           fontSize: ".7rem", fontWeight: 600, letterSpacing: ".14em",
           textTransform: "uppercase", color: "var(--cyan)",
           background: "rgba(0,229,255,.07)", border: "1px solid rgba(0,229,255,.28)",
+          ...stagger(visible, 0),
         }}>
           <span className="pulse-dot" style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--cyan)", display: "inline-block", boxShadow: "0 0 6px rgba(0,229,255,.7)" }} />
           AI-Natív Fejlesztő Ügynökség · Magyarország
@@ -150,10 +162,11 @@ export default function Hero() {
           fontSize: "clamp(2.3rem,6vw,5rem)",
           fontWeight: 700, lineHeight: 1.08,
           marginBottom: "1.2rem", letterSpacing: "-.02em",
+          ...stagger(visible, 1),
         }}>
           <span style={{ display: "block", color: "#fff" }}>Az AI nem helyettesít,</span>
           <span style={{ display: "block" }}>
-            csupán <span className="gradient-text">FELERŐSÍT.</span>
+            csupán <span className="gradient-text accent-display" style={{ fontWeight: 800 }}>FELERŐSÍT.</span>
           </span>
         </h1>
 
@@ -163,8 +176,9 @@ export default function Hero() {
           minHeight: "2rem", marginBottom: "1.8rem",
           letterSpacing: ".03em", fontWeight: 500,
           fontFamily: "'Courier New', monospace",
+          ...stagger(visible, 2),
         }}>
-          <span style={{ color: "rgba(0,229,255,.4)" }}>// </span>
+          <span style={{ color: "rgba(0,229,255,.4)" }}>{"// "}</span>
           <span style={{ color: "var(--cyan)" }}>{typed}</span>
           <span className="blink" style={{ marginLeft: 1, color: "var(--cyan)" }}>▋</span>
         </div>
@@ -174,14 +188,15 @@ export default function Hero() {
           fontSize: "clamp(.92rem,1.5vw,1.07rem)",
           color: "rgba(255,255,255,.67)",
           maxWidth: 555, margin: "0 auto 3rem", lineHeight: 1.85,
+          ...stagger(visible, 3),
         }}>
           Az AI Flux az az ügynökség, ahol a mesterséges intelligencia nem egy extra funkció —
           hanem az alapja mindennek. Gyorsabb fejlesztés, okosabb rendszerek, mérhető üzleti eredmények.
         </p>
 
         {/* CTA gombok */}
-        <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
-          <a href="#contact" style={{
+        <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap", ...stagger(visible, 4) }}>
+          <a href="#contact" className="btn-shine btn-glow arrow-link" style={{
             display: "inline-flex", alignItems: "center", gap: ".5rem",
             background: "linear-gradient(90deg,var(--cyan),var(--blue))",
             color: "#000", fontWeight: 700, padding: ".9rem 2.4rem",
@@ -195,7 +210,7 @@ export default function Hero() {
               <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </a>
-          <a href="/#services" style={{
+          <a href="#services" style={{
             display: "inline-flex", alignItems: "center",
             background: "transparent",
             border: "1px solid rgba(255,255,255,.2)", color: "rgba(255,255,255,.82)",

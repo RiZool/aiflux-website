@@ -39,22 +39,18 @@ export default function TechLogos() {
       </div>
 
       {/* Scrolling logo strip */}
-      <div style={{ overflow: "hidden", position: "relative" }}>
+      <div className="marquee" style={{ overflow: "hidden", position: "relative" }}>
         {/* Fade edges */}
         <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 80, background: "linear-gradient(to right, var(--bg2), transparent)", zIndex: 2, pointerEvents: "none" }} />
         <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: 80, background: "linear-gradient(to left, var(--bg2), transparent)", zIndex: 2, pointerEvents: "none" }} />
 
-        {/* Track wrapper — a belső div pontosan 2× széles, animáció -50%-ig megy */}
-        <div style={{ display: "flex", width: "max-content" }}>
+        {/* Track — pontosan 2× széles, az animáció -50%-ig megy, hoverre megáll */}
+        <div className="marquee-track" style={{ display: "flex", width: "max-content" }}>
           {[0, 1].map((copy) => (
             <div
               key={copy}
               aria-hidden={copy === 1}
-              style={{
-                display: "flex",
-                gap: "0",
-                animation: "scroll-logos 28s linear infinite",
-              }}
+              style={{ display: "flex", gap: "0" }}
             >
               {technologies.map((tech, i) => (
                 <div key={i} style={{
@@ -96,17 +92,6 @@ export default function TechLogos() {
         </div>
       </div>
 
-      <style>{`
-        @keyframes scroll-logos {
-          0%   { transform: translateX(0); }
-          100% { transform: translateX(-100%); }
-        }
-        /* Pause on hover */
-        div:hover > div > div[aria-hidden] ,
-        div:hover > div > div:not([aria-hidden]) {
-          animation-play-state: running;
-        }
-      `}</style>
     </section>
   );
 }

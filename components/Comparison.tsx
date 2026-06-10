@@ -1,15 +1,37 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
+
+// Konzisztens SVG vonal-ikonok (24×24 viewBox, stroke stílus)
+const rowIcons: Record<string, ReactNode> = {
+  clock:   <><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></>,
+  money:   <><rect x="2" y="6" width="20" height="12" rx="2" /><circle cx="12" cy="12" r="2.4" /><path d="M6 12h.01M18 12h.01" /></>,
+  cpu:     <><rect x="6" y="6" width="12" height="12" rx="2" /><rect x="10" y="10" width="4" height="4" /><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3" /></>,
+  bolt:    <path d="M13 2 3 14h8l-1 8 11-13h-8l1-7z" />,
+  chat:    <path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.7A8.5 8.5 0 1 1 21 11.5z" />,
+  mail:    <><rect x="2" y="4" width="20" height="16" rx="2" /><path d="m2 7 10 6 10-6" /></>,
+  trend:   <><path d="M22 7l-8.5 8.5-5-5L2 17" /><path d="M16 7h6v6" /></>,
+  globe:   <><circle cx="12" cy="12" r="9" /><path d="M3 12h18" /><path d="M12 3c2.5 2.5 4 5.6 4 9s-1.5 6.5-4 9c-2.5-2.5-4-5.6-4-9s1.5-6.5 4-9z" /></>,
+};
+
+function RowIcon({ name }: { name: string }) {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(0,229,255,.75)"
+      strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"
+      style={{ flexShrink: 0 }}>
+      {rowIcons[name]}
+    </svg>
+  );
+}
 
 const rows = [
-  { label: "Fejlesztési idő",       icon: "⏱", traditional: "4–12 hét",                 aiflux: "1–4 hét" },
-  { label: "Ár",                    icon: "💰", traditional: "Magas fix díj",              aiflux: "Átlátható, rugalmas" },
-  { label: "AI integráció",         icon: "🤖", traditional: "Ritka vagy extra",           aiflux: "Minden projektbe beépítve" },
-  { label: "Automatizáció",         icon: "⚙️", traditional: "Nem része",                  aiflux: "Alap szolgáltatás" },
-  { label: "Chatbot",               icon: "💬", traditional: "Külön megrendelés",          aiflux: "Beépített opció" },
-  { label: "Hírlevél automatizmus", icon: "📧", traditional: "Nem jellemző",               aiflux: "Igen, MailerLite + AI" },
-  { label: "Folyamatos fejlesztés", icon: "📈", traditional: "Plusz díj",                  aiflux: "Együtt növekszünk" },
-  { label: "Magyar nyelvű AI",      icon: "🇭🇺", traditional: "Ritkán",                     aiflux: "Igen, natívan" },
+  { label: "Fejlesztési idő",       icon: "clock", traditional: "4–12 hét",                 aiflux: "1–4 hét" },
+  { label: "Ár",                    icon: "money", traditional: "Magas fix díj",              aiflux: "Átlátható, rugalmas" },
+  { label: "AI integráció",         icon: "cpu",   traditional: "Ritka vagy extra",           aiflux: "Minden projektbe beépítve" },
+  { label: "Automatizáció",         icon: "bolt",  traditional: "Nem része",                  aiflux: "Alap szolgáltatás" },
+  { label: "Chatbot",               icon: "chat",  traditional: "Külön megrendelés",          aiflux: "Beépített opció" },
+  { label: "Hírlevél automatizmus", icon: "mail",  traditional: "Nem jellemző",               aiflux: "Igen, MailerLite + AI" },
+  { label: "Folyamatos fejlesztés", icon: "trend", traditional: "Plusz díj",                  aiflux: "Együtt növekszünk" },
+  { label: "Magyar nyelvű AI",      icon: "globe", traditional: "Ritkán",                     aiflux: "Igen, natívan" },
 ];
 
 const stats = [
@@ -69,7 +91,7 @@ export default function Comparison() {
           </p>
           <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(1.8rem,4vw,2.8rem)", fontWeight: 700, marginBottom: "1.2rem", lineHeight: 1.12, letterSpacing: "-.02em" }}>
             Nem vagyunk{" "}
-            <span style={{ background: "linear-gradient(90deg,var(--cyan),var(--blue))", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+            <span className="accent-display" style={{ background: "linear-gradient(90deg,var(--cyan),var(--blue))", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               hagyományos fejlesztők
             </span>
           </h2>
@@ -181,7 +203,7 @@ export default function Comparison() {
                 >
                   {/* Sor label */}
                   <div style={{ display: "flex", alignItems: "center", gap: ".6rem", padding: ".85rem 0" }}>
-                    <span style={{ fontSize: ".9rem", lineHeight: 1 }}>{row.icon}</span>
+                    <RowIcon name={row.icon} />
                     <span style={{ fontSize: ".88rem", fontWeight: 500, color: isHov ? "rgba(255,255,255,.9)" : "rgba(255,255,255,.65)", transition: "color .18s" }}>
                       {row.label}
                     </span>

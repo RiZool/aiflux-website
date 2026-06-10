@@ -1,6 +1,14 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
 import { plans, formatPrice } from "@/data/plans";
+import PlanIcon from "@/components/PlanIcon";
+
+// Egér-követő spotlight pozíció
+function trackSpotlight(e: MouseEvent<HTMLElement>) {
+  const r = e.currentTarget.getBoundingClientRect();
+  e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
+  e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
+}
 
 export default function Pricing() {
   const ref = useRef<HTMLDivElement>(null);
@@ -32,7 +40,7 @@ export default function Pricing() {
         </p>
         <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(1.8rem,4vw,2.8rem)", fontWeight: 700, marginBottom: "1.2rem", lineHeight: 1.15 }}>
           Válaszd ki a{" "}
-          <span style={{ background: "linear-gradient(90deg,var(--cyan),var(--blue))", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+          <span className="accent-display" style={{ background: "linear-gradient(90deg,var(--cyan),var(--blue))", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
             hozzád illő csomagot
           </span>
         </h2>
@@ -53,9 +61,10 @@ export default function Pricing() {
         {plans.map((plan, i) => (
           <div
             key={plan.id}
-            className={`reveal ${["", "delay-1", "delay-2", "delay-3"][i]}`}
+            className={`reveal spotlight-card ${plan.highlight ? "glow-border" : ""} ${["", "delay-1", "delay-2", "delay-3"][i]}`}
             onMouseEnter={() => setHovered(plan.id)}
             onMouseLeave={() => setHovered(null)}
+            onMouseMove={trackSpotlight}
             style={{
               position: "relative",
               borderRadius: 16,
@@ -91,9 +100,9 @@ export default function Pricing() {
               </div>
             )}
 
-            {/* Emoji + Name */}
+            {/* Ikon + Name */}
             <div style={{ marginBottom: "1.2rem" }}>
-              <div style={{ fontSize: "1.8rem", marginBottom: ".5rem" }}>{plan.emoji}</div>
+              <div style={{ marginBottom: ".8rem" }}><PlanIcon id={plan.id} highlight={plan.highlight} /></div>
               <div style={{ fontFamily: "var(--font-heading)", fontSize: "1.1rem", fontWeight: 700, marginBottom: ".25rem" }}>
                 {plan.name}
               </div>
@@ -158,6 +167,7 @@ export default function Pricing() {
             {/* CTA */}
             <a
               href="#contact"
+              className={plan.highlight ? "btn-shine btn-glow" : "btn-shine"}
               style={{
                 display: "block", textAlign: "center",
                 padding: ".8rem",
@@ -184,7 +194,7 @@ export default function Pricing() {
       {/* Bottom note */}
       <div className="reveal" style={{ textAlign: "center" }}>
         <p style={{ color: "var(--muted)", fontSize: ".88rem", lineHeight: 1.8, maxWidth: 560, margin: "0 auto" }}>
-          💡 Nem találod amit keresel? Minden projekt egyedi —{" "}
+          Nem találod amit keresel? Minden projekt egyedi —{" "}
           <a href="#contact" style={{ color: "var(--cyan)", textDecoration: "none", fontWeight: 600 }}>
             kérj személyre szabott ajánlatot
           </a>
