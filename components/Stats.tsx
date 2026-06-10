@@ -28,7 +28,7 @@ function CountUp({ target, suffix, fixed }: { target?: number; suffix?: string; 
 
   return (
     <div ref={ref} className="stat-num"
-      style={{ fontFamily: "var(--font-display), var(--font-heading)", fontSize: "clamp(2.1rem,4.4vw,3.2rem)", fontWeight: 700, lineHeight: 1, marginBottom: ".6rem" }}>
+      style={{ fontFamily: "var(--font-display), var(--font-heading)", fontSize: "clamp(1.7rem,3.4vw,2.5rem)", fontWeight: 700, lineHeight: 1, marginBottom: ".6rem", letterSpacing: "-.02em", whiteSpace: "nowrap" }}>
       {val}
     </div>
   );
@@ -77,7 +77,7 @@ export default function Stats() {
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px,1fr))", gap: "2px", maxWidth: 960, margin: "0 auto", border: "1px solid rgba(0,229,255,.1)", borderRadius: 16, overflow: "hidden" }}>
         {stats.map((s, i) => (
           <div key={i} className={`reveal ${["", "delay-1", "delay-2", "delay-3"][i]}`}
-            style={{ background: "rgba(0,229,255,.03)", padding: "2.8rem 2rem", textAlign: "center", transition: "background .3s" }}
+            style={{ background: "rgba(0,229,255,.03)", padding: "2.8rem 1.25rem", textAlign: "center", transition: "background .3s" }}
             onMouseEnter={e => (e.currentTarget.style.background = "rgba(0,229,255,.07)")}
             onMouseLeave={e => (e.currentTarget.style.background = "rgba(0,229,255,.03)")}>
             <CountUp target={s.target} suffix={s.suffix} fixed={s.fixed} />
