@@ -77,7 +77,7 @@ export default function Guarantee() {
           {/* Szöveg */}
           <p style={{ color: "rgba(255,255,255,.72)", fontSize: "1.05rem", lineHeight: 1.85, maxWidth: 580, margin: "0 auto 1.4rem" }}>
             Ha van egy ötleted — legyen az bármilyen folyamat, automatizálás vagy AI megoldás —
-            hozd el bátran. Közösen átgondoljuk, megtervezzük, és csak akkor fizetünk, ha a megvalósítás
+            hozd el bátran. Közösen átgondoljuk, megtervezzük, és csak akkor fizetsz, ha a megvalósítás
             valóban azt hozza, amit megígértünk.
           </p>
 
