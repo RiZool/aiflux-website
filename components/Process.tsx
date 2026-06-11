@@ -11,7 +11,7 @@ const steps = [
   {
     num: "02",
     title: "Tervezés & Építés",
-    sub: "1–4 hét",
+    sub: "3–5 hét",
     desc: "AI-asszisztált fejlesztési folyamatunkkal akár háromszor gyorsabban szállítjuk az eredményt — a minőség feláldozása nélkül. Rendszeresen mutatunk haladást, nem csak az átadásnál.",
   },
   {

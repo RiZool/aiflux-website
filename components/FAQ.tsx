@@ -12,7 +12,7 @@ const faqs = [
   },
   {
     q: "Mennyi idő alatt készül el egy projekt?",
-    a: "Jellemzően 1–4 hét, a csomagtól és az igényektől függően. Hagyományos fejlesztőknél ez 4–12 hét szokott lenni — mi AI-asszisztált folyamattal akár háromszor gyorsabban szállítunk.",
+    a: "Jellemzően 3–5 hét, a csomagtól és az igényektől függően. Hagyományos fejlesztőknél ez 4–12 hét szokott lenni — mi AI-asszisztált folyamattal akár háromszor gyorsabban szállítunk.",
   },
   {
     q: "Mi van a havidíjban?",

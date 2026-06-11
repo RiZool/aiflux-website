@@ -24,7 +24,7 @@ function RowIcon({ name }: { name: string }) {
 }
 
 const rows = [
-  { label: "Fejlesztési idő",       icon: "clock", traditional: "4–12 hét",                 aiflux: "1–4 hét" },
+  { label: "Fejlesztési idő",       icon: "clock", traditional: "4–12 hét",                 aiflux: "3–5 hét" },
   { label: "Ár",                    icon: "money", traditional: "Magas fix díj",              aiflux: "Átlátható, rugalmas" },
   { label: "AI integráció",         icon: "cpu",   traditional: "Ritka vagy extra",           aiflux: "Minden projektbe beépítve" },
   { label: "Automatizáció",         icon: "bolt",  traditional: "Nem része",                  aiflux: "Alap szolgáltatás" },

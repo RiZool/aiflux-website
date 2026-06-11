@@ -67,7 +67,7 @@ Hamarosan érkező folyamatok (még nem rendelhetők, de érdeklődni lehet):
 
 1. **Feltérképezés (1–2 nap)** — ingyenes konzultáción megismerjük a
    vállalkozást, a fájdalompontokat és a célokat.
-2. **Tervezés & Építés (1–4 hét)** — AI-asszisztált fejlesztéssel akár 3×
+2. **Tervezés & Építés (3–5 hét)** — AI-asszisztált fejlesztéssel akár 3×
    gyorsabban szállítunk, rendszeres haladás-bemutatókkal.
 3. **Élesítés & Növekedés (folyamatos)** — átadás után is monitorozunk,
    finomhangoljuk az AI-t, együtt növekszünk.
@@ -75,7 +75,7 @@ Hamarosan érkező folyamatok (még nem rendelhetők, de érdeklődni lehet):
 ## Gyakori kérdések
 
 **Mennyi idő alatt készül el egy weboldal?**
-Jellemzően 1–4 hét, a csomagtól és az igényektől függően. Hagyományos
+Jellemzően 3–5 hét, a csomagtól és az igényektől függően. Hagyományos
 fejlesztőknél ez 4–12 hét szokott lenni.
 
 **Kell-e értenem a technológiához?**
