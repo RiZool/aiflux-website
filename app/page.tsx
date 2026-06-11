@@ -7,6 +7,7 @@ import Comparison from "@/components/Comparison";
 import Process from "@/components/Process";
 import Pricing from "@/components/Pricing";
 import FAQ from "@/components/FAQ";
+import Guarantee from "@/components/Guarantee";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 import WaveDivider from "@/components/WaveDivider";
@@ -29,7 +30,8 @@ export default function Home() {
       <Pricing />
       <WaveDivider from="#050510" to="#08081a" path="M0,30 C240,70 480,0 720,50 C960,90 1200,20 1440,50 L1440,80 L0,80 Z" height={80} />
       <FAQ />
-      <WaveDivider from="#08081a" to="#000" path="M0,50 C200,100 400,0 600,50 C800,100 1000,10 1200,60 C1320,85 1400,40 1440,50 L1440,100 L0,100 Z" height={100} />
+      <Guarantee />
+      <WaveDivider from="#000" to="#000" path="M0,50 C200,100 400,0 600,50 C800,100 1000,10 1200,60 C1320,85 1400,40 1440,50 L1440,100 L0,100 Z" height={100} />
       <CTA />
       <Footer />
     </main>
