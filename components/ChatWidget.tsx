@@ -88,7 +88,7 @@ export default function ChatWidget() {
       {/* ── Lebegő buborék gomb ── */}
       <button
         onClick={() => setOpen(o => !o)}
-        aria-label={open ? "Chat bezárása" : "Chat megnyitása — kérdezz az AI Flux szolgáltatásairól"}
+        aria-label={open ? "Chat bezárása" : "Chat megnyitása — kérdezz az AI Flux szolgáltatásairól — Fluxy asszisztens"}
         aria-expanded={open}
         style={{
           position: "fixed", bottom: bottomOffset, right: "1.5rem", zIndex: 1100,
@@ -119,7 +119,7 @@ export default function ChatWidget() {
       {/* ── Chat panel ── */}
       <div
         role="dialog"
-        aria-label="Flux — AI asszisztens chat"
+        aria-label="Fluxy — AI asszisztens chat"
         style={{
           position: "fixed", zIndex: 1090,
           bottom: `calc(${bottomOffset} + 68px)`, right: "1.5rem",
@@ -151,11 +151,11 @@ export default function ChatWidget() {
             display: "flex", alignItems: "center", justifyContent: "center",
             overflow: "hidden",
           }}>
-            <img src="/logo_F.png" alt="Flux" width={28} height={28} style={{ objectFit: "contain" }} />
+            <img src="/logo_F.png" alt="Fluxy" width={28} height={28} style={{ objectFit: "contain" }} />
           </div>
           <div style={{ flex: 1, minWidth: 0 }}>
             <div style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: ".95rem", color: "#fff" }}>
-              Flux
+              Fluxy
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: ".35rem", fontSize: ".7rem", color: "rgba(255,255,255,.45)" }}>
               <span className="pulse-dot" style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--cyan)", display: "inline-block" }} />
@@ -168,7 +168,7 @@ export default function ChatWidget() {
         <div ref={scrollRef} style={{ flex: 1, overflowY: "auto", padding: "1rem", display: "flex", flexDirection: "column", gap: ".65rem" }}>
           {/* Üdvözlő üzenet */}
           <div style={bubbleStyle("assistant")}>
-            Szia! 👋 Flux vagyok, az AI Flux asszisztense. Kérdezz bátran a szolgáltatásainkról, árainkról vagy arról, hogyan tud az AI segíteni a vállalkozásodnak!
+            Szia! 👋 Fluxy vagyok, az AI Flux asszisztense. Kérdezz bátran a szolgáltatásainkról, árainkról vagy arról, hogyan tud az AI segíteni a vállalkozásodnak!
           </div>
 
           {/* Javasolt kérdések — csak amíg nincs beszélgetés */}
@@ -211,7 +211,7 @@ export default function ChatWidget() {
             onChange={e => setInput(e.target.value)}
             placeholder="Írd ide a kérdésed…"
             maxLength={2000}
-            aria-label="Üzenet a Flux asszisztensnek"
+            aria-label="Üzenet a Fluxy asszisztensnek"
             style={{
               flex: 1, minWidth: 0,
               background: "rgba(255,255,255,.05)",
