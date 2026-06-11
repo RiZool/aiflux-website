@@ -147,11 +147,11 @@ export default function ChatWidget() {
         }}>
           <div style={{
             width: 36, height: 36, borderRadius: 10, flexShrink: 0,
-            background: "linear-gradient(135deg, var(--cyan), var(--blue))",
+            background: "#000",
             display: "flex", alignItems: "center", justifyContent: "center",
-            fontFamily: "var(--font-display), var(--font-heading)", fontWeight: 800, fontSize: ".95rem", color: "#000",
+            overflow: "hidden",
           }}>
-            F
+            <img src="/logo_F.png" alt="Flux" width={28} height={28} style={{ objectFit: "contain" }} />
           </div>
           <div style={{ flex: 1, minWidth: 0 }}>
             <div style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: ".95rem", color: "#fff" }}>
