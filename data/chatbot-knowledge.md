@@ -98,6 +98,59 @@ címen vagy az ingyenes konzultáción.
 Next.js, React, Tailwind, Vercel, Supabase, OpenAI, Claude AI, Gemini,
 Make, n8n, MailerLite.
 
+**Mit tud automatizálni az AI?**
+Minden ismétlődő, szabály alapján működő feladatot: ügyfélkommunikáció,
+e-mail válaszok, ajánlatkérések feldolgozása, hírlevél sorozatok, riportok,
+időpontfoglalás, számlázás. Ha ugyanazt csinálod újra és újra, azt az AI
+el tudja végezni helyetted.
+
+**Az AI automatizáció ugyanaz, mint a chatbot?**
+Nem. A chatbot az AI automatizáció egyik eszköze. Az AI automatizáció
+ennél sokkal tágabb: folyamatok összekötése, adatok feldolgozása, e-mail
+kezelés, dokumentum összefoglalás — ezek chatbot nélkül is működnek.
+Mi mind a kettőt csináljuk.
+
+**Mi van a havidíjban?**
+Hosting, karbantartás, az AI modell költsége (ez nálunk benne van a díjban),
+hibajavítás és kisebb módosítások. Nem kell külön Anthropic vagy egyéb AI
+számlával foglalkoznod — mi kezeljük helyetted.
+
+**Elveszi az AI a munkatársaim munkáját?**
+Nem váltja ki az embereket, hanem az ismétlődő, időrabló feladatokat veszi
+át tőlük. A legtöbb ügyfelünknél ez azt jelenti, hogy ugyanannyi emberrel
+több ügyfelet tudnak kiszolgálni, és a csapat az értékesebb munkára tud
+fókuszálni.
+
+**Mi van, ha rossz választ ad az AI?**
+A chatbotjaink kizárólag az általad jóváhagyott tudásbázisból válaszolnak —
+nem találnak ki információt. Ha valamire nincs válasz, az ügyfelet hozzád
+irányítja. Beüzemelés előtt minden rendszert tesztelünk és finomhangolunk.
+
+**Mi van, ha leáll vagy hibázik a rendszer?**
+A havidíj tartalmaz monitoringot és hibajavítást. Ha valami megáll, jelzünk
+és kijavítjuk. Kritikus problémánál gyors reakcióidőt vállalunk — nem
+maradsz egyedül a rendszerrel.
+
+**Nálatok maradnak az adataim? Mennyire biztonságos?**
+Az adataid a te tulajdonod. A chatbot tudásbázisa a te szerverededen fut.
+Az AI modell iparági szabványoknak megfelelő adatkezeléssel dolgozik.
+Érzékeny adatot (jelszó, bankkártya) a rendszerbe soha nem kerülhet.
+
+**Kell AI stratégia előtte?**
+Nem kötelező. Az ingyenes konzultáción mi is segítünk azonosítani, hol adna
+az AI a legtöbbet a vállalkozásodnak — tehát ha nincs kész stratégiád,
+a konzultáció ezt is pótolja.
+
+**Le tudom írni költségként?**
+Igen, a fejlesztési díj és a havidíj is vállalkozási költségként elszámolható.
+Erről a könyvelőddel érdemes egyeztetni, de általában IT vagy operatív
+költségként könyvelik.
+
+**Mennyire környezettudatos az AI használata?**
+A nagy AI modellek energiaigényesek, de egy jól megépített rendszer sok
+felesleges munkát és papíralapú folyamatot vált ki. Összességében a
+hatékonyabb működés csökkenti a vállalkozás ökológiai lábnyomát.
+
 ## Kapcsolatfelvétel
 
 - E-mail: info@aiflux.hu
