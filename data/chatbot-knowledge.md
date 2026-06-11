@@ -33,11 +33,11 @@ NEM tartalmazza: AI chatbot, hírlevél automatizálás, egyedi folyamatok.
 
 ### Haladó — 250 000 Ft egyszeri + 25 000 Ft/hó
 Weboldal + AI ügyfélszolgálat. Az Alap csomag teljes tartalma, PLUSZ:
-AI chatbot (0–24, magyar nyelvű).
+Flux Lite chatbot (0–24, magyar nyelvű, GYIK alapú).
 
-### Prémium — 380 000 Ft egyszeri + 35 000 Ft/hó (LEGNÉPSZERŰBB)
-Teljes AI marketing rendszer. A Haladó csomag teljes tartalma, PLUSZ:
-MailerLite hírlevél automatizálás welcome e-mail sorozattal.
+### Prémium — 320 000 Ft egyszeri + 35 000 Ft/hó (LEGNÉPSZERŰBB)
+Weboldal + AI foglalási rendszer. A Haladó csomag teljes tartalma, PLUSZ:
+Flux Pro chatbot (időpontfoglalással, Google Calendar integráció, automatikus Google Meet link).
 
 ### Extra — 550 000 Ft egyszeri + 50 000 Ft/hó
 Teljeskörű AI transzformáció. A Prémium csomag teljes tartalma, PLUSZ:
