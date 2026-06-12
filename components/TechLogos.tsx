@@ -71,23 +71,10 @@ export default function TechLogos() {
                   onMouseEnter={e => (e.currentTarget.style.color = "rgba(255,255,255,.85)")}
                   onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,.32)")}
                 >
-                  {tech.svg ? (
-                    <span
-                      style={{ width: 18, height: 18, display: "inline-flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}
-                      dangerouslySetInnerHTML={{ __html: tech.svg }}
-                    />
-                  ) : (
-                    <span style={{
-                      width: 22, height: 22, borderRadius: 5,
-                      background: "rgba(255,255,255,.06)",
-                      border: "1px solid rgba(255,255,255,.1)",
-                      display: "inline-flex", alignItems: "center", justifyContent: "center",
-                      fontSize: ".6rem", fontWeight: 700, color: "rgba(255,255,255,.5)",
-                      flexShrink: 0,
-                    }}>
-                      {tech.letter}
-                    </span>
-                  )}
+                  <span
+                    style={{ width: 18, height: 18, display: "inline-flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}
+                    dangerouslySetInnerHTML={{ __html: tech.svg }}
+                  />
                   {tech.name}
                 </div>
               ))}
