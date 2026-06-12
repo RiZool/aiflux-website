@@ -3,9 +3,7 @@ import fs from "fs";
 import path from "path";
 
 // ── Konfiguráció ────────────────────────────────────────────────
-// Modellváltáshoz állítsd az AIFLUX_CHAT_MODEL env változót
-// (pl. "claude-haiku-4-5" olcsóbb üzemeltetéshez).
-const MODEL = process.env.AIFLUX_CHAT_MODEL ?? "claude-opus-4-8";
+const MODEL = process.env.AIFLUX_CHAT_MODEL ?? "claude-haiku-4-5";
 const MAX_MESSAGES = 24; // ennyi üzenetnél hosszabb előzményt nem fogadunk el
 const MAX_MESSAGE_CHARS = 2000;
 const RATE_LIMIT = 20; // kérés / ablak / IP
