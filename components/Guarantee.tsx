@@ -95,9 +95,40 @@ export default function Guarantee() {
             marginBottom: "2.8rem",
           }}>
             {[
-              { icon: "💡", title: "Bármilyen ötlet", desc: "Nincs túl furcsa vagy túl egyszerű kérés" },
-              { icon: "🤝", title: "Közös tervezés", desc: "Együtt találjuk meg a legjobb megoldást és árat" },
-              { icon: "🛡️", title: "Kockázatmentes", desc: "Ha nem szállítjuk, amit elvállaltunk — nem fizetsz" },
+              {
+                title: "Bármilyen ötlet",
+                desc: "Nincs túl furcsa vagy túl egyszerű kérés",
+                icon: (
+                  <svg viewBox="0 0 26 26" fill="none" stroke="url(#g1)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ width: 24, height: 24 }}>
+                    <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#00E5FF" /><stop offset="1" stopColor="#0066FF" /></linearGradient></defs>
+                    <circle cx="13" cy="10" r="6" />
+                    <path d="M10.5 16.5c0 1.4 1.1 2.5 2.5 2.5s2.5-1.1 2.5-2.5" />
+                    <path d="M13 19v2M10 10.5c0-1.7 1.3-3 3-3" />
+                  </svg>
+                ),
+              },
+              {
+                title: "Közös tervezés",
+                desc: "Együtt találjuk meg a legjobb megoldást és árat",
+                icon: (
+                  <svg viewBox="0 0 26 26" fill="none" stroke="url(#g2)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ width: 24, height: 24 }}>
+                    <defs><linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#00E5FF" /><stop offset="1" stopColor="#0066FF" /></linearGradient></defs>
+                    <path d="M17 11c0 3.3-2.7 6-6 6a5.9 5.9 0 01-3.5-1.1L4 17l1.1-3.5A5.9 5.9 0 014 10c0-3.3 2.7-6 6-6s6 2.7 6 6h0z" />
+                    <path d="M17.5 14.5c.5.9.5 1.9.1 2.8L19 21l-3.7-1.4A5.9 5.9 0 0113 20c-2 0-3.8-.9-5-2.3" />
+                  </svg>
+                ),
+              },
+              {
+                title: "Kockázatmentes",
+                desc: "Ha nem szállítjuk, amit elvállaltunk — nem fizetsz",
+                icon: (
+                  <svg viewBox="0 0 26 26" fill="none" stroke="url(#g3)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ width: 24, height: 24 }}>
+                    <defs><linearGradient id="g3" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#00E5FF" /><stop offset="1" stopColor="#0066FF" /></linearGradient></defs>
+                    <path d="M13 3L4 7v6c0 5 3.8 9.7 9 11 5.2-1.3 9-6 9-11V7L13 3z" />
+                    <path d="M9 13l3 3 5-5" />
+                  </svg>
+                ),
+              },
             ].map((p) => (
               <div key={p.title} style={{
                 borderRadius: 12,
@@ -105,7 +136,14 @@ export default function Guarantee() {
                 background: "rgba(255,255,255,.03)",
                 padding: "1.25rem 1rem",
               }}>
-                <div style={{ fontSize: "1.6rem", marginBottom: ".6rem" }}>{p.icon}</div>
+                <div style={{
+                  width: 44, height: 44, borderRadius: 10, margin: "0 auto .8rem",
+                  background: "rgba(0,229,255,.08)",
+                  border: "1px solid rgba(0,229,255,.18)",
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                }}>
+                  {p.icon}
+                </div>
                 <div style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: ".92rem", marginBottom: ".4rem" }}>{p.title}</div>
                 <div style={{ color: "var(--muted)", fontSize: ".82rem", lineHeight: 1.6 }}>{p.desc}</div>
               </div>
