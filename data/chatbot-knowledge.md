@@ -43,6 +43,34 @@ Flux Pro chatbot (időpontfoglalással, Google Calendar integráció, automatiku
 Teljeskörű AI transzformáció. A Prémium csomag teljes tartalma, PLUSZ:
 egyedi Make/n8n folyamatok, teljeskörű AI integráció.
 
+## Kell-e weboldal csomag az AI megoldásokhoz?
+
+Nem. Weboldalt és AI folyamatokat teljesen külön is lehet rendelni.
+
+**Csak folyamatokat szeretnél weboldal nélkül?**
+Tökéletesen lehetséges. Az egyedi AI folyamatok (Make/n8n automatizmusok,
+hírlevél, lead generálás, dokumentum feldolgozás stb.) weboldal nélkül is
+működnek. Az ügyfél saját admin felületen keresztül tudja kezelni és
+nyomon követni a folyamatokat. Ebben az esetben csak a kért folyamat(ok)
+beállítási díját és havidíját számítjuk fel - nem szükséges weboldalcsomagot
+is venni.
+
+**Chatbot meglévő weboldalra?**
+Megoldható, de van egy fontos különbség:
+- Ha van már weboldalad és csak chatbotot szeretnél: be tudjuk építeni,
+  de a meglévő weboldal kódjába való integrálás bonyolultabb, és előfordulhat
+  hogy dizájn vagy technikai korlátok nehezítik. Ez megoldható, de több
+  munkával jár.
+- Ha új weboldalat is készítünk: a chatbot tökéletesen illeszkedik bele,
+  egységes dizájn, egyszerűbb karbantartás. Javasolt a teljes csomag, mert
+  sokkal jobb eredményt ad.
+
+**Összefoglalva:**
+- Csak folyamatok (automatizmusok) - weboldal nélkül is rendelhető
+- Chatbot meglévő oldalra - lehetséges, de javasolt az egész csomag
+- Chatbot + weboldal egyszerre - ez a legjobb kombináció, ez benne van
+  az Alap/Haladó/Prémium csomagokban
+
 ## Egyedi AI folyamatok (a /folyamatok oldalon válogathatók)
 
 Aktív, már elérhető folyamatok:
