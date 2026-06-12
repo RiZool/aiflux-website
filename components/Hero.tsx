@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import Image from "next/image";
 
@@ -38,7 +38,7 @@ function useTypewriter(texts: string[]) {
   return display;
 }
 
-// Lépcsőzetes belépő animáció — minden elem kicsit később úszik be
+// Lépcsőzetes belépő animáció - minden elem kicsit később úszik be
 function stagger(visible: boolean, i: number): CSSProperties {
   return {
     opacity: visible ? 1 : 0,
@@ -60,7 +60,7 @@ export default function Hero() {
   }, []);
 
 
-  // Canvas particles — prefers-reduced-motion tudatos
+  // Canvas particles - prefers-reduced-motion tudatos
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -112,15 +112,15 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      aria-label="Főoldal — AI Flux fejlesztő ügynökség"
+      aria-label="Főoldal - AI Flux fejlesztő ügynökség"
       style={{
         position: "relative", width: "100%", height: "100vh",
         minHeight: 700, display: "flex", alignItems: "center",
         justifyContent: "center", overflow: "hidden", background: "#000",
       }}
     >
-      {/* Háttér kép — sötétítve */}
-      <Image src="/hero.jpg" alt="AI Flux — technológiai háttér" fill priority
+      {/* Háttér kép - sötétítve */}
+      <Image src="/hero.jpg" alt="AI Flux - technológiai háttér" fill priority
         style={{ objectFit: "cover", objectPosition: "center 30%", opacity: 0.35 }} />
 
       {/* Particles */}
@@ -141,7 +141,7 @@ export default function Hero() {
       <div className="orb orb-a" aria-hidden="true" style={{ width: 380, height: 380, top: "12%", left: "8%", zIndex: 2, background: "radial-gradient(circle, rgba(0,229,255,.13) 0%, transparent 70%)" }} />
       <div className="orb orb-b" aria-hidden="true" style={{ width: 460, height: 460, bottom: "8%", right: "5%", zIndex: 2, background: "radial-gradient(circle, rgba(0,102,255,.16) 0%, transparent 70%)" }} />
 
-      {/* Fő tartalom — lépcsőzetes belépő animáció */}
+      {/* Fő tartalom - lépcsőzetes belépő animáció */}
       <div style={{ position: "relative", zIndex: 3, textAlign: "center", padding: "0 1.5rem", maxWidth: 860 }}>
         {/* Badge */}
         <div style={{
@@ -170,7 +170,7 @@ export default function Hero() {
           </span>
         </h1>
 
-        {/* Typewriter — monospace HUD stílus */}
+        {/* Typewriter - monospace HUD stílus */}
         <div style={{
           fontSize: "clamp(.9rem,1.9vw,1.18rem)",
           minHeight: "2rem", marginBottom: "1.8rem",
@@ -190,7 +190,7 @@ export default function Hero() {
           maxWidth: 555, margin: "0 auto 3rem", lineHeight: 1.85,
           ...stagger(visible, 3),
         }}>
-          Az AI Flux az az ügynökség, ahol a mesterséges intelligencia nem egy extra funkció —
+          Az AI Flux az az ügynökség, ahol a mesterséges intelligencia nem egy extra funkció -
           hanem az alapja mindennek. Gyorsabb fejlesztés, okosabb rendszerek, mérhető üzleti eredmények.
         </p>
 

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useEffect, useRef } from "react";
 
 const technologies = [
@@ -44,7 +44,7 @@ export default function TechLogos() {
         <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 80, background: "linear-gradient(to right, var(--bg2), transparent)", zIndex: 2, pointerEvents: "none" }} />
         <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: 80, background: "linear-gradient(to left, var(--bg2), transparent)", zIndex: 2, pointerEvents: "none" }} />
 
-        {/* Track — pontosan 2× széles, az animáció -50%-ig megy, hoverre megáll */}
+        {/* Track - pontosan 2× széles, az animáció -50%-ig megy, hoverre megáll */}
         <div className="marquee-track" style={{ display: "flex", width: "max-content" }}>
           {[0, 1].map((copy) => (
             <div

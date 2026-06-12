@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useEffect, useRef, type MouseEvent } from "react";
 
 // Egér-követő spotlight pozíció beállítása CSS változókkal
@@ -12,7 +12,7 @@ const services = [
   {
     tag: "01",
     title: "AI-Alapú Webfejlesztés",
-    desc: "Nem sablonokat adunk el. Minden weboldalt az üzleti céljaidra szabunk — gyors, SEO-optimalizált, konverzióra hangolt. A fejlesztés minden lépésénél AI-t használunk, hogy gyorsabban és okosabban jussunk el az eredményig.",
+    desc: "Nem sablonokat adunk el. Minden weboldalt az üzleti céljaidra szabunk - gyors, SEO-optimalizált, konverzióra hangolt. A fejlesztés minden lépésénél AI-t használunk, hogy gyorsabban és okosabban jussunk el az eredményig.",
     features: ["Next.js & React", "SEO-first felépítés", "3× gyorsabb szállítás"],
     icon: (
       <svg viewBox="0 0 26 26" fill="none" stroke="url(#ic1)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ width: 26, height: 26 }}>
@@ -26,7 +26,7 @@ const services = [
   {
     tag: "02",
     title: "Üzleti Folyamat Automatizáció",
-    desc: "Képzeld el, hogy a hírleveled magától megy ki, az e-mailek automatikusan válaszolnak, a chatbotod 0-24 kiszolgálja az ügyfeleidet — mindezt mesterséges intelligencia hajtja. Te csak a növekedésre fókuszálsz, a rendszer dolgozik helyetted.",
+    desc: "Képzeld el, hogy a hírleveled magától megy ki, az e-mailek automatikusan válaszolnak, a chatbotod 0-24 kiszolgálja az ügyfeleidet - mindezt mesterséges intelligencia hajtja. Te csak a növekedésre fókuszálsz, a rendszer dolgozik helyetted.",
     features: ["Make & n8n folyamatok", "AI automatizmusok", "Hírlevél & e-mail automatizálás"],
     icon: (
       <svg viewBox="0 0 26 26" fill="none" stroke="url(#ic2)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ width: 26, height: 26 }}>
@@ -41,7 +41,7 @@ const services = [
   {
     tag: "03",
     title: "Intelligens Chatbot Rendszerek",
-    desc: "A következő generációs ügyfélkiszolgálás már nem várakoztat. AI-chatbotjaink ismerik a vállalkozásodat, értik a kérdéseket és valódi értéket adnak — nem csak sablonválaszokat. Telepítés weboldalra, Messengerre vagy belső rendszerekre.",
+    desc: "A következő generációs ügyfélkiszolgálás már nem várakoztat. AI-chatbotjaink ismerik a vállalkozásodat, értik a kérdéseket és valódi értéket adnak - nem csak sablonválaszokat. Telepítés weboldalra, Messengerre vagy belső rendszerekre.",
     features: ["RAG-alapú tudásbázis", "Többcsatornás telepítés", "Magyar nyelvű AI"],
     icon: (
       <svg viewBox="0 0 26 26" fill="none" stroke="url(#ic3)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ width: 26, height: 26 }}>

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -93,7 +93,7 @@ export default function Navbar() {
           Ajánlatot kérek
         </Link>
 
-        {/* Hamburger gomb — csak mobilon */}
+        {/* Hamburger gomb - csak mobilon */}
         <button
           onClick={() => setMenuOpen(o => !o)}
           aria-label={menuOpen ? "Menü bezárása" : "Menü megnyitása"}

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { usePathname } from "next/navigation";
 
@@ -88,7 +88,7 @@ export default function ChatWidget() {
       {/* ── Lebegő buborék gomb ── */}
       <button
         onClick={() => setOpen(o => !o)}
-        aria-label={open ? "Chat bezárása" : "Chat megnyitása — kérdezz az AI Flux szolgáltatásairól — Fluxy asszisztens"}
+        aria-label={open ? "Chat bezárása" : "Chat megnyitása - kérdezz az AI Flux szolgáltatásairól - Fluxy asszisztens"}
         aria-expanded={open}
         style={{
           position: "fixed", bottom: bottomOffset, right: "1.5rem", zIndex: 1100,
@@ -119,7 +119,7 @@ export default function ChatWidget() {
       {/* ── Chat panel ── */}
       <div
         role="dialog"
-        aria-label="Fluxy — AI asszisztens chat"
+        aria-label="Fluxy - AI asszisztens chat"
         style={{
           position: "fixed", zIndex: 1090,
           bottom: `calc(${bottomOffset} + 68px)`, right: "1.5rem",
@@ -171,7 +171,7 @@ export default function ChatWidget() {
             Szia! 👋 Fluxy vagyok, az AI Flux asszisztense. Kérdezz bátran a szolgáltatásainkról, árainkról vagy arról, hogyan tud az AI segíteni a vállalkozásodnak!
           </div>
 
-          {/* Javasolt kérdések — csak amíg nincs beszélgetés */}
+          {/* Javasolt kérdések - csak amíg nincs beszélgetés */}
           {messages.length === 0 && (
             <div style={{ display: "flex", flexDirection: "column", gap: ".4rem", marginTop: ".25rem" }}>
               {SUGGESTIONS.map((s) => (
@@ -246,7 +246,7 @@ export default function ChatWidget() {
 
         {/* Lábjegyzet */}
         <div style={{ padding: "0 .9rem .6rem", fontSize: ".65rem", color: "rgba(255,255,255,.28)", textAlign: "center" }}>
-          Az AI asszisztens hibázhat — fontos kérdésben írj:{" "}
+          Az AI asszisztens hibázhat - fontos kérdésben írj:{" "}
           <a href="mailto:info@aiflux.hu" style={{ color: "rgba(0,229,255,.55)", textDecoration: "none" }}>info@aiflux.hu</a>
         </div>
       </div>

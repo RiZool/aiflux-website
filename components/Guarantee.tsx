@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useEffect, useRef } from "react";
 
 export default function Guarantee() {
@@ -63,7 +63,7 @@ export default function Guarantee() {
             lineHeight: 1.15,
             marginBottom: "1.6rem",
           }}>
-            Nincs rossz ötlet —{" "}
+            Nincs rossz ötlet -{" "}
             <span className="accent-display" style={{
               background: "linear-gradient(90deg, var(--cyan), var(--blue))",
               WebkitBackgroundClip: "text",
@@ -76,13 +76,13 @@ export default function Guarantee() {
 
           {/* Szöveg */}
           <p style={{ color: "rgba(255,255,255,.72)", fontSize: "1.05rem", lineHeight: 1.85, maxWidth: 580, margin: "0 auto 1.4rem" }}>
-            Ha van egy ötleted — legyen az bármilyen folyamat, automatizálás vagy AI megoldás —
+            Ha van egy ötleted - legyen az bármilyen folyamat, automatizálás vagy AI megoldás -
             hozd el bátran. Közösen átgondoljuk, megtervezzük, és csak akkor fizetsz, ha a megvalósítás
             valóban azt hozza, amit megígértünk.
           </p>
 
           <p style={{ color: "rgba(255,255,255,.72)", fontSize: "1.05rem", lineHeight: 1.85, maxWidth: 580, margin: "0 auto 2.4rem" }}>
-            Ha mi nem tudjuk megépíteni amit elvállaltunk —{" "}
+            Ha mi nem tudjuk megépíteni amit elvállaltunk -{" "}
             <span style={{ color: "var(--cyan)", fontWeight: 600 }}>nem kell fizetni.</span>
             {" "}Pont.
           </p>
@@ -120,7 +120,7 @@ export default function Guarantee() {
               },
               {
                 title: "Kockázatmentes",
-                desc: "Ha nem szállítjuk, amit elvállaltunk — nem fizetsz",
+                desc: "Ha nem szállítjuk, amit elvállaltunk - nem fizetsz",
                 icon: (
                   <svg viewBox="0 0 26 26" fill="none" stroke="url(#g3)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ width: 24, height: 24 }}>
                     <defs><linearGradient id="g3" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#00E5FF" /><stop offset="1" stopColor="#0066FF" /></linearGradient></defs>

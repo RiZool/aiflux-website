@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useEffect, useRef } from "react";
 
 const steps = [
@@ -6,19 +6,19 @@ const steps = [
     num: "01",
     title: "Feltérképezés",
     sub: "1–2 nap",
-    desc: "Ingyenes konzultáción megismerjük a vállalkozásodat, a fájdalompontjaidat és a céljaidat. Nem általános kérdéseket teszünk fel — konkrétan elemezzük, hol tud az AI a legtöbbet hozzáadni.",
+    desc: "Ingyenes konzultáción megismerjük a vállalkozásodat, a fájdalompontjaidat és a céljaidat. Nem általános kérdéseket teszünk fel - konkrétan elemezzük, hol tud az AI a legtöbbet hozzáadni.",
   },
   {
     num: "02",
     title: "Tervezés & Építés",
     sub: "3–5 hét",
-    desc: "AI-asszisztált fejlesztési folyamatunkkal akár háromszor gyorsabban szállítjuk az eredményt — a minőség feláldozása nélkül. Rendszeresen mutatunk haladást, nem csak az átadásnál.",
+    desc: "AI-asszisztált fejlesztési folyamatunkkal akár háromszor gyorsabban szállítjuk az eredményt - a minőség feláldozása nélkül. Rendszeresen mutatunk haladást, nem csak az átadásnál.",
   },
   {
     num: "03",
     title: "Élesítés & Növekedés",
     sub: "Folyamatos",
-    desc: "Az átadás után sem hagyjuk magadra. Monitorozzuk a rendszert, finomhangoljuk az AI-t és segítünk kihozni belőle a maximumot — mert az igazi értéket az jelenti, ha az eredmény tartós.",
+    desc: "Az átadás után sem hagyjuk magadra. Monitorozzuk a rendszert, finomhangoljuk az AI-t és segítünk kihozni belőle a maximumot - mert az igazi értéket az jelenti, ha az eredmény tartós.",
   },
 ];
 
@@ -49,7 +49,7 @@ export default function Process() {
           </span>
         </h2>
         <p style={{ color: "var(--muted)", maxWidth: 500, margin: "0 auto", fontSize: "1rem", lineHeight: 1.8 }}>
-          Nem szeretjük a meglepetéseket. Minden lépést előre kommunikálunk — te mindig tudod, hol tartunk.
+          Nem szeretjük a meglepetéseket. Minden lépést előre kommunikálunk - te mindig tudod, hol tartunk.
         </p>
       </div>
 

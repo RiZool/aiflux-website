@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -48,7 +48,7 @@ export default function Footer() {
                 style={{ width: "auto", height: "32px" }} />
           </Link>
           <p style={{ color: "var(--muted)", fontSize: ".88rem", lineHeight: 1.8, maxWidth: 280 }}>
-            Magyar AI-natív fejlesztő ügynökség. Intelligens weboldalak, automatizált folyamatok és chatbot rendszerek — a jövő eszközei, ma.
+            Magyar AI-natív fejlesztő ügynökség. Intelligens weboldalak, automatizált folyamatok és chatbot rendszerek - a jövő eszközei, ma.
           </p>
         </div>
 

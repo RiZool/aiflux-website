@@ -1,9 +1,9 @@
-"use client";
+﻿"use client";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 /**
- * LogoAnimated — PNG logo + alkalmi SVG "rajzolódó F" animáció overlay
+ * LogoAnimated - PNG logo + alkalmi SVG "rajzolódó F" animáció overlay
  * Az animáció CSAK akkor fut ha:
  *  - prefers-reduced-motion: no-preference
  *  - hardwareConcurrency >= 4
@@ -50,7 +50,7 @@ export default function LogoAnimated({ height = 38 }: { height?: number }) {
         style={{ objectFit: "contain", height, width: "auto" }}
       />
 
-      {/* SVG overlay — csak az F betű területe felett, bal oldalon */}
+      {/* SVG overlay - csak az F betű területe felett, bal oldalon */}
       <svg
         viewBox="0 0 36 40"
         fill="none"

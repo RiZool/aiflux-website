@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useEffect, useRef } from "react";
 
 export default function CTA() {
@@ -21,7 +21,7 @@ export default function CTA() {
       <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 70% 55% at 50% 50%, rgba(0,40,110,.45) 0%, transparent 70%)", pointerEvents: "none" }} />
       <div style={{ position: "absolute", bottom: 0, left: "50%", transform: "translateX(-50%)", width: "60%", height: 1, background: "linear-gradient(90deg, transparent, rgba(0,229,255,.3), transparent)" }} />
 
-      {/* Pulzáló gyűrűk a tartalom mögött — a layout-kritikus pozíció inline, csak az animáció jön CSS-ből */}
+      {/* Pulzáló gyűrűk a tartalom mögött - a layout-kritikus pozíció inline, csak az animáció jön CSS-ből */}
       {[0, 1.5, 3].map((delay) => (
         <div key={delay} className="pulse-ring" aria-hidden="true" style={{
           width: 560, height: 560,
@@ -48,7 +48,7 @@ export default function CTA() {
         </h2>
 
         <p style={{ color: "rgba(255,255,255,.68)", fontSize: "1.05rem", marginBottom: "1rem", lineHeight: 1.85, maxWidth: 580, margin: "0 auto 1rem" }}>
-          Egy 30 perces ingyenes konzultáció alatt megmutatjuk, hol rejtőznek a legnagyobb lehetőségek a te iparágadban — és azt is, hogyan valósíthatók meg reálisan.
+          Egy 30 perces ingyenes konzultáció alatt megmutatjuk, hol rejtőznek a legnagyobb lehetőségek a te iparágadban - és azt is, hogyan valósíthatók meg reálisan.
         </p>
         <p style={{ color: "rgba(0,229,255,.7)", fontSize: ".9rem", marginBottom: "2.8rem", fontWeight: 500 }}>
           Nincs kötelezettség. Csak értékes 30 perc.

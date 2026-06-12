@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useEffect, useRef, useState } from "react";
 
 function CountUp({ target, suffix, fixed }: { target?: number; suffix?: string; fixed?: string }) {
@@ -7,7 +7,7 @@ function CountUp({ target, suffix, fixed }: { target?: number; suffix?: string; 
   const started = useRef(false);
 
   useEffect(() => {
-    if (fixed) return; // fix érték — a useState már beállította
+    if (fixed) return; // fix érték - a useState már beállította
     let raf = 0;
     const obs = new IntersectionObserver(([e]) => {
       if (!e.isIntersecting || started.current) return;
@@ -16,7 +16,7 @@ function CountUp({ target, suffix, fixed }: { target?: number; suffix?: string; 
       const start = performance.now();
       const tick = (now: number) => {
         const t = Math.min((now - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - t, 4); // easeOutQuart — a vége felé lassul
+        const eased = 1 - Math.pow(1 - t, 4); // easeOutQuart - a vége felé lassul
         setVal(Math.round(eased * (target ?? 0)) + (suffix ?? ""));
         if (t < 1) raf = requestAnimationFrame(tick);
       };
@@ -70,7 +70,7 @@ export default function Stats() {
           </span>
         </h2>
         <p style={{ color: "var(--muted)", maxWidth: 500, margin: "0 auto", fontSize: "1rem", lineHeight: 1.8 }}>
-          Az AI nem varázslat — mérhető. Ügyfeleink valós adatain alapuló számok.
+          Az AI nem varázslat - mérhető. Ügyfeleink valós adatain alapuló számok.
         </p>
       </div>
 

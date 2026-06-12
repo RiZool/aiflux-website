@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useEffect, useRef, useState, type MouseEvent } from "react";
 import { plans, formatPrice } from "@/data/plans";
 import PlanIcon from "@/components/PlanIcon";
@@ -46,7 +46,7 @@ export default function Pricing() {
         </h2>
         <p style={{ color: "var(--muted)", maxWidth: 520, margin: "0 auto", fontSize: "1rem", lineHeight: 1.8 }}>
           Minden csomag tartalmaz egyszeri fejlesztési díjat és az első hónap karbantartást.
-          Utána havi díj — átláthatóan, meglepetések nélkül.
+          Utána havi díj - átláthatóan, meglepetések nélkül.
         </p>
       </div>
 
@@ -206,7 +206,7 @@ export default function Pricing() {
               Szeretnél még többet kihozni a csomagodból?
             </div>
             <p style={{ color: "var(--muted)", fontSize: ".87rem", lineHeight: 1.7, margin: 0 }}>
-              Minden csomaghoz egyedi AI folyamatokat adhatsz hozzá — vagy akár csomag nélkül, önállóan is megvásárolhatod őket.
+              Minden csomaghoz egyedi AI folyamatokat adhatsz hozzá - vagy akár csomag nélkül, önállóan is megvásárolhatod őket.
               Foglalási rendszer, lead generálás, hírlevél automatizmus és még sok más vár rád.
             </p>
           </div>
@@ -236,7 +236,7 @@ export default function Pricing() {
       {/* Bottom note */}
       <div className="reveal" style={{ textAlign: "center" }}>
         <p style={{ color: "var(--muted)", fontSize: ".88rem", lineHeight: 1.8, maxWidth: 560, margin: "0 auto" }}>
-          Nem találod amit keresel? Minden projekt egyedi —{" "}
+          Nem találod amit keresel? Minden projekt egyedi -{" "}
           <a href="#contact" style={{ color: "var(--cyan)", textDecoration: "none", fontWeight: 600 }}>
             kérj személyre szabott ajánlatot
           </a>

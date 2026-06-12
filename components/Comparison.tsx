@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
 // Konzisztens SVG vonal-ikonok (24×24 viewBox, stroke stílus)
@@ -96,7 +96,7 @@ export default function Comparison() {
             </span>
           </h2>
           <p style={{ color: "var(--muted)", maxWidth: 500, margin: "0 auto", fontSize: "1rem", lineHeight: 1.8 }}>
-            Az AI Flux nem egy webügynökség, amely AI-t is kínál. Mi AI-alapon dolgozunk — és ez mindent megváltoztat.
+            Az AI Flux nem egy webügynökség, amely AI-t is kínál. Mi AI-alapon dolgozunk - és ez mindent megváltoztat.
           </p>
         </div>
 

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Space_Grotesk, Inter, Unbounded } from "next/font/google";
 import ChatWidget from "@/components/ChatWidget";
 import "./globals.css";
@@ -18,7 +18,7 @@ const inter = Inter({
   display: "swap",
 });
 
-// Display font — kiemelt szavakhoz (hero accent, címek gradient része)
+// Display font - kiemelt szavakhoz (hero accent, címek gradient része)
 const unbounded = Unbounded({
   variable: "--font-display",
   subsets: ["latin", "latin-ext"],
@@ -27,7 +27,7 @@ const unbounded = Unbounded({
 });
 
 export const metadata: Metadata = {
-  title: "AI Flux | AI Fejlesztő Ügynökség — Weboldal, Automatizáció, Chatbot",
+  title: "AI Flux | AI Fejlesztő Ügynökség - Weboldal, Automatizáció, Chatbot",
   description:
     "Az AI Flux magyar AI-natív fejlesztő ügynökség. Intelligens weboldalak, üzleti folyamat automatizáció és chatbot megoldások, amelyek valódi eredményeket hoznak. Ingyenes konzultáció.",
   keywords: [
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "AI Flux | AI-Natív Fejlesztő Ügynökség",
     description:
-      "Nem csak weboldalt építünk — intelligens rendszereket alkotunk. Webfejlesztés, AI automatizáció és chatbot megoldások magyar vállalkozásoknak.",
+      "Nem csak weboldalt építünk - intelligens rendszereket alkotunk. Webfejlesztés, AI automatizáció és chatbot megoldások magyar vállalkozásoknak.",
     url: "https://aiflux.hu",
     siteName: "AI Flux",
     locale: "hu_HU",

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useState, useEffect, useRef, type MouseEvent, type ReactNode } from "react";
 import Link from "next/link";
 import { workflows, categories, type Workflow } from "@/data/workflows";
@@ -79,7 +79,7 @@ export default function WorkflowConfigurator() {
 
   function requestQuote() {
     const planLine = chosenPlan
-      ? `Kiválasztott csomag: ${chosenPlan.name} — ${formatPrice(chosenPlan.price)} egyszeri, ${formatPrice(chosenPlan.monthly)}/hó`
+      ? `Kiválasztott csomag: ${chosenPlan.name} - ${formatPrice(chosenPlan.price)} egyszeri, ${formatPrice(chosenPlan.monthly)}/hó`
       : "";
     const wfLines = chosenWorkflows.length > 0
       ? `Plusz egyedi folyamatok:%0A${chosenWorkflows.map((w) => `- ${w.title}`).join("%0A")}`
@@ -99,7 +99,7 @@ export default function WorkflowConfigurator() {
       overflow: "hidden",
     }}>
 
-      {/* Background depth — lassan lebegő orbok */}
+      {/* Background depth - lassan lebegő orbok */}
       <div className="orb-a" style={{ position: "absolute", width: 1000, height: 1000, borderRadius: "50%", background: "radial-gradient(circle, rgba(0,80,200,.055) 0%, transparent 65%)", top: "-20%", left: "55%", pointerEvents: "none" }} />
       <div className="orb-b" style={{ position: "absolute", width: 600, height: 600, borderRadius: "50%", background: "radial-gradient(circle, rgba(0,180,255,.035) 0%, transparent 70%)", bottom: "15%", left: "2%", pointerEvents: "none" }} />
 
@@ -138,7 +138,7 @@ export default function WorkflowConfigurator() {
             </span>
           </h1>
           <p style={{ color: "var(--muted)", maxWidth: 560, margin: "0 auto", fontSize: "1rem", lineHeight: 1.85 }}>
-            Válassz alap csomagot, bővítsd egyedi AI folyamatokkal —
+            Válassz alap csomagot, bővítsd egyedi AI folyamatokkal -
             majd kérj árajánlatot egyszerre mindenre.
           </p>
         </div>
@@ -201,7 +201,7 @@ export default function WorkflowConfigurator() {
             <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(1.1rem,2vw,1.4rem)", fontWeight: 700 }}>
               <span style={{ color: "var(--cyan)", marginRight: ".55rem", fontWeight: 800 }}>01</span>
               Válassz alap csomagot
-              <span style={{ fontSize: ".82rem", fontWeight: 500, color: "var(--muted)", marginLeft: ".6rem" }}>— opcionális</span>
+              <span style={{ fontSize: ".82rem", fontWeight: 500, color: "var(--muted)", marginLeft: ".6rem" }}>- opcionális</span>
             </h2>
             <Link
               href="/#pricing"
@@ -303,7 +303,7 @@ export default function WorkflowConfigurator() {
                   </ul>
 
                   <div style={{ marginTop: "1.1rem", fontSize: ".73rem", fontWeight: 600, color: isSel ? "rgba(0,229,255,.65)" : "rgba(255,255,255,.18)", transition: "color .25s", letterSpacing: ".04em" }}>
-                    {isSel ? "● Kiválasztva — kattints az eltávolításhoz" : "Kiválasztom →"}
+                    {isSel ? "● Kiválasztva - kattints az eltávolításhoz" : "Kiválasztom →"}
                   </div>
                 </div>
               );
@@ -319,7 +319,7 @@ export default function WorkflowConfigurator() {
             <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(1.1rem,2vw,1.4rem)", fontWeight: 700 }}>
               <span style={{ color: "var(--cyan)", marginRight: ".55rem", fontWeight: 800 }}>02</span>
               Egyedi folyamatok
-              <span style={{ fontSize: ".82rem", fontWeight: 500, color: "var(--muted)", marginLeft: ".6rem" }}>— opcionális</span>
+              <span style={{ fontSize: ".82rem", fontWeight: 500, color: "var(--muted)", marginLeft: ".6rem" }}>- opcionális</span>
             </h2>
             {wfDone && (
               <span style={{ fontSize: ".78rem", fontWeight: 700, color: "var(--cyan)", background: "rgba(0,229,255,.08)", border: "1px solid rgba(0,229,255,.2)", borderRadius: 100, padding: ".28rem .85rem" }}>
