@@ -191,6 +191,48 @@ export default function Pricing() {
         ))}
       </div>
 
+      {/* Folyamatok callout */}
+      <div className="reveal" style={{ maxWidth: 860, margin: "0 auto 3rem" }}>
+        <div style={{
+          borderRadius: 14,
+          border: "1px solid rgba(0,229,255,.18)",
+          background: "linear-gradient(135deg, rgba(0,229,255,.04), rgba(0,102,255,.03))",
+          padding: "1.8rem 2.2rem",
+          display: "flex", alignItems: "center", justifyContent: "space-between",
+          flexWrap: "wrap", gap: "1.2rem",
+        }}>
+          <div style={{ flex: 1, minWidth: 260 }}>
+            <div style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: "1rem", marginBottom: ".4rem" }}>
+              Szeretnél még többet kihozni a csomagodból?
+            </div>
+            <p style={{ color: "var(--muted)", fontSize: ".87rem", lineHeight: 1.7, margin: 0 }}>
+              Minden csomaghoz egyedi AI folyamatokat adhatsz hozzá — vagy akár csomag nélkül, önállóan is megvásárolhatod őket.
+              Foglalási rendszer, lead generálás, hírlevél automatizmus és még sok más vár rád.
+            </p>
+          </div>
+          <a
+            href="/folyamatok"
+            className="btn-shine"
+            style={{
+              display: "inline-flex", alignItems: "center", gap: ".5rem",
+              border: "1px solid rgba(0,229,255,.35)",
+              color: "var(--cyan)", fontWeight: 700,
+              padding: ".75rem 1.6rem", borderRadius: 8,
+              fontSize: ".88rem", textDecoration: "none",
+              fontFamily: "var(--font-heading)", whiteSpace: "nowrap",
+              transition: "all .25s",
+            }}
+            onMouseEnter={e => { e.currentTarget.style.background = "rgba(0,229,255,.08)"; e.currentTarget.style.borderColor = "rgba(0,229,255,.6)"; }}
+            onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.borderColor = "rgba(0,229,255,.35)"; }}
+          >
+            AI Folyamatok böngészése
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
       {/* Bottom note */}
       <div className="reveal" style={{ textAlign: "center" }}>
         <p style={{ color: "var(--muted)", fontSize: ".88rem", lineHeight: 1.8, maxWidth: 560, margin: "0 auto" }}>
