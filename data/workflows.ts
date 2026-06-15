@@ -39,6 +39,16 @@ export const workflows: Workflow[] = [
     status: 'active',
   },
   {
+    id: 'flux-pro-chatbot',
+    title: 'Flux Pro Chatbot',
+    desc: 'A Flux Lite minden képessége, plusz időpontfoglalás: az ügyfeleid a chatboton keresztül foglalnak időpontot, Google Calendar integrációval és automatikus Google Meet linkkel.',
+    category: 'Kommunikáció',
+    icon: 'calendar',
+    tags: ['Claude AI', 'Google Calendar', 'Foglalás'],
+    priceLabel: '150.000 Ft + 29.000 Ft/hó',
+    status: 'soon',
+  },
+  {
     id: 'social-media-auto',
     title: 'AI Social Media Automatizáló',
     desc: 'Havi 1 jóváhagyás - minden más automatikus. Az AI megírja és kiküldi a Facebook és Instagram posztokat, te csak átnézed. Képgenerálás, ütemezés, statisztika - egy admin felületen.',
