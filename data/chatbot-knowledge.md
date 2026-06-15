@@ -78,11 +78,14 @@ Aktív, már elérhető folyamatok:
 - **AI Prezentáció Készítő** (50 000 Ft beállítás) - Excel/CSV/PDF/Word
   adatfájlból az AI percek alatt profi prezentációt készít, grafikonokkal,
   KPI-okkal.
-- **Flux Lite Chatbot 0–24** (egyedi árajánlat) - magyar nyelvű, tudásbázisra
-  épülő chatbot embed widgetként. Egyetlen sor kód a weboldalba (WordPress,
-  bármilyen platform), és azonnal működik. Az ügyfél kezeli a tartalmat,
-  mi az infrastruktúrát. Meglévő weboldalba is beépíthető.
-- **AI Social Media Automatizáló** (egyedi árajánlat) - Facebook és Instagram
+- **Flux Lite Chatbot 0–24** (80 000 Ft beállítás + 15 000 Ft/hó) - magyar
+  nyelvű, tudásbázisra épülő chatbot embed widgetként. Egyetlen sor kód a
+  weboldalba (WordPress, bármilyen platform), és azonnal működik. Az ügyfél
+  kezeli a tartalmat, mi az infrastruktúrát. Meglévő weboldalba is beépíthető.
+- **Flux Pro Chatbot** (150 000 Ft beállítás + 29 000 Ft/hó) - a Flux Lite
+  minden képessége, PLUSZ időpontfoglalás, Google Calendar és Google Meet
+  integráció. Akkor ajánljuk, ha az ügyfeleid online tudnak foglalni időpontot.
+- **AI Social Media Automatizáló** (150 000 Ft beállítás + 59 000 Ft/hó) - Facebook és Instagram
   posztok automatikus generálása, ütemezése és kiküldése AI-jal. Hogyan
   működik: az AI havonta legenerálja az összes posztot (szöveg + kép), az
   ügyfél egy admin felületen átnézi és jóváhagyja, utána minden automatikusan

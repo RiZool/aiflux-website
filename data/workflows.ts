@@ -35,7 +35,7 @@ export const workflows: Workflow[] = [
     category: 'Kommunikáció',
     icon: 'bot',
     tags: ['Claude AI', 'Embed widget', 'WordPress'],
-    priceLabel: 'Egyedi árajánlat',
+    priceLabel: '80.000 Ft + 15.000 Ft/hó',
     status: 'active',
   },
   {
@@ -45,7 +45,7 @@ export const workflows: Workflow[] = [
     category: 'Kommunikáció',
     icon: 'social',
     tags: ['Claude AI', 'Meta API', 'Facebook · Instagram'],
-    priceLabel: 'Egyedi árajánlat',
+    priceLabel: '150.000 Ft + 59.000 Ft/hó',
     status: 'active',
   },
   {
