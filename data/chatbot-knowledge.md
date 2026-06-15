@@ -78,8 +78,20 @@ Aktív, már elérhető folyamatok:
 - **AI Prezentáció Készítő** (50 000 Ft beállítás) - Excel/CSV/PDF/Word
   adatfájlból az AI percek alatt profi prezentációt készít, grafikonokkal,
   KPI-okkal.
-- **AI Chatbot 0–24** (egyedi árajánlat) - magyar nyelvű, tudásbázisra épülő
-  chatbot, weboldalra, Messengerre vagy belső rendszerre.
+- **Flux Lite Chatbot 0–24** (egyedi árajánlat) - magyar nyelvű, tudásbázisra
+  épülő chatbot embed widgetként. Egyetlen sor kód a weboldalba (WordPress,
+  bármilyen platform), és azonnal működik. Az ügyfél kezeli a tartalmat,
+  mi az infrastruktúrát. Meglévő weboldalba is beépíthető.
+- **AI Social Media Automatizáló** (egyedi árajánlat) - Facebook és Instagram
+  posztok automatikus generálása, ütemezése és kiküldése AI-jal. Hogyan
+  működik: az AI havonta legenerálja az összes posztot (szöveg + kép), az
+  ügyfél egy admin felületen átnézi és jóváhagyja, utána minden automatikusan
+  kimegy a megfelelő napokon. Heti posztolási ütemterv: hétfő (hír/partner),
+  kedd (Instagram vizuális), szerda (termékbemutató), csütörtök (Instagram),
+  péntek (szakmai tipp). Statisztika dashboard is tartozik hozzá (követők,
+  elérés, teljesítmény). Referencia ügyfél: SomaFix Magyarország, éles üzemben
+  fut. Saját Facebook oldal kezeléséhez nem kell Meta App Review - System User
+  Token elegendő.
 - **Hírlevél & Welcome Sorozat** (egyedi árajánlat) - automatikus üdvözlő
   e-mail sorozat MailerLite-tal, szegmentálással.
 
