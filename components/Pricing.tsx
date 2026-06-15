@@ -206,7 +206,7 @@ export default function Pricing() {
               Szeretnél még többet kihozni a csomagodból?
             </div>
             <p style={{ color: "var(--muted)", fontSize: ".87rem", lineHeight: 1.7, margin: 0 }}>
-              Minden csomaghoz egyedi AI folyamatokat adhatsz hozzá - vagy akár csomag nélkül, önállóan is megvásárolhatod őket.
+              Minden csomaghoz egyedi AI termékeket adhatsz hozzá - vagy akár csomag nélkül, önállóan is megvásárolhatod őket.
               Foglalási rendszer, lead generálás, hírlevél automatizmus és még sok más vár rád.
             </p>
           </div>
@@ -225,7 +225,7 @@ export default function Pricing() {
             onMouseEnter={e => { e.currentTarget.style.background = "rgba(0,229,255,.08)"; e.currentTarget.style.borderColor = "rgba(0,229,255,.6)"; }}
             onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.borderColor = "rgba(0,229,255,.35)"; }}
           >
-            AI Folyamatok böngészése
+            Termékeink böngészése
             <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
             </svg>

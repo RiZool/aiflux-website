@@ -83,7 +83,7 @@ export default function WorkflowConfigurator() {
       ? `Kiválasztott csomag: ${chosenPlan.name} - ${formatPrice(chosenPlan.price)} egyszeri, ${formatPrice(chosenPlan.monthly)}/hó`
       : "";
     const wfLines = chosenWorkflows.length > 0
-      ? `Plusz egyedi folyamatok:%0A${chosenWorkflows.map((w) => `- ${w.title}`).join("%0A")}`
+      ? `Plusz termékek:%0A${chosenWorkflows.map((w) => `- ${w.title}`).join("%0A")}`
       : "";
     const body = `Sziasztok!%0A%0A${planLine}${planLine && wfLines ? "%0A%0A" : ""}${wfLines}%0A%0AKérem az ajánlatot!%0A%0AKöszönettel,`;
     window.location.assign(`mailto:info@aiflux.hu?subject=Ajánlatkérés%20|%20AIFlux%20konfigurátor&body=${body}`);
@@ -139,7 +139,7 @@ export default function WorkflowConfigurator() {
             </span>
           </h1>
           <p style={{ color: "var(--muted)", maxWidth: 560, margin: "0 auto", fontSize: "1rem", lineHeight: 1.85 }}>
-            Válassz alap csomagot, bővítsd egyedi AI folyamatokkal -
+            Válassz alap csomagot, bővítsd egyedi AI termékekkel -
             majd kérj árajánlatot egyszerre mindenre.
           </p>
         </div>
@@ -188,7 +188,7 @@ export default function WorkflowConfigurator() {
               {wfDone ? selectedWorkflows.size : "2"}
             </div>
             <span style={{ fontSize: ".7rem", fontWeight: 600, letterSpacing: ".1em", textTransform: "uppercase", color: wfDone ? "var(--cyan)" : "rgba(255,255,255,.35)", transition: "color .4s" }}>
-              Folyamatok
+              Termékek
             </span>
           </div>
         </div>
@@ -319,7 +319,7 @@ export default function WorkflowConfigurator() {
           <div className="reveal" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "1.75rem", flexWrap: "wrap", gap: "1rem" }}>
             <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(1.1rem,2vw,1.4rem)", fontWeight: 700 }}>
               <span style={{ color: "var(--cyan)", marginRight: ".55rem", fontWeight: 800 }}>02</span>
-              Egyedi folyamatok
+              Termékeink
               <span style={{ fontSize: ".82rem", fontWeight: 500, color: "var(--muted)", marginLeft: ".6rem" }}>- opcionális</span>
             </h2>
             {wfDone && (

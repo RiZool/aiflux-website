@@ -4,9 +4,9 @@ import Footer from "@/components/Footer";
 import WorkflowConfigurator from "@/components/WorkflowConfigurator";
 
 export const metadata: Metadata = {
-  title: "AI Folyamatok | AI Flux - LEGO-konfigurátor",
+  title: "Termékeink | AI Flux - LEGO-konfigurátor",
   description:
-    "Válogass az elkészült AI automatizációkból LEGO-szerűen és kérj személyre szabott ajánlatot. Prezentáció-készítő, chatbot, hírlevél automatizáció és még sok más.",
+    "Válogass az AI termékeinkből LEGO-szerűen és kérj személyre szabott ajánlatot. Prezentáció-készítő, chatbot, social media automatizáló, hírlevél és még sok más.",
 };
 
 export default function FolyamatokPage() {

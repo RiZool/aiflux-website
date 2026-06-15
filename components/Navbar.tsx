@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const navLinks = [
   { label: "Szolgáltatások", href: "/#services" },
-  { label: "Folyamatok", href: "/folyamatok" },
+  { label: "Termékeink", href: "/folyamatok" },
   { label: "Árazás", href: "/#pricing" },
   { label: "Kapcsolat", href: "/#contact" },
 ];
