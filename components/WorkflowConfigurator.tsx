@@ -29,6 +29,7 @@ const wfIcons: Record<string, ReactNode> = {
   doc:       <><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><path d="M14 2v6h6" /><path d="M8 13h8M8 17h5" /></>,
   handshake: <><path d="M22 2 11 13" /><path d="M22 2 15 22l-4-9-9-4 20-7z" /></>,
   invoice:   <><path d="M5 2h14v20l-2.3-1.6L14.4 22l-2.4-1.6L9.6 22l-2.3-1.6L5 22V2z" /><path d="M9 8h6M9 12h6" /></>,
+  social:    <><rect x="2" y="3" width="20" height="14" rx="2" /><path d="M8 21h8M12 17v4" /><circle cx="8" cy="10" r="1.5" /><path d="M10.5 10h5M10.5 13h5M8 13h.01" /></>,
 };
 
 function WfIcon({ name, rgb }: { name: string; rgb: string }) {
