@@ -12,7 +12,8 @@ function cleanText(s: string): string {
     .replace(/\*\*(.+?)\*\*/g, "$1")                 // **félkövér**
     .replace(/__(.+?)__/g, "$1")                     // __félkövér__
     .replace(/\*/g, "")                              // maradék csillagok
-    .replace(/`/g, "");                              // backtickek
+    .replace(/`/g, "")                               // backtickek
+    .replace(/[–—]/g, "-");                          // hosszú kötőjelek -> sima kötőjel
 }
 
 const SUGGESTIONS = [

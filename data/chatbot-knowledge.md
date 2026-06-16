@@ -33,7 +33,7 @@ NEM tartalmazza: AI chatbot, hírlevél automatizálás, egyedi folyamatok.
 
 ### Haladó - 250 000 Ft egyszeri + 25 000 Ft/hó
 Weboldal + AI ügyfélszolgálat. Az Alap csomag teljes tartalma, PLUSZ:
-Flux Lite chatbot (0–24, magyar nyelvű, GYIK alapú).
+Flux Lite chatbot (0-24, magyar nyelvű, GYIK alapú).
 
 ### Prémium - 320 000 Ft egyszeri + 35 000 Ft/hó (LEGNÉPSZERŰBB)
 Weboldal + AI foglalási rendszer. A Haladó csomag teljes tartalma, PLUSZ:
@@ -78,7 +78,7 @@ Aktív, már elérhető folyamatok:
 - **AI Prezentáció Készítő** (50 000 Ft beállítás) - Excel/CSV/PDF/Word
   adatfájlból az AI percek alatt profi prezentációt készít, grafikonokkal,
   KPI-okkal.
-- **Flux Lite Chatbot 0–24** (80 000 Ft beállítás + 15 000 Ft/hó) - magyar
+- **Flux Lite Chatbot 0-24** (80 000 Ft beállítás + 15 000 Ft/hó) - magyar
   nyelvű, tudásbázisra épülő chatbot embed widgetként. Egyetlen sor kód a
   weboldalba (WordPress, bármilyen platform), és azonnal működik. Az ügyfél
   kezeli a tartalmat, mi az infrastruktúrát. Meglévő weboldalba is beépíthető.
@@ -108,9 +108,9 @@ Hamarosan érkező folyamatok (még nem rendelhetők, de érdeklődni lehet):
 
 ## Hogyan dolgozunk?
 
-1. **Feltérképezés (1–2 nap)** - ingyenes konzultáción megismerjük a
+1. **Feltérképezés (1-2 nap)** - ingyenes konzultáción megismerjük a
    vállalkozást, a fájdalompontokat és a célokat.
-2. **Tervezés & Építés (3–5 hét)** - AI-asszisztált fejlesztéssel akár 3×
+2. **Tervezés & Építés (3-5 hét)** - AI-asszisztált fejlesztéssel akár 3×
    gyorsabban szállítunk, rendszeres haladás-bemutatókkal.
 3. **Élesítés & Növekedés (folyamatos)** - átadás után is monitorozunk,
    finomhangoljuk az AI-t, együtt növekszünk.
@@ -118,8 +118,8 @@ Hamarosan érkező folyamatok (még nem rendelhetők, de érdeklődni lehet):
 ## Gyakori kérdések
 
 **Mennyi idő alatt készül el egy weboldal?**
-Jellemzően 3–5 hét, a csomagtól és az igényektől függően. Hagyományos
-fejlesztőknél ez 4–12 hét szokott lenni.
+Jellemzően 3-5 hét, a csomagtól és az igényektől függően. Hagyományos
+fejlesztőknél ez 4-12 hét szokott lenni.
 
 **Kell-e értenem a technológiához?**
 Nem. Mindent mi intézünk a domain beállítástól a hostingig, és átadás után
