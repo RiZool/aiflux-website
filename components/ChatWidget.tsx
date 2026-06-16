@@ -4,6 +4,17 @@ import { usePathname } from "next/navigation";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
+// Markdown jelek eltávolítása az asszisztens válaszaiból (sima szöveg jelenjen meg)
+function cleanText(s: string): string {
+  return s
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, "$1 ($2)") // [szöveg](url) -> szöveg (url)
+    .replace(/^\s{0,3}#{1,6}\s+/gm, "")             // # címsorok
+    .replace(/\*\*(.+?)\*\*/g, "$1")                 // **félkövér**
+    .replace(/__(.+?)__/g, "$1")                     // __félkövér__
+    .replace(/\*/g, "")                              // maradék csillagok
+    .replace(/`/g, "");                              // backtickek
+}
+
 const SUGGESTIONS = [
   "Mennyibe kerül egy weboldal?",
   "Mit tud az AI chatbot?",
@@ -191,7 +202,7 @@ export default function ChatWidget() {
 
           {messages.map((m, i) => (
             <div key={i} style={bubbleStyle(m.role)}>
-              {m.content || (
+              {(m.role === "assistant" ? cleanText(m.content) : m.content) || (
                 <span style={{ display: "inline-flex", gap: 4, alignItems: "center", height: "1em" }}>
                   <Dot delay={0} /><Dot delay={0.15} /><Dot delay={0.3} />
                 </span>
