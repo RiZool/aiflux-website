@@ -2,11 +2,21 @@ import { google } from "googleapis";
 
 const TZ = "Europe/Budapest";
 
+function parsePrivateKey(raw: string | undefined): string {
+  if (!raw) return "";
+  return raw
+    .replace(/\\n/g, "\n")
+    .replace(/\r/g, "")
+    .replace(/^["']|["']$/g, "")
+    .trim();
+}
+
 function getAuth() {
   return new google.auth.GoogleAuth({
     credentials: {
+      type: "service_account",
       client_email: process.env.GOOGLE_CLIENT_EMAIL,
-      private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
+      private_key: parsePrivateKey(process.env.GOOGLE_PRIVATE_KEY),
     },
     scopes: ["https://www.googleapis.com/auth/calendar.events"],
   });

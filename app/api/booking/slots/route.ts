@@ -21,11 +21,21 @@ function getBudapestOffset(dateStr: string): string {
   return `${h >= 0 ? "+" : "-"}${String(Math.abs(h)).padStart(2, "0")}:00`;
 }
 
+function parsePrivateKey(raw: string | undefined): string {
+  if (!raw) return "";
+  return raw
+    .replace(/\\n/g, "\n")   // escaped \n → valódi newline (Vercel env var)
+    .replace(/\r/g, "")       // Windows CRLF eltávolítás
+    .replace(/^["']|["']$/g, "")  // véletlen idézőjelek eltávolítása
+    .trim();
+}
+
 function getAuth(scopes: string[]) {
   return new google.auth.GoogleAuth({
     credentials: {
+      type: "service_account",
       client_email: process.env.GOOGLE_CLIENT_EMAIL,
-      private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
+      private_key: parsePrivateKey(process.env.GOOGLE_PRIVATE_KEY),
     },
     scopes,
   });
