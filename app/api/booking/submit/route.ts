@@ -96,27 +96,18 @@ export async function POST(req: Request) {
       `Egyéb: ${notes || "-"}`,
     ].join("\n");
 
-    const event = await calendar.events.insert({
+    await calendar.events.insert({
       calendarId: process.env.GOOGLE_CALENDAR_ID!,
-      conferenceDataVersion: 1,
       sendUpdates: "none",
       requestBody: {
         summary: `AI Flux konzultáció - ${name}`,
         description: eventDescription,
         start: { dateTime: slot.start, timeZone: TZ },
         end: { dateTime: slot.end, timeZone: TZ },
-        conferenceData: {
-          createRequest: {
-            requestId: `aiflux-${Date.now()}`,
-            conferenceSolutionKey: { type: "hangoutsMeet" },
-          },
-        },
       },
     });
 
-    const meetLink = event.data.conferenceData?.entryPoints?.find(
-      (e) => e.entryPointType === "video"
-    )?.uri ?? "";
+    const meetLink = "";
     const dateLabel = formatDate(slot.start);
 
     // Email a tulajdonosnak
@@ -137,7 +128,9 @@ export async function POST(req: Request) {
           <tr><td style="padding:8px 0;color:#666;">Büdzsé:</td><td style="padding:8px 0;">${budget}</td></tr>
           <tr><td style="padding:8px 0;color:#666;">Egyéb:</td><td style="padding:8px 0;">${notes || "-"}</td></tr>
         </table>
-        ${meetLink ? `<p style="margin-top:20px;"><a href="${meetLink}" style="background:#00E5FF;color:#000;padding:10px 20px;text-decoration:none;border-radius:6px;font-weight:bold;">Google Meet megnyitása</a></p>` : ""}
+        <p style="margin-top:16px;background:#fff8e1;border:1px solid #f0c040;border-radius:6px;padding:10px 14px;color:#7a5c00;font-size:13px;">
+          ➡️ Nyisd meg a naptárban az eseményt, kattints a <strong>„Google Meet hozzáadása"</strong> gombra, majd küldd el a linket a vendégnek: <a href="mailto:${email}" style="color:#0066cc;">${email}</a>
+        </p>
       </div>`
     );
 
@@ -148,10 +141,10 @@ export async function POST(req: Request) {
       `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;background:#050510;color:#fff;padding:32px;border-radius:12px;">
         <img src="https://aiflux.hu/logo.png" alt="AI Flux" style="height:36px;margin-bottom:24px;" />
         <h2 style="color:#00E5FF;margin-top:0;">Foglalásod visszaigazolva!</h2>
-        <p style="color:rgba(255,255,255,0.8);">Szia ${name}!<br/>Örömmel várunk a konzultációra. Az alábbi időpontban csatlakozunk hozzád Google Meet-en:</p>
+        <p style="color:rgba(255,255,255,0.8);">Szia ${name}!<br/>Örömmel várunk a konzultációra. Az alábbi időpontot foglaltad le:</p>
         <div style="background:rgba(0,229,255,0.08);border:1px solid rgba(0,229,255,0.25);border-radius:8px;padding:16px 20px;margin:20px 0;">
           <p style="margin:0;font-size:20px;font-weight:bold;color:#fff;">📅 ${dateLabel}</p>
-          ${meetLink ? `<p style="margin:8px 0 0;"><a href="${meetLink}" style="color:#00E5FF;">${meetLink}</a></p>` : ""}
+          <p style="margin:8px 0 0;color:rgba(255,255,255,0.65);font-size:14px;">A Google Meet linket hamarosan külön emailben küldjük el neked.</p>
         </div>
         <p style="color:rgba(255,255,255,0.6);font-size:14px;">Ha bármilyen kérdésed van, írj nekünk: <a href="mailto:info@aiflux.hu" style="color:#00E5FF;">info@aiflux.hu</a></p>
         <p style="color:rgba(255,255,255,0.6);font-size:14px;">Az AI Flux csapata</p>
