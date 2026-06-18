@@ -162,6 +162,7 @@ export async function POST(req: Request) {
     return Response.json({ success: true, meetLink, dateLabel });
   } catch (err) {
     console.error("Booking submit hiba:", err);
-    return Response.json({ error: "Foglalás sikertelen. Próbáld újra vagy írj: info@aiflux.hu" }, { status: 500 });
+    const msg = err instanceof Error ? err.message : String(err);
+    return Response.json({ error: `Foglalás sikertelen: ${msg}` }, { status: 500 });
   }
 }

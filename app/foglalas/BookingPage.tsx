@@ -256,7 +256,7 @@ export default function BookingPage() {
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.85rem" }}>
               <div>
                 <label style={labelStyle}>Van már weboldalad?</label>
-                <select style={{ ...inputStyle, cursor: "pointer" }}
+                <select style={{ ...inputStyle, cursor: "pointer", background: "#fff", color: "#000" }}
                   value={form.hasWebsite} onChange={e => setField("hasWebsite", e.target.value)}>
                   <option value="">Válassz...</option>
                   <option value="igen">Igen</option>
@@ -265,7 +265,7 @@ export default function BookingPage() {
               </div>
               <div>
                 <label style={labelStyle}>Hozzávetőleges büdzsé</label>
-                <select style={{ ...inputStyle, cursor: "pointer" }}
+                <select style={{ ...inputStyle, cursor: "pointer", background: "#fff", color: "#000" }}
                   value={form.budget} onChange={e => setField("budget", e.target.value)}>
                   {BUDGET_OPTIONS.map(o => <option key={o} value={o}>{o}</option>)}
                 </select>
