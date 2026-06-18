@@ -82,7 +82,7 @@ export default function Navbar() {
         </ul>
 
         {/* Desktop CTA */}
-        <Link href="/#contact" className="hidden-mobile" style={{
+        <Link href="/foglalas" className="hidden-mobile" style={{
           border: "1px solid var(--cyan)", color: "var(--cyan)",
           padding: ".48rem 1.25rem", borderRadius: 4,
           fontSize: ".83rem", fontWeight: 600,
@@ -174,7 +174,7 @@ export default function Navbar() {
 
         {/* Mobil CTA gomb */}
         <Link
-          href="/#contact"
+          href="/foglalas"
           onClick={closeMenu}
           style={{
             opacity: menuOpen ? 1 : 0,
