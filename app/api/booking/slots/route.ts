@@ -5,7 +5,7 @@ const WORKING_START = 9;
 const WORKING_END = 17;
 const SLOT_DURATION_MS = 60 * 60 * 1000;
 const TZ = "Europe/Budapest";
-const MIN_ADVANCE_MS = 24 * 60 * 60 * 1000;
+const MIN_ADVANCE_MS = 2 * 60 * 60 * 1000; // min. 2 óra előre
 
 // Budapest UTC offset dinamikusan (CEST: +2, CET: +1)
 function getBudapestOffset(dateStr: string): string {
