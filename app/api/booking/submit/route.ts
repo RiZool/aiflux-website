@@ -105,7 +105,6 @@ export async function POST(req: Request) {
         description: eventDescription,
         start: { dateTime: slot.start, timeZone: TZ },
         end: { dateTime: slot.end, timeZone: TZ },
-        attendees: [{ email, displayName: name }],
         conferenceData: {
           createRequest: {
             requestId: `aiflux-${Date.now()}`,
