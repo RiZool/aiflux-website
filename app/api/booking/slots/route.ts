@@ -83,9 +83,6 @@ export async function GET(req: NextRequest) {
       return Response.json({ error: `Naptár hozzáférési hiba: ${reason}` }, { status: 500 });
     }
 
-    // Debug: naplózás Vercel logokba
-    console.log(`[slots] ${dateStr} tzOffset=${tzOffset} busySlots=${JSON.stringify(busySlots)}`);
-    console.log(`[slots] calData keys:`, Object.keys(freebusyRes.data.calendars ?? {}));
 
     const slots = [];
     for (let hour = WORKING_START; hour < WORKING_END; hour++) {
@@ -109,8 +106,7 @@ export async function GET(req: NextRequest) {
       }
     }
 
-    const debug = searchParams.get("debug") === "1";
-    return Response.json(debug ? { slots, busySlots, tzOffset } : { slots });
+    return Response.json({ slots });
   } catch (err) {
     console.error("Slots API hiba:", err);
     const msg = err instanceof Error ? err.message : String(err);
