@@ -196,7 +196,7 @@ export default function Hero() {
 
         {/* CTA gombok */}
         <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap", ...stagger(visible, 4) }}>
-          <a href="#contact" className="btn-shine btn-glow arrow-link" style={{
+          <a href="/foglalas" className="btn-shine btn-glow arrow-link" style={{
             display: "inline-flex", alignItems: "center", gap: ".5rem",
             background: "linear-gradient(90deg,var(--cyan),var(--blue))",
             color: "#000", fontWeight: 700, padding: ".9rem 2.4rem",

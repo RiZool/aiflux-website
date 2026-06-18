@@ -55,7 +55,7 @@ export default function CTA() {
         </p>
 
         <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
-          <a href="mailto:info@aiflux.hu" className="btn-shine btn-glow arrow-link" style={{
+          <a href="/foglalas" className="btn-shine btn-glow arrow-link" style={{
             display: "inline-flex", alignItems: "center", gap: ".6rem",
             background: "linear-gradient(90deg,var(--cyan),var(--blue))",
             color: "#000", fontWeight: 700, padding: "1rem 2.6rem",

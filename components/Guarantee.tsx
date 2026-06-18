@@ -152,7 +152,7 @@ export default function Guarantee() {
 
           {/* CTA */}
           <a
-            href="mailto:info@aiflux.hu"
+            href="/foglalas"
             className="btn-shine btn-glow"
             style={{
               display: "inline-flex", alignItems: "center", gap: ".6rem",

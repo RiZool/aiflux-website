@@ -77,7 +77,8 @@ export default function FAQ() {
         <p style={{ color: "var(--muted)", maxWidth: 500, margin: "0 auto", fontSize: "1rem", lineHeight: 1.8 }}>
           Nem találod a választ? Írj az{" "}
           <a href="mailto:info@aiflux.hu" style={{ color: "var(--cyan)", textDecoration: "none" }}>info@aiflux.hu</a>
-          {" "}címre vagy foglalj ingyenes konzultációt.
+          {" "}címre vagy{" "}
+          <a href="/foglalas" style={{ color: "var(--cyan)", textDecoration: "none" }}>foglalj ingyenes konzultációt</a>.
         </p>
       </div>
 

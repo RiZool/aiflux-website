@@ -245,7 +245,7 @@ export default function Comparison() {
             Meggyőzött? Induljunk el együtt egy ingyenes konzultációval.
           </p>
           <a
-            href="#contact"
+            href="/foglalas"
             style={{
               display: "inline-flex", alignItems: "center", gap: ".6rem",
               background: "linear-gradient(90deg,var(--cyan),var(--blue))",
