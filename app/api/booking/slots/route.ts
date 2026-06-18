@@ -1,7 +1,6 @@
 import { google } from "googleapis";
 import { NextRequest } from "next/server";
 
-const SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"];
 const WORKING_START = 9;
 const WORKING_END = 17;
 const SLOT_DURATION_MS = 60 * 60 * 1000;
@@ -22,11 +21,13 @@ function getBudapestOffset(dateStr: string): string {
   return `${h >= 0 ? "+" : "-"}${String(Math.abs(h)).padStart(2, "0")}:00`;
 }
 
-function getAuth() {
-  return new google.auth.JWT({
-    email: process.env.GOOGLE_CLIENT_EMAIL,
-    key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
-    scopes: SCOPES,
+function getAuth(scopes: string[]) {
+  return new google.auth.GoogleAuth({
+    credentials: {
+      client_email: process.env.GOOGLE_CLIENT_EMAIL,
+      private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
+    },
+    scopes,
   });
 }
 
@@ -47,7 +48,7 @@ export async function GET(req: NextRequest) {
   const tzOffset = getBudapestOffset(dateStr);
 
   try {
-    const auth = getAuth();
+    const auth = getAuth(["https://www.googleapis.com/auth/calendar.readonly"]);
     const calendar = google.calendar({ version: "v3", auth });
 
     const dayStart = new Date(`${dateStr}T00:00:00${tzOffset}`);
