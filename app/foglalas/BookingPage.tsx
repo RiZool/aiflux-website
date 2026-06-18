@@ -37,7 +37,7 @@ function getWeekdays(): { iso: string; label: string; short: string }[] {
     offset++;
     const dow = d.getDay();
     if (dow === 0 || dow === 6) continue;
-    const iso = d.toISOString().slice(0, 10);
+    const iso = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
     const label = d.toLocaleDateString("hu-HU", { month: "short", day: "numeric" });
     const short = d.toLocaleDateString("hu-HU", { weekday: "short" });
     result.push({ iso, label, short });
