@@ -15,7 +15,7 @@ if (!CLIENT_ID || !CLIENT_SECRET) {
   process.exit(1);
 }
 
-const REDIRECT_URI = "http://localhost:3001";
+const REDIRECT_URI = "http://localhost:3002";
 
 const oauth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
 
@@ -52,4 +52,4 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
-server.listen(3001);
+server.listen(3002);

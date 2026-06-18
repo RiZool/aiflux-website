@@ -1,20 +1,46 @@
 ﻿"use client";
-import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { usePathname } from "next/navigation";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
-// Markdown jelek eltávolítása az asszisztens válaszaiból (sima szöveg jelenjen meg)
+// Markdown jelek eltávolítása (linkek kivételével — azokat renderWithLinks kezeli)
 function cleanText(s: string): string {
   return s
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, "$1 ($2)") // [szöveg](url) -> szöveg (url)
-    .replace(/^\s{0,3}#{1,6}\s+/gm, "")             // # címsorok
-    .replace(/\*\*(.+?)\*\*/g, "$1")                 // **félkövér**
-    .replace(/__(.+?)__/g, "$1")                     // __félkövér__
-    .replace(/\*/g, "")                              // maradék csillagok
-    .replace(/`/g, "")                               // backtickek
-    .replace(/[–—]/g, "-");                          // hosszú kötőjelek -> sima kötőjel
+    .replace(/^\s{0,3}#{1,6}\s+/gm, "")
+    .replace(/\*\*(.+?)\*\*/g, "$1")
+    .replace(/__(.+?)__/g, "$1")
+    .replace(/\*/g, "")
+    .replace(/`/g, "")
+    .replace(/[–—]/g, "-");
 }
+
+// Linkek kattinthatóvá alakítása: [szöveg](url) + sima https:// URL-ek
+function renderWithLinks(raw: string): ReactNode {
+  const text = cleanText(raw);
+  const regex = /\[([^\]]+)\]\((https?:\/\/[^)]+)\)|(https?:\/\/[^\s,;!?)"'\]]+)/g;
+  const parts: ReactNode[] = [];
+  let last = 0;
+  let m: RegExpExecArray | null;
+  while ((m = regex.exec(text)) !== null) {
+    if (m.index > last) parts.push(text.slice(last, m.index));
+    if (m[1] && m[2]) {
+      parts.push(<a key={m.index} href={m[2]} target="_blank" rel="noopener noreferrer" style={linkStyle}>{m[1]}</a>);
+    } else if (m[3]) {
+      parts.push(<a key={m.index} href={m[3]} target="_blank" rel="noopener noreferrer" style={linkStyle}>{m[3]}</a>);
+    }
+    last = regex.lastIndex;
+  }
+  if (last < text.length) parts.push(text.slice(last));
+  return parts;
+}
+
+const linkStyle: CSSProperties = {
+  color: "var(--cyan)",
+  textDecoration: "underline",
+  textDecorationColor: "rgba(0,229,255,0.45)",
+  wordBreak: "break-all",
+};
 
 const SUGGESTIONS = [
   "Mennyibe kerül egy weboldal?",
@@ -203,11 +229,11 @@ export default function ChatWidget() {
 
           {messages.map((m, i) => (
             <div key={i} style={bubbleStyle(m.role)}>
-              {(m.role === "assistant" ? cleanText(m.content) : m.content) || (
-                <span style={{ display: "inline-flex", gap: 4, alignItems: "center", height: "1em" }}>
-                  <Dot delay={0} /><Dot delay={0.15} /><Dot delay={0.3} />
-                </span>
-              )}
+              {m.role === "assistant"
+                ? m.content
+                  ? renderWithLinks(m.content)
+                  : <span style={{ display: "inline-flex", gap: 4, alignItems: "center", height: "1em" }}><Dot delay={0} /><Dot delay={0.15} /><Dot delay={0.3} /></span>
+                : m.content}
             </div>
           ))}
         </div>
