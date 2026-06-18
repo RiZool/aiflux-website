@@ -6,8 +6,21 @@ const WORKING_START = 9;
 const WORKING_END = 17;
 const SLOT_DURATION_MS = 60 * 60 * 1000;
 const TZ = "Europe/Budapest";
-// Minimálisan ennyivel a jövőben kell lennie a foglalható időpontnak
 const MIN_ADVANCE_MS = 24 * 60 * 60 * 1000;
+
+// Budapest UTC offset dinamikusan (CEST: +2, CET: +1)
+function getBudapestOffset(dateStr: string): string {
+  const d = new Date(`${dateStr}T12:00:00Z`);
+  const formatter = new Intl.DateTimeFormat("en", {
+    timeZone: TZ, timeZoneName: "shortOffset",
+  });
+  const parts = formatter.formatToParts(d);
+  const offsetPart = parts.find((p) => p.type === "timeZoneName")?.value ?? "GMT+2";
+  const match = offsetPart.match(/([+-]\d+)/);
+  if (!match) return "+02:00";
+  const h = parseInt(match[1]);
+  return `${h >= 0 ? "+" : "-"}${String(Math.abs(h)).padStart(2, "0")}:00`;
+}
 
 function getAuth() {
   return new google.auth.JWT({
@@ -25,48 +38,47 @@ export async function GET(req: NextRequest) {
     return Response.json({ error: "Érvénytelen dátum." }, { status: 400 });
   }
 
-  const [year, month, day] = dateStr.split("-").map(Number);
-  const date = new Date(Date.UTC(year, month - 1, day));
   const dayOfWeek = new Date(`${dateStr}T12:00:00Z`).getUTCDay();
-
-  // Hétvégék kizárása
   if (dayOfWeek === 0 || dayOfWeek === 6) {
     return Response.json({ slots: [] });
   }
 
-  // Múltbeli dátumok és túl közeli időpontok kizárása
   const minStart = Date.now() + MIN_ADVANCE_MS;
+  const tzOffset = getBudapestOffset(dateStr);
 
   try {
     const auth = getAuth();
     const calendar = google.calendar({ version: "v3", auth });
 
-    const dayStart = new Date(`${dateStr}T00:00:00+02:00`);
-    const dayEnd = new Date(`${dateStr}T23:59:59+02:00`);
+    const dayStart = new Date(`${dateStr}T00:00:00${tzOffset}`);
+    const dayEnd = new Date(`${dateStr}T23:59:59${tzOffset}`);
+    const calId = process.env.GOOGLE_CALENDAR_ID!;
 
     const freebusyRes = await calendar.freebusy.query({
       requestBody: {
         timeMin: dayStart.toISOString(),
         timeMax: dayEnd.toISOString(),
         timeZone: TZ,
-        items: [{ id: process.env.GOOGLE_CALENDAR_ID }],
+        items: [{ id: calId }],
       },
     });
 
-    const calId = process.env.GOOGLE_CALENDAR_ID!;
-    const busySlots = freebusyRes.data.calendars?.[calId]?.busy ?? [];
+    const calData = freebusyRes.data.calendars?.[calId];
+    const busySlots = calData?.busy ?? [];
 
-    // Összes lehetséges slot generálása (9:00, 10:00, ... 16:00)
+    // Ha az API hibát jelez vissza (pl. nincs hozzáférés)
+    if (calData?.errors && calData.errors.length > 0) {
+      const reason = calData.errors[0].reason ?? "ismeretlen";
+      return Response.json({ error: `Naptár hozzáférési hiba: ${reason}` }, { status: 500 });
+    }
+
     const slots = [];
     for (let hour = WORKING_START; hour < WORKING_END; hour++) {
-      const startISO = `${dateStr}T${String(hour).padStart(2, "0")}:00:00+02:00`;
-      const startMs = new Date(startISO).getTime();
+      const startMs = new Date(`${dateStr}T${String(hour).padStart(2, "0")}:00:00${tzOffset}`).getTime();
       const endMs = startMs + SLOT_DURATION_MS;
 
-      // Múltbeli / túl közeli slot kizárás
       if (startMs < minStart) continue;
 
-      // Foglalt slot kizárás
       const isBusy = busySlots.some((busy) => {
         const bs = new Date(busy.start!).getTime();
         const be = new Date(busy.end!).getTime();
@@ -85,6 +97,7 @@ export async function GET(req: NextRequest) {
     return Response.json({ slots });
   } catch (err) {
     console.error("Slots API hiba:", err);
-    return Response.json({ error: "Naptár lekérdezés sikertelen." }, { status: 500 });
+    const msg = err instanceof Error ? err.message : String(err);
+    return Response.json({ error: `Naptár lekérdezés sikertelen: ${msg}` }, { status: 500 });
   }
 }

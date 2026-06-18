@@ -57,6 +57,7 @@ const inputStyle = {
   outline: "none",
   boxSizing: "border-box" as const,
   fontFamily: "var(--font-inter), Inter, sans-serif",
+  colorScheme: "dark" as const,
 };
 
 const labelStyle = {
@@ -80,6 +81,7 @@ export default function BookingPage() {
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState<{ meetLink: string; dateLabel: string } | null>(null);
   const [error, setError] = useState("");
+  const [slotsError, setSlotsError] = useState("");
   const [focusedField, setFocusedField] = useState<string>("");
 
   const weekdays = getWeekdays();
@@ -89,10 +91,17 @@ export default function BookingPage() {
     setSlotsLoading(true);
     setSlots([]);
     setSelectedSlot(null);
+    setSlotsError("");
     fetch(`/api/booking/slots?date=${selectedDate}`)
-      .then((r) => r.json())
-      .then((data) => setSlots(data.slots ?? []))
-      .catch(() => setSlots([]))
+      .then(async (r) => {
+        const data = await r.json();
+        if (!r.ok || data.error) {
+          setSlotsError(data.error ?? "Naptár lekérés sikertelen.");
+        } else {
+          setSlots(data.slots ?? []);
+        }
+      })
+      .catch(() => setSlotsError("Hálózati hiba a naptár lekérésénél."))
       .finally(() => setSlotsLoading(false));
   }, [selectedDate]);
 
@@ -315,7 +324,11 @@ export default function BookingPage() {
             <p style={{ color: "rgba(255,255,255,0.45)", fontSize: "0.88rem" }}>Szabad időpontok betöltése...</p>
           )}
 
-          {!slotsLoading && selectedDate && slots.length === 0 && (
+          {!slotsLoading && slotsError && (
+            <p style={{ color: "#ff6b6b", fontSize: "0.84rem" }}>{slotsError}</p>
+          )}
+
+          {!slotsLoading && !slotsError && selectedDate && slots.length === 0 && (
             <p style={{ color: "rgba(255,255,255,0.45)", fontSize: "0.88rem" }}>
               Ezen a napon nincs szabad időpont. Válassz másik napot!
             </p>
