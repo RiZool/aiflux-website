@@ -46,7 +46,7 @@ export const workflows: Workflow[] = [
     icon: 'calendar',
     tags: ['Claude AI', 'Google Calendar', 'Foglalás'],
     priceLabel: '150.000 Ft + 29.000 Ft/hó',
-    status: 'soon',
+    status: 'active',
   },
   {
     id: 'social-media-auto',
