@@ -11,10 +11,29 @@ import Guarantee from "@/components/Guarantee";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 import WaveDivider from "@/components/WaveDivider";
+import { faqs } from "@/lib/faq-data";
+
+// FAQPage séma — a kérdések kinyíló rich resultként jelenhetnek meg a Google találatban
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: f.a,
+    },
+  })),
+};
 
 export default function Home() {
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Navbar />
       <Hero />
       <WaveDivider from="#000" to="#050510" path="M0,0 C240,90 480,90 720,45 C960,0 1200,0 1440,60 L1440,90 L0,90 Z" height={90} />
