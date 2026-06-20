@@ -49,23 +49,26 @@ $g.FillPath($gl2, $gp2)
 # top accent bar
 $g.FillRectangle((New-Object System.Drawing.Drawing2D.LinearGradientBrush((New-Object System.Drawing.Rectangle(0,0,$W,6)), [System.Drawing.Color]::FromArgb(255,0,229,255), [System.Drawing.Color]::FromArgb(255,0,102,255), 0.0)), 0, 0, $W, 6)
 
-# logo right (vertically centered)
+# Content grouped centrally with generous safe margins (LinkedIn crops the sides)
+# logo (vertically centered, pulled inward from the right edge)
 $bH = 150.0
 $bW = $bH * ($logo.Width / $logo.Height)
-$g.DrawImage($logo, [int]($W - $bW - 70), [int](($H - $bH)/2), [int]$bW, [int]$bH)
+$g.DrawImage($logo, [int](980), [int](($H - $bH)/2), [int]$bW, [int]$bH)
 
-# text (vertically centered block, single main line)
-$tx = 64
+# text block (two compact lines), inset from the left
+$tx = 230
 $kickFont = New-Object System.Drawing.Font("Segoe UI", 18, [System.Drawing.FontStyle]::Bold, [System.Drawing.GraphicsUnit]::Pixel)
-$g.DrawString("AI FLUX", $kickFont, (New-Object System.Drawing.SolidBrush([System.Drawing.Color]::FromArgb(255,0,229,255))), [single]$tx, 48.0)
+$g.DrawString("AI FLUX", $kickFont, (New-Object System.Drawing.SolidBrush([System.Drawing.Color]::FromArgb(255,0,229,255))), [single]$tx, 44.0)
 
-$mainFont = New-Object System.Drawing.Font("Segoe UI", 38, [System.Drawing.FontStyle]::Bold, [System.Drawing.GraphicsUnit]::Pixel)
-$line = "AI automatiz" + [char]0x00E1 + "ci" + [char]0x00F3 + ", chatbotok & weboldalak c" + [char]0x00E9 + "geknek"
-$g.DrawString($line, $mainFont, (New-Object System.Drawing.SolidBrush([System.Drawing.Color]::FromArgb(255,245,248,255))), [single]$tx, 78.0)
+$mainFont = New-Object System.Drawing.Font("Segoe UI", 36, [System.Drawing.FontStyle]::Bold, [System.Drawing.GraphicsUnit]::Pixel)
+$line1 = "AI automatiz" + [char]0x00E1 + "ci" + [char]0x00F3 + ", chatbotok"
+$line2 = "& weboldalak c" + [char]0x00E9 + "geknek"
+$g.DrawString($line1, $mainFont, (New-Object System.Drawing.SolidBrush([System.Drawing.Color]::FromArgb(255,245,248,255))), [single]$tx, 72.0)
+$g.DrawString($line2, $mainFont, (New-Object System.Drawing.SolidBrush([System.Drawing.Color]::FromArgb(255,245,248,255))), [single]$tx, 116.0)
 
-$subFont = New-Object System.Drawing.Font("Segoe UI", 21, [System.Drawing.FontStyle]::Regular, [System.Drawing.GraphicsUnit]::Pixel)
+$subFont = New-Object System.Drawing.Font("Segoe UI", 19, [System.Drawing.FontStyle]::Regular, [System.Drawing.GraphicsUnit]::Pixel)
 $sub = "aiflux.hu   " + [char]0x00B7 + "   ingyenes konzult" + [char]0x00E1 + "ci" + [char]0x00F3
-$g.DrawString($sub, $subFont, (New-Object System.Drawing.SolidBrush([System.Drawing.Color]::FromArgb(210,150,180,220))), [single]$tx, 134.0)
+$g.DrawString($sub, $subFont, (New-Object System.Drawing.SolidBrush([System.Drawing.Color]::FromArgb(210,150,180,220))), [single]$tx, 166.0)
 
 $bmp.Save("$env:USERPROFILE\Desktop\aiflux-company-banner.png", [System.Drawing.Imaging.ImageFormat]::Png)
 $g.Dispose(); $bmp.Dispose(); $logo.Dispose()
