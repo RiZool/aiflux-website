@@ -40,6 +40,106 @@ export type CaseStudy = {
 
 export const caseStudies: CaseStudy[] = [
   {
+    slug: "somafix-chatbot",
+    client: "SomaFix Magyarország",
+    industry: "Építőipari segédanyagok",
+    title: "SomaFix: 0-24 magyar AI chatbot a weboldalon - a saját termékkatalógusból válaszol",
+    metaTitle: "SomaFix esettanulmány: AI chatbot a weboldalon | AI Flux",
+    metaDescription:
+      "Hogyan kapott a SomaFix egy 0-24 elérhető, magyar nyelvű AI chatbotot a weboldalára: a cég saját tudásbázisából válaszol, kattintható termékajánlásokkal és árakkal - a tudásbázist pedig az ügyfél maga bővítheti, ha új termék vagy szolgáltatás érkezik.",
+    excerpt:
+      "Magyar nyelvű AI chatbot a SomaFix weboldalán, ami a cég saját tudásbázisából válaszol - termékajánlással, árakkal és kattintható linkekkel. A tudásbázist a SomaFix bármikor bővítheti, ha új termék vagy szolgáltatás kerül a weboldalra.",
+    tags: ["AI Chatbot", "Weboldal", "Claude AI", "Tudásbázis", "0-24"],
+    published: "2026-06-25",
+    badge: { value: "0-24", unit: "óra", label: "elérhetőség" },
+    heroImage: {
+      src: "/referenciak/somafix-chatbot/1.png",
+      alt: "A SomaFix weboldala a beépített AI chatbot widgettel a jobb alsó sarokban",
+      width: 1729,
+      height: 1181,
+    },
+
+    challenge: [
+      "A SomaFix weboldalára érkező látogatóknak gyakran ugyanazok a kérdéseik: melyik termék való az adott feladatra, mennyibe kerül, és hol rendelhető meg. Ezek jó része munkaidőn kívül vagy hétvégén merül fel.",
+      "A kézi ügyfélszolgálat nem tud 0-24 elérhető lenni, a sok ismétlődő kérdés pedig időt vesz el az érdemi munkától.",
+      "Az igény egy mindig elérhető, magyar nyelvű asszisztens volt a weboldalon, ami azonnal, pontosan és a SomaFix termékeire szabottan válaszol - kitalált adatok nélkül.",
+    ],
+
+    solution: [
+      "A SomaFix weboldalára beépítettünk egy magyar nyelvű AI chatbotot (Flux Lite), ami a látogatók kérdéseire azonnal, a cég saját hangnemén válaszol.",
+      "A chatbot a SomaFix weboldalának tartalmára van betanítva: a termékeket, leírásokat, árakat és szolgáltatásokat ebből a jóváhagyott tudásbázisból ismeri. Kizárólag ebből dolgozik - soha nem talál ki terméket, árat vagy adatot (anti-hallucináció).",
+      "A termékajánlásokat kattintható linkekkel adja: a látogató egy kattintással a webáruház megfelelő termékoldalára jut, az árral együtt. Egy kérdésre akár több terméket is összehasonlít.",
+      "Nem csak termékkérdésekre válaszol: a viszonteladói és partnerségi érdeklődést is kezeli, és ahol kell, az ügyfélszolgálat elérhetőségeihez irányít.",
+      "A tudásbázist a SomaFix bármikor, önállóan bővítheti - ha új termék kerül a weboldalra vagy új szolgáltatás indul, egyszerűen frissítik a tudásbázist, és a chatbot máris tudja. A teljes infrastruktúrát az AI Flux üzemelteti.",
+      "Beépítés: egyetlen sor kód a weboldalba (WordPress vagy bármilyen platform).",
+    ],
+
+    howItWorks: [
+      {
+        title: "1. Tudásbázis a weboldalból",
+        desc: "A chatbot a SomaFix weboldalának tartalmából - termékek, leírások, árak, szolgáltatások - tanul. Ez a jóváhagyott tudásbázis a válaszok kizárólagos forrása.",
+      },
+      {
+        title: "2. Beépítés egyetlen sor kóddal",
+        desc: "A widget egyetlen script-sorral kerül a weboldalra, és a jobb alsó sarokban jelenik meg, a SomaFix színeiben. Nincs bonyolult integráció.",
+      },
+      {
+        title: "3. Azonnali, pontos válaszok",
+        desc: "A látogató kérdez, a chatbot magyarul, márkahangon válaszol - termékajánlással, árral és kattintható linkkel a webáruházba. Amire nincs adat a tudásbázisban, ott az ügyfélszolgálathoz irányít.",
+      },
+      {
+        title: "4. A cég maga bővíti a tudásbázist",
+        desc: "Új termék vagy szolgáltatás esetén a SomaFix frissíti a tudásbázist, és a chatbot azonnal naprakész - fejlesztői munka nélkül.",
+      },
+    ],
+
+    metrics: [
+      { value: "0-24", label: "elérhető - munkaidőn kívül is válaszol" },
+      { value: "azonnali", label: "válaszidő a látogatónak" },
+      { value: "1 sor", label: "kód a weboldalba építéshez" },
+      { value: "100%", label: "a cég saját tudásbázisából (nincs kitalált adat)" },
+    ],
+
+    resultsBody: [
+      "A SomaFix weboldalán mostantól egy mindig elérhető asszisztens fogadja a látogatókat - munkaidőn kívül és hétvégén is azonnal válaszol, így egyetlen érdeklődő sem marad válasz nélkül.",
+      "A chatbot a megfelelő termékre irányít, árral és kattintható linkkel a webáruházba - ezzel csökkenti az ismétlődő ügyfélszolgálati kérdéseket, és segíti a vásárlást. A partnerségi és viszonteladói érdeklődést is kezeli.",
+      "Mivel a SomaFix maga bővíti a tudásbázist, a chatbot mindig naprakész marad: új termék vagy szolgáltatás esetén sincs szükség fejlesztőre.",
+    ],
+
+    techStack: ["Next.js", "Claude AI (Anthropic)", "Embed widget", "WordPress-kompatibilis"],
+
+    gallery: [
+      {
+        src: "/referenciak/somafix-chatbot/2.png",
+        alt: "A chatbot díszléc-ragasztót ajánl kattintható linkkel és árral",
+        caption: "Termékajánlás kattintható linkkel és árral - a látogató egy kattintással a webáruházba jut.",
+        width: 357,
+        height: 493,
+      },
+      {
+        src: "/referenciak/somafix-chatbot/3.png",
+        alt: "Strukturált, többtermékes ajánlás (purhab) árakkal",
+        caption: "Egy kérdésre több termék összehasonlítása - strukturált ajánlás árakkal.",
+        width: 355,
+        height: 497,
+      },
+      {
+        src: "/referenciak/somafix-chatbot/4.png",
+        alt: "A chatbot egy viszonteladói partnerség iránti érdeklődést kezel",
+        caption: "Nem csak termékek: a partnerségi és viszonteladói kérdéseket is megválaszolja.",
+        width: 354,
+        height: 490,
+      },
+      {
+        src: "/referenciak/somafix-chatbot/5.png",
+        alt: "A chatbot a viszonteladói programról ad tájékoztatást linkkel és elérhetőségekkel",
+        caption: "A viszonteladói program részletei és az ügyfélszolgálat elérhetőségei - egy helyen.",
+        width: 355,
+        height: 486,
+      },
+    ],
+  },
+  {
     slug: "somafix-social-media-automatizalas",
     client: "SomaFix Magyarország",
     industry: "Építőipari segédanyagok",
