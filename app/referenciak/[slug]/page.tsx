@@ -219,7 +219,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "1rem" }}>
               {cs.gallery.map((img, i) => (
                 <figure key={i} className="glass-card" style={{ margin: 0, padding: 0, overflow: "hidden" }}>
-                  <ZoomableImage src={img.src} alt={img.alt} width={img.width ?? 800} height={img.height ?? 600} sizes="(max-width: 760px) 100vw, 500px" />
+                  <ZoomableImage src={img.src} alt={img.alt} width={img.width ?? 800} height={img.height ?? 600} boxAspect={cs.galleryAspect} sizes="(max-width: 760px) 100vw, 500px" />
                   {img.caption && (
                     <figcaption style={{ fontSize: ".8rem", color: "var(--muted)", padding: ".7rem .9rem" }}>{img.caption}</figcaption>
                   )}

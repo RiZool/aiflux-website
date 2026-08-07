@@ -10,12 +10,17 @@ type Props = {
   height: number;
   sizes?: string;
   priority?: boolean;
+  // Ha meg van adva, a kép egy fix képarányú dobozba kerül (szélesség/magasság),
+  // és `contain`-nel illeszkedik bele. Így a vegyes arányú galériákban
+  // (pl. négyzetes + álló képek) minden kártya egyforma magas lesz.
+  // A kép NEM vágódik le - a nagyítás továbbra is az eredeti arányt mutatja.
+  boxAspect?: number;
 };
 
 // Kattintásra teljes képernyős nagyítás (lightbox).
 // Az overlayt PORTÁLLAL a <body>-ba rendereljük, hogy kilépjen a kártya
 // `overflow:hidden` / `transform` kontextusából (különben levágódna/villogna).
-export default function ZoomableImage({ src, alt, width, height, sizes, priority }: Props) {
+export default function ZoomableImage({ src, alt, width, height, sizes, priority, boxAspect }: Props) {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -98,18 +103,26 @@ export default function ZoomableImage({ src, alt, width, height, sizes, priority
     </div>
   );
 
+  const image = (
+    <Image
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+      sizes={sizes}
+      priority={priority}
+      onClick={() => setOpen(true)}
+      style={
+        boxAspect
+          ? { width: "100%", height: "100%", objectFit: "contain", display: "block", cursor: "zoom-in" }
+          : { width: "100%", height: "auto", display: "block", cursor: "zoom-in" }
+      }
+    />
+  );
+
   return (
     <>
-      <Image
-        src={src}
-        alt={alt}
-        width={width}
-        height={height}
-        sizes={sizes}
-        priority={priority}
-        onClick={() => setOpen(true)}
-        style={{ width: "100%", height: "auto", display: "block", cursor: "zoom-in" }}
-      />
+      {boxAspect ? <div style={{ width: "100%", aspectRatio: String(boxAspect) }}>{image}</div> : image}
       {open && createPortal(overlay, document.body)}
     </>
   );

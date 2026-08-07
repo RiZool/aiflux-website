@@ -60,6 +60,10 @@ export type CaseStudy = {
   techStack: string[];
   gallery?: CaseImage[];    // képek (opcionális)
   galleryTitle?: string;    // a képek szekció címe (alapértelmezés: "Képek a rendszerről")
+  // Vegyes képarányú galériához: fix képarány (szélesség/magasság) minden
+  // galéria-képre, `contain` illesztéssel. Pl. 1 = négyzetes dobozok.
+  // Enélkül minden kép a saját arányát tartja (a régi viselkedés).
+  galleryAspect?: number;
   video?: { url: string; title: string }; // beágyazott videó, pl. YouTube (opcionális)
   videos?: CaseVideo[];     // saját tárhelyről lejátszott MP4-ek (opcionális)
   videosTitle?: string;     // a videó szekció címe (alapértelmezés: "Videók")
@@ -377,6 +381,9 @@ export const caseStudies: CaseStudy[] = [
     techStack: ["Claude AI (Anthropic)", "Google Gemini", "Adobe Photoshop", "Google Drive"],
 
     galleryTitle: "SOMA a gyakorlatban",
+    // A képek zöme 1024x1024, de az s915 álló (720x1463) - fix négyzetes
+    // dobozokkal minden kártya egyforma magas marad.
+    galleryAspect: 1,
     gallery: [
       {
         src: "/referenciak/somafix-soma-kabalafigura/59.png",
