@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ZoomableImage from "@/components/ZoomableImage";
+import VideoGallery from "@/components/VideoGallery";
+import FlowDiagram from "@/components/FlowDiagram";
 import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -160,6 +162,14 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
           </div>
         </section>
 
+        {/* ── Folyamatábra (opcionális) ──────────────────────── */}
+        {cs.flow && (
+          <section style={{ position: "relative", zIndex: 1, ...SECTION, paddingBottom: "2.5rem" }}>
+            <h2 className="font-heading" style={H2}>{cs.flow.title}</h2>
+            <FlowDiagram stages={cs.flow.stages} loop={cs.flow.loop} />
+          </section>
+        )}
+
         {/* ── Eredmények ─────────────────────────────────────── */}
         <section style={{ position: "relative", zIndex: 1, ...SECTION, paddingBottom: "2.5rem" }}>
           <h2 className="font-heading" style={H2}>Az eredmény</h2>
@@ -178,7 +188,15 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
           ))}
         </section>
 
-        {/* ── Videó (opcionális) ─────────────────────────────── */}
+        {/* ── Saját videók / animációk (opcionális) ──────────── */}
+        {cs.videos && cs.videos.length > 0 && (
+          <section style={{ position: "relative", zIndex: 1, ...SECTION, paddingBottom: "2.5rem" }}>
+            <h2 className="font-heading" style={H2}>{cs.videosTitle ?? "Videók"}</h2>
+            <VideoGallery videos={cs.videos} />
+          </section>
+        )}
+
+        {/* ── Beágyazott videó, pl. YouTube (opcionális) ─────── */}
         {cs.video && (
           <section style={{ position: "relative", zIndex: 1, ...SECTION, paddingBottom: "2.5rem" }}>
             <h2 className="font-heading" style={H2}>Bemutató</h2>
@@ -197,7 +215,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
         {/* ── Galéria (opcionális) ───────────────────────────── */}
         {cs.gallery && cs.gallery.length > 0 && (
           <section style={{ position: "relative", zIndex: 1, ...SECTION, paddingBottom: "2.5rem" }}>
-            <h2 className="font-heading" style={H2}>Képek a rendszerről</h2>
+            <h2 className="font-heading" style={H2}>{cs.galleryTitle ?? "Képek a rendszerről"}</h2>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "1rem" }}>
               {cs.gallery.map((img, i) => (
                 <figure key={i} className="glass-card" style={{ margin: 0, padding: 0, overflow: "hidden" }}>
