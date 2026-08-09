@@ -438,8 +438,8 @@ export const caseStudies: CaseStudy[] = [
     badge: { value: "0", unit: "forgatás", label: "stáb és stúdió nélkül" },
     heroImage: {
       src: "/referenciak/somafix-soma-reklamanimaciok/hero.jpg",
-      alt: "Öt SomaFix reklámanimáció nyitóképe egymás mellett, mindegyiken a SOMA kabalafigurával",
-      width: 1720,
+      alt: "Hat SomaFix reklámanimáció nyitóképe egymás mellett, mindegyiken a SOMA kabalafigurával",
+      width: 2064,
       height: 600,
     },
 
@@ -511,7 +511,7 @@ export const caseStudies: CaseStudy[] = [
       { value: "0", label: "forgatás - a meglévő kabalából és termékfotókból" },
       { value: "9:16", label: "álló formátum - minden nagy platform natív mérete" },
       { value: "2-ben 1", label: "ugyanaz az animáció poszt és hirdetés is" },
-      { value: "5", label: "kész animáció a szolgáltatásokról és a márkáról" },
+      { value: "6", label: "kész animáció a szolgáltatásokról és a márkáról" },
     ],
 
     resultsBody: [
@@ -533,6 +533,14 @@ export const caseStudies: CaseStudy[] = [
 
     videosTitle: "Az elkészült animációk",
     videos: [
+      {
+        src: "/referenciak/somafix-soma-reklamanimaciok/somafix_reklam_1.mp4",
+        poster: "/referenciak/somafix-soma-reklamanimaciok/somafix_reklam_1.jpg",
+        title: "SomaFix márkafilm",
+        caption: "A leghosszabb, összefoglaló animáció: építkezési látvány, termékdemó és a márkaüzenet egy anyagban. 1 perc 23 mp.",
+        width: 1080,
+        height: 1920,
+      },
       {
         src: "/referenciak/somafix-soma-reklamanimaciok/ceges_miertvalaszd_3.mp4",
         poster: "/referenciak/somafix-soma-reklamanimaciok/ceges_miertvalaszd_3.jpg",
