@@ -15,7 +15,8 @@ export type Workflow = {
 // Másold le az egyik objektumot, add meg az id-t, title-t, desc-t stb.
 // status: 'active' → kész, kiválasztható | 'soon' → hamarosan, nem klikkelható
 // icon: SVG ikon neve - elérhető: chart, bot, mail, target, inbox, doc,
-//       handshake, invoice (definíció: components/WorkflowConfigurator.tsx wfIcons)
+//       handshake, invoice, social, calendar
+//       (definíció: components/WorkflowConfigurator.tsx wfIcons)
 // ────────────────────────────────────────────────────────────────────────────
 export const workflows: Workflow[] = [
   {
@@ -56,6 +57,16 @@ export const workflows: Workflow[] = [
     icon: 'social',
     tags: ['Claude AI', 'Meta API', 'Facebook · Instagram'],
     priceLabel: '150.000 Ft + 59.000 Ft/hó',
+    status: 'active',
+  },
+  {
+    id: 'blog-szakcikk',
+    title: 'BLOG',
+    desc: 'SEO-optimalizált szakcikkek a weboldalad blogjára - emberi írás nélkül. Az AI kutat, megírja, magyarra korrektúrázza, a saját képeiddel illusztrálja, majd ütemezetten kiteszi WordPressre. Terméket és adatot soha nem talál ki: csak a valós katalógusodból dolgozik.',
+    category: 'Kommunikáció',
+    icon: 'doc',
+    tags: ['Claude AI', 'WordPress', 'SEO · Yoast'],
+    priceLabel: '150.000 Ft + 49.000 Ft/hó',
     status: 'active',
   },
   {

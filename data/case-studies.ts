@@ -583,6 +583,169 @@ export const caseStudies: CaseStudy[] = [
       },
     ],
   },
+
+  {
+    slug: "somafix-szakcikk-generator",
+    client: "SomaFix Magyarország",
+    industry: "Építőipari segédanyagok",
+    title: "SomaFix: SEO-szakcikkek a weboldal blogjára - megírva, illusztrálva és kiposztolva",
+    metaTitle: "SomaFix esettanulmány: AI szakcikk generátor WordPressre | AI Flux",
+    metaDescription:
+      "Hogyan frissül magától a somafix.hu „Szakcikkek\" rovata: az AI kutat, eredeti szakcikket ír valós termékajánlással, magyarra korrektúrázza, a cég saját képeivel illusztrálja, majd ütemezetten kiteszi WordPressre - Yoast SEO mezőkkel együtt.",
+    excerpt:
+      "A somafix.hu „Szakcikkek\" rovatába az AI ír SEO-optimalizált cikkeket: kutat, megírja, magyarra korrektúrázza, a cég saját fotóival illusztrálja, és ütemezetten kiteszi WordPressre. A legfontosabb fék: ha egy cikkhez nem talál valós SomaFix terméket, inkább meg sem születik.",
+    tags: ["Szakcikk", "SEO", "WordPress", "Claude AI", "Blog"],
+    published: "2026-08-12",
+    badge: { value: "0", unit: "szó", label: "kézzel írt szöveg a blogon" },
+    heroImage: {
+      src: "/referenciak/somafix-szakcikk-generator/szakcikkek-lista.png",
+      alt: "A Szakcikkek admin felület: generáló űrlap és a piszkozatban álló cikkek listája fókuszkulcsszóval és termékkódokkal",
+      width: 1282,
+      height: 1248,
+    },
+
+    challenge: [
+      "A SomaFix weboldalán van egy „Szakcikkek\" rovat - a szakmai blog, ami a keresőforgalom egyik legfontosabb forrása lehetne. Rendszeresen, valóban szakmai színvonalon írni viszont időigényes: egy jó cikkhez kutatás, szakmai pontosság, SEO-ismeret és magyar nyelvi igényesség is kell egyszerre.",
+      "A tartalomírás emiatt jellemzően elmarad vagy akadozik. Ha külsős írja, drága és gyakran felszínes; ha a cég szakembere, akkor a saját munkájától veszi el az időt.",
+      "Az AI-val generált tartalom viszont önmagában kockázatos egy építőipari márkánál: ha a szöveg kitalál egy terméket vagy egy termékkódot, az azonnal hiteltelenné teszi a céget azok előtt, akiknek szól - a szakemberek előtt.",
+      "Kellett tehát egy megoldás, ami rendszeresen ír szakmailag hiteles, SEO-ra hangolt cikkeket úgy, hogy termék és adat soha ne lehessen kitalálva - és a kész cikk magától kikerüljön a weboldalra.",
+    ],
+
+    solution: [
+      "A SomaFix admin felületére építettünk egy Szakcikk Generátort: egy „Szakcikkek\" menüpontot, ahonnan a teljes folyamat vezérelhető - a téma választásától a WordPressre publikálásig.",
+      "A rendszer először kutat. Végigjárja a beállított iparági blog-listákat (a lapozást is követve), kiszedi az egyes cikkek URL-jeit, és olyat választ, amiből még nem készült cikk. Ez kizárólag inspiráció és tényellenőrzés - a kész cikk soha nem másolat, és nem is hivatkozik a forrásra. Téma vagy forrás kézzel is megadható.",
+      "A cikket a Claude írja a SomaFix márkahangján: 600-750 szó, lead-bekezdés, 4-5 alcím, ahol hasznos felsorolások, és „Összegzés\" zárás. A hangnem szakértő, de közérthető, és következetesen tegező - az emoji, a szuperlatívusz és a konkurenciakritika ki van zárva.",
+      "A legfontosabb elem a termék-garancia: a cikk kizárólag a valós SomaFix termékkatalógusból nevezhet meg terméket, pontos névvel és kóddal. Generálás után a rendszer minden ajánlott kódot visszaellenőriz a katalógusban - és ha egy sem érvényes, a cikk meg sem születik. Inkább nincs cikk, mint kitalált termék.",
+      "A megnevezett termékek automatikusan kattinthatóvá válnak a webshop keresőjére, a cikk végén pedig egy „Ajánlott SomaFix termékek\" szekció gyűjti össze őket. Így a blog nemcsak forgalmat hoz, hanem a webshop felé is terel.",
+      "Ezután külön korrektúra-passz fut: magyar helyesírás, ékezetek, elgépelések és a gyakran kimaradó határozott névelők javítása - a jelentés, a HTML-szerkezet és a linkek érintetlenül hagyásával.",
+      "Az illusztráció a cég saját Google Drive mappájából jön: egy fejléckép és 1-2 törzskép, a cikkben ajánlott termék kódjához illesztve. Néha - szándékosan nem minden cikkben - egy rövid termékvideó is bekerül, hogy az különleges maradjon. Ha egy termék nincs megemlítve a szövegben, a hozzá tartozó kép kimarad: inkább ne legyen kép, mint rossz terméknél.",
+      "Ugyanabból a képtárból dolgozik a SOMA kabalafigura is, így a szakcikkekben rendszeresen feltűnik a márka saját karaktere - ugyanaz, akit az olvasó a közösségi médiában és a hirdetéseken lát.",
+      "A kész cikk piszkozatként érkezik a felületre. Az ügyfél átnézi, a képeket szükség esetén lecseréli vagy törli, a SEO-mezőket (cím, fókuszkulcsszó, meta leírás karakterszámlálóval) igény szerint átírja, majd jóváhagyja - ez az egyetlen emberi lépés a folyamatban.",
+      "A publikálás a WordPress REST API-n keresztül történik, a WordPress beépített Application Password-jével - nem kell hozzá plugin. A cikk a „Szakcikkek\" kategóriába kerül, a fejlécképpel, valamint a Yoast SEO meta leírással és fókuszkulcsszóval együtt.",
+      "Ütemezés esetén a cikk jövőbeli dátummal megy át a WordPressnek, és onnantól a WordPress maga jelenteti meg a beállított időben - a mi oldalunkon semminek nem kell futnia hozzá.",
+    ],
+
+    howItWorks: [
+      {
+        title: "1. Kutatás és forrásválasztás",
+        desc: "A rendszer bejárja a beállított iparági blog-listákat, összegyűjti a cikk-URL-eket, és olyat választ, amiből még nem készült cikk. A forrás csak inspiráció és tényellenőrzés - témát és forrást kézzel is meg lehet adni.",
+      },
+      {
+        title: "2. A cikk megírása",
+        desc: "A Claude eredeti, 600-750 szavas szakcikket ír a SomaFix márkahangján: lead, 4-5 alcím, felsorolások, „Összegzés\". Közben kiválasztja a fókuszkulcsszót és megírja a 150-160 karakteres meta leírást.",
+      },
+      {
+        title: "3. Termék-ellenőrzés (a beépített fék)",
+        desc: "Minden ajánlott termékkódot visszaellenőrzünk a valós katalógusban. Ha egyetlen érvényes termék sem marad, a cikk nem jön létre - a rendszer inkább másik forrást választ. Kitalált terméknév vagy kód így nem juthat ki.",
+      },
+      {
+        title: "4. Magyar korrektúra",
+        desc: "Egy második AI-passz javítja a helyesírást, az ékezeteket, az elgépeléseket és a kimaradt határozott névelőket. A jelentést, a HTML-t és a linkeket nem bántja - ha a korrektúra elakad, az eredeti szöveg marad.",
+      },
+      {
+        title: "5. Illusztráció a saját képtárból",
+        desc: "Fejléckép és 1-2 törzskép a cég Google Drive mappájából, a cikkben szereplő termék kódjához illesztve, a termék első említése után beszúrva. Néha egy rövid termékvideó is bekerül. Ha nincs pontosan illő kép, inkább nem kerül be.",
+      },
+      {
+        title: "6. Jóváhagyás",
+        desc: "A cikk piszkozatként várja az ügyfelet. Átnézi, a képeket cserélheti vagy törölheti, a SEO-mezőket átírhatja, majd jóváhagyja. Ez az egyetlen emberi lépés a folyamatban.",
+      },
+      {
+        title: "7. Publikálás vagy ütemezés",
+        desc: "A cikk a WordPress REST API-n át a „Szakcikkek\" rovatba kerül, fejlécképpel és Yoast SEO mezőkkel. Ütemezés esetén jövőbeli dátumot kap, és a WordPress maga jelenteti meg a megadott időben.",
+      },
+    ],
+
+    flow: {
+      title: "A kutatástól a megjelent cikkig",
+      stages: [
+        {
+          label: "01 · Kutatás és írás",
+          title: "Eredeti szakcikk márkahangon",
+          desc: "Iparági források feltérképezése, majd 600-750 szavas eredeti cikk fókuszkulcsszóval és meta leírással.",
+          chips: ["Iparági források", "Claude AI", "SEO", "Tegező márkahang"],
+        },
+        {
+          label: "02 · Ellenőrzés és illusztrálás",
+          title: "Csak valós termék, tiszta magyar",
+          desc: "Katalógus-ellenőrzés, magyar korrektúra, majd képek a cég saját Drive mappájából a termékkódhoz illesztve.",
+          chips: ["Termékkatalógus-fék", "Korrektúra", "Drive-képek", "Néha videó"],
+        },
+        {
+          label: "03 · Publikálás",
+          title: "WordPress, ütemezetten",
+          desc: "Jóváhagyás után a cikk a „Szakcikkek\" rovatba kerül - fejlécképpel és Yoast SEO mezőkkel.",
+          chips: ["WordPress REST", "Yoast SEO", "Fejléckép", "Időzítés"],
+        },
+      ],
+      loop: "Ha a cikk nem tud valós SomaFix terméket ajánlani, a folyamat itt megáll: nem születik cikk, a rendszer inkább másik forrást választ. Ez a fék fontosabb, mint a mennyiség.",
+    },
+
+    metrics: [
+      { value: "0", label: "kitalált termék vagy termékkód a cikkekben" },
+      { value: "600-750", label: "szó cikkenként, SEO-ra hangolva" },
+      { value: "2", label: "AI-passz: megírás + magyar korrektúra" },
+      { value: "1", label: "emberi lépés: a jóváhagyás" },
+    ],
+
+    resultsBody: [
+      "A somafix.hu „Szakcikkek\" rovata mostantól rendszeresen tud frissülni anélkül, hogy bárkinek cikket kellene írnia. Egy cikk a kutatástól a kész, illusztrált, SEO-mezőkkel feltöltött WordPress-bejegyzésig automatikusan áll elő - az ügyfélnek a jóváhagyás marad.",
+      "A szakmai hitelesség nem sérül. A rendszer csak a valós termékkatalógusból nevezhet meg terméket, és ha egy témához nem talál illőt, inkább nem születik cikk. Ez a beépített fék tudatosan a mennyiség elé van helyezve - egyetlen kitalált termékkód többet ártana, mint amennyit tíz cikk használ.",
+      "A cikkek nem üres tartalommarketing-szövegek: mindegyik konkrét SomaFix termékekre mutat kattintható linkekkel, a végén összegyűjtött termékajánlóval. A blog így nemcsak keresőforgalmat hoz, hanem a webshop felé is terel.",
+      "Az illusztráció a cég saját fotóiból készül, a cikkben szereplő termékhez igazítva, a termék első említése után. Ha nincs pontosan illő kép, inkább nem kerül be - így sosem jelenik meg rossz termék egy másikról szóló bekezdés mellett.",
+      "A blog nem szigetként működik: ugyanabból a központi képtárból dolgozik, mint a közösségi média automatizálás és a reklámanimációk, így a SOMA kabalafigura a szakcikkekben is feltűnik. Az olvasó ugyanazt a márkát látja a blogon, a Facebookon és a hirdetésekben.",
+      "Az ütemezett cikkeket maga a WordPress jelenteti meg a beállított időben, így a megjelenés akkor is pontos, ha nálunk épp semmi nem fut.",
+    ],
+
+    techStack: [
+      "Claude AI (Anthropic)",
+      "WordPress REST API",
+      "Yoast SEO",
+      "Google Drive",
+      "Vercel Blob",
+      "PostgreSQL",
+      "Next.js",
+    ],
+
+    galleryTitle: "Így néz ki a gyakorlatban",
+    // A képernyőképek aránya vegyes (0,57-1,04), ezért fix dobozok kellenek,
+    // különben a keskeny "cikk felépítése" kép szétdobná a rácsot.
+    galleryAspect: 0.85,
+    gallery: [
+      {
+        src: "/referenciak/somafix-szakcikk-generator/cikk-jovahagyas.png",
+        alt: "Egy piszkozat cikk nézete: fejléckép, szöveg termékhivatkozással, mellette a csatolt média, a Yoast SEO mezők és a közzététel gombjai",
+        caption:
+          "A jóváhagyó nézet: a cikk mellett a csatolt képek (cserélhetők, törölhetők), a szerkeszthető Yoast SEO mezők karakterszámlálóval, és a közzététel vagy ütemezés.",
+        width: 1053,
+        height: 1264,
+      },
+      {
+        src: "/referenciak/somafix-szakcikk-generator/cikk-felepites.png",
+        alt: "Egy szakcikk vége: alcímek, felsorolások, Összegzés szakasz és az Ajánlott SomaFix termékek lista kattintható linkekkel",
+        caption:
+          "Minden cikk azonos szerkezetet követ, és „Ajánlott SomaFix termékek\" listával zár - kattintható linkekkel a webshopba.",
+        width: 712,
+        height: 1247,
+      },
+      {
+        src: "/referenciak/somafix-szakcikk-generator/soma-a-cikkben.png",
+        alt: "Egy megjelent cikk PUBLISHED státusszal, a törzsében a SOMA kabalafigurával az S940 flakonon",
+        caption:
+          "A SOMA kabalafigura a szakcikkekben is feltűnik - ugyanabból a központi képtárból, amiből a közösségi posztok és az animációk dolgoznak.",
+        width: 1275,
+        height: 1226,
+      },
+      {
+        src: "/referenciak/somafix-szakcikk-generator/megjelent-cikkek.png",
+        alt: "A Megjelent fül a somafix.hu-ra kiküldött cikkekkel, megjelenési dátumokkal és termékkódokkal",
+        caption:
+          "A „Megjelent\" fül: a somafix.hu-ra kikerült cikkek, a megjelenés dátumával és az ajánlott termékkódokkal.",
+        width: 1056,
+        height: 1234,
+      },
+    ],
+  },
 ];
 
 // Segédfüggvény az aloldalakhoz / sitemap-hez
