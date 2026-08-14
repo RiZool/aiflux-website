@@ -9,6 +9,9 @@ export type Workflow = {
   tags: string[];
   priceLabel: string;
   status: 'active' | 'soon';
+  // Opcionális: ha van részletes árlap-oldala, ide az útvonal. A kártyán
+  // megjelenik egy "További részletek" link, ami ide visz.
+  detailsHref?: string;
 };
 
 // ── ÚJ FOLYAMAT HOZZÁADÁSA ──────────────────────────────────────────────────
@@ -52,12 +55,13 @@ export const workflows: Workflow[] = [
   {
     id: 'social-media-auto',
     title: 'AI Social Media Automatizáló',
-    desc: 'Havi 1 jóváhagyás - minden más automatikus. Az AI megírja és kiküldi a Facebook és Instagram posztokat, te csak átnézed. Képgenerálás, ütemezés, statisztika - egy admin felületen.',
+    desc: 'Havi 1 jóváhagyás - minden más automatikus. Az AI megírja és kiküldi a Facebook posztokat a saját termékfotóiddal, te csak átnézed. Ütemezés, statisztika - egy admin felületen. Instagram, TikTok és animációk bővítményként.',
     category: 'Kommunikáció',
     icon: 'social',
-    tags: ['Claude AI', 'Meta API', 'Facebook · Instagram'],
+    tags: ['Claude AI', 'Meta API', 'Facebook'],
     priceLabel: '150.000 Ft + 59.000 Ft/hó',
     status: 'active',
+    detailsHref: '/folyamatok/social-media-auto',
   },
   {
     id: 'blog-szakcikk',

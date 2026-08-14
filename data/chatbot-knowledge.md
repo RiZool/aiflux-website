@@ -85,16 +85,59 @@ Aktív, már elérhető folyamatok:
 - **Flux Pro Chatbot** (150 000 Ft beállítás + 29 000 Ft/hó) - a Flux Lite
   minden képessége, PLUSZ időpontfoglalás, Google Calendar és Google Meet
   integráció. Akkor ajánljuk, ha az ügyfeleid online tudnak foglalni időpontot.
-- **AI Social Media Automatizáló** (150 000 Ft beállítás + 59 000 Ft/hó) - Facebook és Instagram
-  posztok automatikus generálása, ütemezése és kiküldése AI-jal. Hogyan
-  működik: az AI havonta legenerálja az összes posztot (szöveg + kép), az
+- **AI Social Media Automatizáló** (150 000 Ft beállítás + 59 000 Ft/hó) - Facebook
+  posztok automatikus generálása, ütemezése és kiküldése AI-jal. Az ALAPCSOMAG
+  a Facebook oldalt kezeli; az Instagram, a TikTok, a LinkedIn és a YouTube
+  külön bekötendő bővítmény. Hogyan
+  működik: az AI havonta legenerálja az összes posztot (a szöveget írja, a képet
+  az ügyfél Google Drive mappájából választja - futásidőben nem generál képet), az
   ügyfél egy admin felületen átnézi és jóváhagyja, utána minden automatikusan
-  kimegy a megfelelő napokon. Heti posztolási ütemterv: hétfő (hír/partner),
-  kedd (Instagram vizuális), szerda (termékbemutató), csütörtök (Instagram),
-  péntek (szakmai tipp). Statisztika dashboard is tartozik hozzá (követők,
+  kimegy a megfelelő napokon. Heti ütemterv: hétfőtől péntekig napi 1 poszt
+  (hír, termékbemutató, szakmai tipp váltakozva) - hétvégén nincs poszt.
+  Kevesebb poszt is kérhető, de naponta legfeljebb egy.
+  Statisztika dashboard is tartozik hozzá (követők,
   elérés, teljesítmény). Referencia ügyfél: SomaFix Magyarország, éles üzemben
-  fut. Saját Facebook oldal kezeléséhez nem kell Meta App Review - System User
-  Token elegendő.
+  fut (náluk az Instagram és az animációk is élnek). Saját Facebook oldal
+  kezeléséhez nem kell Meta App Review - System User Token elegendő.
+
+  A havidíj tartalmazza: havi kb. 20 poszt (minden hétköznapra egy, a fenti
+  ütemterv szerint), ütemezés, jóváhagyó felület, statisztika,
+  a rendszer karbantartása és hibajavítása, a Facebook hozzáférési token
+  újragenerálása (kb. kéthavonta lejár), a platform API-változásainak követése,
+  e-mail support. Apró szövegi igazítás díjmentes.
+
+  NEM tartalmazza (bővítmények, külön díjasak):
+  - Reklámanimációk előfizetés: +60 000 Ft/hó — havonta 3 új álló (9:16)
+    animáció, automatikus videós kiküldéssel, 12 hónapos futamidő. Animációnként
+    tehát 20 000 Ft. Ugyanaz az anyag megy ki organikus posztként és fizetett
+    hirdetésként is.
+  - Animáció kötelezettség nélkül: 35 000 Ft/db. Ez az ár érvényes akkor is, ha
+    az előfizetés havi 3 darabja felett kér továbbit.
+  - Brand Kit: 180 000 Ft egyszeri. Tartalma: kabalafigura koncepció (2 vázlat,
+    1 kidolgozva), 5 alap póz (bemutató, irányjelző, munka közbeni, üdvözlő,
+    álló 9:16), 10 termékkép előkészítése, a Drive-képtár felépítése és bekötése
+    a rendszerbe, a generáló recept megőrzése (új póz később külön projekt
+    nélkül), 2 revíziós kör. Extra kabala-póz: 12 000 Ft/db.
+  - Termékfotó előkészítése: 1 900 Ft/kép. Tartalma: a termék kivágása a
+    háttérből, szélek tisztítása, színek és fényerő egységesítése, átlátszó PNG
+    + fehér hátteres változat, elnevezés a termékkód szerint (ettől találja meg
+    a rendszer a valós terméket a katalógusban — ez akadályozza meg a kitalált
+    adatot), feltöltés a Drive-képtárba.
+  - Posztstratégia vagy márkahang átalakítása: 49 000 Ft. NEM platformonkénti
+    ár: a stratégia egyszer készül el és minden bekötött platformra érvényes.
+    Csak akkor van felár, ha egy platform külön, eltérő hangnemet kap:
+    +19 000 Ft platformonként.
+  - Új platform bekötése (Instagram, TikTok, LinkedIn, YouTube): 79 000 Ft
+    platformonként. Tartalma: a platform hozzáférésének beállítása és
+    összekötése, a heti ütemterv megtervezése az adott platformra, a tartalom
+    igazítása a platform natív méretéhez, végigtesztelt kiküldés. Utána
+    teljesen automatikus — az ügyfélnek nincs vele teendője, ugyanabban az
+    admin felületen hagyja jóvá havonta egyszer. A havidíj nem változik tőle.
+  - Sürgős kampányanyag (48 órán belül): +50% felár
+
+  A teljes, tételes árlap itt található: /folyamatok/social-media-auto
+  A havidíj 30 napos felmondási idővel mondható fel (kivéve a reklámanimációk
+  6 hónapos minimuma). A hirdetési költségkeret nem része az árnak.
 - **Hírlevél & Welcome Sorozat** (egyedi árajánlat) - automatikus üdvözlő
   e-mail sorozat MailerLite-tal, szegmentálással.
 

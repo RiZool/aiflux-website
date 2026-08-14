@@ -445,6 +445,27 @@ export default function WorkflowConfigurator() {
                       </span>
                     )}
                   </div>
+
+                  {/* Részletes árlap-link (csak ha a workflow-nak van detailsHref-je).
+                      A stopPropagation kell, különben a kártya ki-be pipálódna. */}
+                  {w.detailsHref && !isSoon && (
+                    <Link
+                      href={w.detailsHref}
+                      onClick={e => e.stopPropagation()}
+                      onKeyDown={e => e.stopPropagation()}
+                      style={{
+                        display: "inline-flex", alignItems: "center", gap: ".3rem",
+                        marginTop: ".8rem", padding: ".42rem .8rem", borderRadius: 100,
+                        fontSize: ".72rem", fontWeight: 600, letterSpacing: ".02em",
+                        textDecoration: "none", color: "var(--cyan)",
+                        background: "rgba(0,229,255,.07)",
+                        border: "1px solid rgba(0,229,255,.22)",
+                        transition: "background .2s",
+                      }}
+                    >
+                      További részletek →
+                    </Link>
+                  )}
                 </article>
               );
             })}
