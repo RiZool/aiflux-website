@@ -77,7 +77,7 @@ export const addons: PriceRow[] = [
       "A meglévő termékfotóidból és a kabalafiguládból építkezik",
       "Automatikus kiküldés a már működő ütemezésbe illesztve",
       "Poszt és fizetett hirdetés ugyanabból az anyagból",
-      "Animációnkénti ár így 20.000 Ft",
+      "Animációnkénti ár így 20.000 Ft - a darabra vásárolt 35.000 Ft helyett",
     ],
     highlight: true,
   },
@@ -165,7 +165,8 @@ export const comparison: CompareRow[] = [
   {
     what: "Egy közösségi kampányvideó",
     market: "200.000 - 500.000 Ft / db",
-    ours: "20.000 Ft / db",
+    ours: "35.000 Ft / db",
+    note: "Ez a darabár, elköteleződés nélkül - egyetlen kampányra vagy bejelentésre is megrendelhető. Havi előfizetéssel viszont 20.000 Ft-ra jön le animációnként (3 db havonta, 60.000 Ft-ért), vagyis közel a feléért kapod ugyanazt.",
   },
   {
     what: "Kabalafigura és képkészlet",
