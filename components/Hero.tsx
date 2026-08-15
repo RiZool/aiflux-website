@@ -1,5 +1,5 @@
 ﻿"use client";
-import { useEffect, useRef, useState, type CSSProperties, type MouseEvent } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import Image from "next/image";
 
 const TEXTS = [
@@ -53,34 +53,11 @@ export default function Hero() {
   const typed = useTypewriter(TEXTS);
   const [visible, setVisible] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const sectionRef = useRef<HTMLElement>(null);
-
-  // Spotlight-háttér: csak egeres eszközön és csak akkor, ha a látogató
-  // nem kért csökkentett mozgást. Érintőképernyőn nincs hover, ott a kép
-  // maradjon a régi, halvány, mindig látható változat.
-  const [spotlight, setSpotlight] = useState(false);
-  const [revealing, setRevealing] = useState(false);
 
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), 150);
     return () => clearTimeout(t);
   }, []);
-
-  useEffect(() => {
-    const canHover = window.matchMedia("(hover: hover)").matches;
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    setSpotlight(canHover && !reduced);
-  }, []);
-
-  // Az egér pozíciója CSS változóként - a maszk ebből dolgozik.
-  function trackHero(e: MouseEvent<HTMLElement>) {
-    const el = sectionRef.current;
-    if (!el) return;
-    const r = el.getBoundingClientRect();
-    el.style.setProperty("--mx", `${e.clientX - r.left}px`);
-    el.style.setProperty("--my", `${e.clientY - r.top}px`);
-    if (!revealing) setRevealing(true);
-  }
 
 
   // Canvas particles - prefers-reduced-motion tudatos
@@ -135,26 +112,16 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      ref={sectionRef}
       aria-label="Főoldal - AI Flux fejlesztő ügynökség"
-      onMouseMove={spotlight ? trackHero : undefined}
-      onMouseLeave={spotlight ? () => setRevealing(false) : undefined}
       style={{
         position: "relative", width: "100%", height: "100vh",
         minHeight: 700, display: "flex", alignItems: "center",
         justifyContent: "center", overflow: "hidden", background: "#000",
       }}
     >
-      {/* Háttér kép. Spotlight módban a .hero-reveal maszkolja: csak az egér
-          körül látszik. Enélkül (érintőképernyő, csökkentett mozgás) a régi,
-          halvány, mindig látható változat. */}
-      <div
-        className={spotlight ? `hero-reveal${revealing ? " is-active" : ""}` : undefined}
-        style={spotlight ? undefined : { position: "absolute", inset: 0, zIndex: 0, opacity: 0.35 }}
-      >
-        <Image src="/hero.jpg" alt="AI Flux - technológiai háttér" fill priority
-          style={{ objectFit: "cover", objectPosition: "center 30%" }} />
-      </div>
+      {/* Háttér kép - sötétítve */}
+      <Image src="/hero.jpg" alt="AI Flux - technológiai háttér" fill priority
+        style={{ objectFit: "cover", objectPosition: "center 30%", opacity: 0.35 }} />
 
       {/* Particles */}
       <canvas ref={canvasRef} aria-hidden="true" style={{

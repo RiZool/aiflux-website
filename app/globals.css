@@ -154,36 +154,6 @@ section[id], footer[id] { scroll-margin-top: 76px; }
 }
 .spotlight-card:hover::after { opacity: 1; }
 
-/* ── Hero: a háttérkép csak az egér körül látszik ──────────────
-   Ugyanaz a lágy kör, mint a kártyák spotlightjánál (--mx / --my),
-   csak itt maszkként: ami a körön kívül esik, azt kitakarja.
-   A JS csak akkor kapcsolja be, ha van egér és nincs csökkentett
-   mozgás kérve - érintőképernyőn és reduced-motion esetén a kép
-   marad a régi, halvány, mindig látható változatban.       */
-.hero-reveal {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  opacity: 0;
-  transition: opacity .5s ease;
-  will-change: opacity;
-  -webkit-mask-image: radial-gradient(
-    circle 400px at var(--mx, 50%) var(--my, 50%),
-    #000 0%,
-    rgba(0, 0, 0, .85) 35%,
-    rgba(0, 0, 0, .35) 60%,
-    transparent 78%
-  );
-  mask-image: radial-gradient(
-    circle 400px at var(--mx, 50%) var(--my, 50%),
-    #000 0%,
-    rgba(0, 0, 0, .85) 35%,
-    rgba(0, 0, 0, .35) 60%,
-    transparent 78%
-  );
-}
-.hero-reveal.is-active { opacity: .85; }
-
 /* ── Gombok ───────────────────────────────────────────────────── */
 .btn-shine {
   position: relative;
