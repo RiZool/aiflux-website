@@ -34,10 +34,10 @@ export default function TechLogos() {
     <section
       ref={ref}
       aria-label="Általunk használt technológiák"
-      style={{ background: "var(--bg2)", padding: "3rem 6%", borderTop: "1px solid rgba(0,229,255,.06)", borderBottom: "1px solid rgba(0,229,255,.06)" }}
+      style={{ background: "var(--bg2)", padding: "3rem 6%", borderTop: "1px solid rgba(var(--cyan-rgb),.06)", borderBottom: "1px solid rgba(var(--cyan-rgb),.06)" }}
     >
       <div className="reveal" style={{ textAlign: "center", marginBottom: "2rem" }}>
-        <p style={{ fontSize: ".72rem", fontWeight: 600, letterSpacing: ".18em", textTransform: "uppercase", color: "rgba(255,255,255,.35)" }}>
+        <p style={{ fontSize: ".72rem", fontWeight: 600, letterSpacing: ".18em", textTransform: "uppercase", color: "rgba(var(--ink-rgb),.35)" }}>
           Általunk használt technológiák
         </p>
       </div>
@@ -59,17 +59,17 @@ export default function TechLogos() {
               {technologies.map((tech, i) => (
                 <div key={i} style={{
                   display: "flex", alignItems: "center", gap: ".6rem",
-                  color: "rgba(255,255,255,.32)",
+                  color: "rgba(var(--ink-rgb),.32)",
                   fontSize: ".88rem", fontWeight: 600,
                   letterSpacing: ".04em",
                   whiteSpace: "nowrap",
                   transition: "color .25s",
                   cursor: "default",
                   padding: ".5rem 2.5rem",
-                  borderRight: "1px solid rgba(255,255,255,.06)",
+                  borderRight: "1px solid rgba(var(--ink-rgb),.06)",
                 }}
-                  onMouseEnter={e => (e.currentTarget.style.color = "rgba(255,255,255,.85)")}
-                  onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,.32)")}
+                  onMouseEnter={e => (e.currentTarget.style.color = "rgba(var(--ink-rgb),.85)")}
+                  onMouseLeave={e => (e.currentTarget.style.color = "rgba(var(--ink-rgb),.32)")}
                 >
                   <span
                     style={{ width: 18, height: 18, display: "inline-flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}

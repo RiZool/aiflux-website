@@ -38,7 +38,7 @@ function renderWithLinks(raw: string): ReactNode {
 const linkStyle: CSSProperties = {
   color: "var(--cyan)",
   textDecoration: "underline",
-  textDecorationColor: "rgba(0,229,255,0.45)",
+  textDecorationColor: "rgba(var(--cyan-rgb),0.45)",
   wordBreak: "break-all",
 };
 
@@ -134,22 +134,22 @@ export default function ChatWidget() {
           background: "linear-gradient(135deg, var(--cyan), var(--blue))",
           border: "none", cursor: "pointer",
           display: "flex", alignItems: "center", justifyContent: "center",
-          boxShadow: "0 4px 24px rgba(0,229,255,.35), 0 2px 8px rgba(0,0,0,.4)",
+          boxShadow: "0 4px 24px rgba(var(--cyan-rgb),.35), var(--shadow-sm)",
           transition: "transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s, bottom .3s ease",
         }}
-        onMouseEnter={e => { e.currentTarget.style.transform = "scale(1.08)"; e.currentTarget.style.boxShadow = "0 6px 32px rgba(0,229,255,.5), 0 2px 8px rgba(0,0,0,.4)"; }}
-        onMouseLeave={e => { e.currentTarget.style.transform = "scale(1)"; e.currentTarget.style.boxShadow = "0 4px 24px rgba(0,229,255,.35), 0 2px 8px rgba(0,0,0,.4)"; }}
+        onMouseEnter={e => { e.currentTarget.style.transform = "scale(1.08)"; e.currentTarget.style.boxShadow = "0 6px 32px rgba(var(--cyan-rgb),.5), var(--shadow-sm)"; }}
+        onMouseLeave={e => { e.currentTarget.style.transform = "scale(1)"; e.currentTarget.style.boxShadow = "0 4px 24px rgba(var(--cyan-rgb),.35), var(--shadow-sm)"; }}
       >
         {open ? (
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--on-accent)" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true">
             <path d="M6 6l12 12M18 6L6 18" />
           </svg>
         ) : (
-          <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="#000" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="var(--on-accent)" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <path d="M4 6h18a1 1 0 011 1v10a1 1 0 01-1 1H6l-4 3V7a1 1 0 011-1z" />
-            <circle cx="9" cy="12" r="1.2" fill="#000" stroke="none" />
-            <circle cx="13" cy="12" r="1.2" fill="#000" stroke="none" />
-            <circle cx="17" cy="12" r="1.2" fill="#000" stroke="none" />
+            <circle cx="9" cy="12" r="1.2" fill="var(--on-accent)" stroke="none" />
+            <circle cx="13" cy="12" r="1.2" fill="var(--on-accent)" stroke="none" />
+            <circle cx="17" cy="12" r="1.2" fill="var(--on-accent)" stroke="none" />
           </svg>
         )}
       </button>
@@ -164,11 +164,11 @@ export default function ChatWidget() {
           width: "min(380px, calc(100vw - 2rem))",
           height: "min(560px, calc(100dvh - 140px))",
           display: "flex", flexDirection: "column",
-          background: "rgba(5,8,22,.97)",
+          background: "var(--panel-bg)",
           backdropFilter: "blur(24px)",
-          border: "1px solid rgba(0,229,255,.22)",
+          border: "1px solid rgba(var(--cyan-rgb),.22)",
           borderRadius: 16,
-          boxShadow: "0 24px 80px rgba(0,0,0,.6), 0 0 40px rgba(0,229,255,.08)",
+          boxShadow: "var(--shadow-xl), 0 0 40px rgba(var(--cyan-rgb),.08)",
           overflow: "hidden",
           opacity: open ? 1 : 0,
           transform: open ? "translateY(0) scale(1)" : "translateY(16px) scale(.97)",
@@ -180,22 +180,22 @@ export default function ChatWidget() {
         <div style={{
           display: "flex", alignItems: "center", gap: ".7rem",
           padding: ".9rem 1.1rem",
-          borderBottom: "1px solid rgba(0,229,255,.12)",
-          background: "linear-gradient(90deg, rgba(0,229,255,.08), rgba(0,102,255,.05))",
+          borderBottom: "1px solid rgba(var(--cyan-rgb),.12)",
+          background: "linear-gradient(90deg, rgba(var(--cyan-rgb),.08), rgba(var(--blue-rgb),.05))",
         }}>
           <div style={{
             width: 36, height: 36, borderRadius: 10, flexShrink: 0,
-            background: "#000",
+            background: "var(--panel-bg)",
             display: "flex", alignItems: "center", justifyContent: "center",
             overflow: "hidden",
           }}>
             <img src="/logo_F.png" alt="Fluxy" width={28} height={28} style={{ objectFit: "contain" }} />
           </div>
           <div style={{ flex: 1, minWidth: 0 }}>
-            <div style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: ".95rem", color: "#fff" }}>
+            <div style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: ".95rem", color: "var(--text)" }}>
               Fluxy
             </div>
-            <div style={{ display: "flex", alignItems: "center", gap: ".35rem", fontSize: ".7rem", color: "rgba(255,255,255,.45)" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: ".35rem", fontSize: ".7rem", color: "rgba(var(--ink-rgb),.45)" }}>
               <span className="pulse-dot" style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--cyan)", display: "inline-block" }} />
               AI asszisztens · azonnal válaszol
             </div>
@@ -215,12 +215,12 @@ export default function ChatWidget() {
               {SUGGESTIONS.map((s) => (
                 <button key={s} onClick={() => send(s)} style={{
                   textAlign: "left", padding: ".55rem .85rem",
-                  background: "rgba(0,229,255,.05)", border: "1px solid rgba(0,229,255,.18)",
+                  background: "rgba(var(--cyan-rgb),.05)", border: "1px solid rgba(var(--cyan-rgb),.18)",
                   borderRadius: 10, color: "var(--cyan)", fontSize: ".82rem", fontWeight: 500,
                   cursor: "pointer", transition: "background .2s, border-color .2s",
                 }}
-                  onMouseEnter={e => { e.currentTarget.style.background = "rgba(0,229,255,.12)"; e.currentTarget.style.borderColor = "rgba(0,229,255,.4)"; }}
-                  onMouseLeave={e => { e.currentTarget.style.background = "rgba(0,229,255,.05)"; e.currentTarget.style.borderColor = "rgba(0,229,255,.18)"; }}>
+                  onMouseEnter={e => { e.currentTarget.style.background = "rgba(var(--cyan-rgb),.12)"; e.currentTarget.style.borderColor = "rgba(var(--cyan-rgb),.4)"; }}
+                  onMouseLeave={e => { e.currentTarget.style.background = "rgba(var(--cyan-rgb),.05)"; e.currentTarget.style.borderColor = "rgba(var(--cyan-rgb),.18)"; }}>
                   {s}
                 </button>
               ))}
@@ -241,7 +241,7 @@ export default function ChatWidget() {
         {/* Beviteli sor */}
         <form
           onSubmit={e => { e.preventDefault(); send(input); }}
-          style={{ display: "flex", gap: ".5rem", padding: ".75rem", borderTop: "1px solid rgba(255,255,255,.07)" }}
+          style={{ display: "flex", gap: ".5rem", padding: ".75rem", borderTop: "1px solid rgba(var(--ink-rgb),.07)" }}
         >
           <input
             ref={inputRef}
@@ -252,14 +252,14 @@ export default function ChatWidget() {
             aria-label="Üzenet a Fluxy asszisztensnek"
             style={{
               flex: 1, minWidth: 0,
-              background: "rgba(255,255,255,.05)",
-              border: "1px solid rgba(255,255,255,.12)",
+              background: "rgba(var(--ink-rgb),.05)",
+              border: "1px solid rgba(var(--ink-rgb),.12)",
               borderRadius: 10, padding: ".6rem .85rem",
-              color: "#fff", fontSize: ".88rem", outline: "none",
+              color: "var(--text)", fontSize: ".88rem", outline: "none",
               transition: "border-color .2s",
             }}
-            onFocus={e => (e.currentTarget.style.borderColor = "rgba(0,229,255,.45)")}
-            onBlur={e => (e.currentTarget.style.borderColor = "rgba(255,255,255,.12)")}
+            onFocus={e => (e.currentTarget.style.borderColor = "rgba(var(--cyan-rgb),.45)")}
+            onBlur={e => (e.currentTarget.style.borderColor = "rgba(var(--ink-rgb),.12)")}
           />
           <button
             type="submit"
@@ -268,9 +268,9 @@ export default function ChatWidget() {
             style={{
               width: 42, height: 42, borderRadius: 10, border: "none", flexShrink: 0,
               background: streaming || !input.trim()
-                ? "rgba(0,229,255,.15)"
+                ? "rgba(var(--cyan-rgb),.15)"
                 : "linear-gradient(135deg, var(--cyan), var(--blue))",
-              color: streaming || !input.trim() ? "rgba(0,229,255,.5)" : "#000",
+              color: streaming || !input.trim() ? "rgba(var(--cyan-rgb),.5)" : "var(--on-accent)",
               cursor: streaming || !input.trim() ? "default" : "pointer",
               display: "flex", alignItems: "center", justifyContent: "center",
               transition: "background .25s",
@@ -283,9 +283,9 @@ export default function ChatWidget() {
         </form>
 
         {/* Lábjegyzet */}
-        <div style={{ padding: "0 .9rem .6rem", fontSize: ".65rem", color: "rgba(255,255,255,.28)", textAlign: "center" }}>
+        <div style={{ padding: "0 .9rem .6rem", fontSize: ".65rem", color: "rgba(var(--ink-rgb),.28)", textAlign: "center" }}>
           Az AI asszisztens hibázhat - fontos kérdésben írj:{" "}
-          <a href="mailto:info@aiflux.hu" style={{ color: "rgba(0,229,255,.55)", textDecoration: "none" }}>info@aiflux.hu</a>
+          <a href="mailto:info@aiflux.hu" style={{ color: "rgba(var(--cyan-rgb),.55)", textDecoration: "none" }}>info@aiflux.hu</a>
         </div>
       </div>
 
@@ -307,10 +307,10 @@ function bubbleStyle(role: "user" | "assistant"): CSSProperties {
     padding: ".6rem .85rem",
     borderRadius: isUser ? "12px 12px 3px 12px" : "12px 12px 12px 3px",
     background: isUser
-      ? "linear-gradient(135deg, rgba(0,229,255,.18), rgba(0,102,255,.15))"
-      : "rgba(255,255,255,.05)",
-    border: isUser ? "1px solid rgba(0,229,255,.25)" : "1px solid rgba(255,255,255,.08)",
-    color: "rgba(255,255,255,.88)",
+      ? "linear-gradient(135deg, rgba(var(--cyan-rgb),.18), rgba(var(--blue-rgb),.15))"
+      : "rgba(var(--ink-rgb),.05)",
+    border: isUser ? "1px solid rgba(var(--cyan-rgb),.25)" : "1px solid rgba(var(--ink-rgb),.08)",
+    color: "rgba(var(--ink-rgb),.88)",
     fontSize: ".86rem",
     lineHeight: 1.6,
     whiteSpace: "pre-wrap",

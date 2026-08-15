@@ -1,6 +1,7 @@
 ﻿import type { Metadata } from "next";
 import { Space_Grotesk, Inter, Unbounded } from "next/font/google";
 import ChatWidget from "@/components/ChatWidget";
+import { themeInitScript } from "@/lib/theme";
 import "./globals.css";
 
 // latin-ext subset kell mindenhol a magyar ő/ű karakterekhez!
@@ -94,8 +95,18 @@ const websiteSchema = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="hu" className={`${spaceGrotesk.variable} ${inter.variable} ${unbounded.variable}`}>
+    // suppressHydrationWarning: a <head>-beli téma-script még hidratálás előtt
+    // ráteszi a data-theme attribútumot a <html>-re, amit a szerver nem ismer.
+    // Ez szándékos, csak ezen az egy elemen kapcsoljuk ki a figyelmeztetést.
+    <html
+      lang="hu"
+      suppressHydrationWarning
+      className={`${spaceGrotesk.variable} ${inter.variable} ${unbounded.variable}`}
+    >
       <head>
+        {/* Téma beállítása MÉG a festés előtt - így nem villan fel a sötét téma
+            annak, aki a világosat választotta. Muszáj blokkolónak lennie. */}
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}

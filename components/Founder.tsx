@@ -17,10 +17,10 @@ export default function Founder() {
     <section
       ref={ref}
       aria-label="Az AI Flux alapítója"
-      style={{ background: "#050510", padding: "5rem 6% 6rem", position: "relative", overflow: "hidden" }}
+      style={{ background: "var(--bg2)", padding: "5rem 6% 6rem", position: "relative", overflow: "hidden" }}
     >
       {/* Háttér glow */}
-      <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 55% 50% at 70% 40%, rgba(0,102,255,.18) 0%, transparent 70%)", pointerEvents: "none" }} />
+      <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 55% 50% at 70% 40%, rgba(var(--blue-rgb),.18) 0%, transparent 70%)", pointerEvents: "none" }} />
 
       <div
         className="reveal"
@@ -36,9 +36,9 @@ export default function Founder() {
             position: "relative",
             width: "min(320px, 80vw)", aspectRatio: "1 / 1",
             borderRadius: 20, overflow: "hidden",
-            border: "1px solid rgba(0,229,255,.25)",
-            background: "linear-gradient(145deg, rgba(0,229,255,.06), rgba(0,102,255,.04))",
-            boxShadow: "0 0 60px rgba(0,229,255,.08), 0 24px 70px rgba(0,0,0,.5)",
+            border: "1px solid rgba(var(--cyan-rgb),.25)",
+            background: "linear-gradient(145deg, rgba(var(--cyan-rgb),.06), rgba(var(--blue-rgb),.04))",
+            boxShadow: "0 0 60px rgba(var(--cyan-rgb),.08), var(--shadow-lg)",
           }}>
             <img
               src="/alapito.jpg"
@@ -52,7 +52,7 @@ export default function Founder() {
         <div>
           <div style={{
             display: "inline-block",
-            background: "rgba(0,229,255,.08)", border: "1px solid rgba(0,229,255,.25)",
+            background: "rgba(var(--cyan-rgb),.08)", border: "1px solid rgba(var(--cyan-rgb),.25)",
             borderRadius: 100, padding: ".35rem 1.1rem",
             fontSize: ".72rem", fontWeight: 700, letterSpacing: ".14em", textTransform: "uppercase",
             color: "var(--cyan)", marginBottom: "1.4rem",
@@ -75,16 +75,16 @@ export default function Founder() {
             AI Flux alapító · 16 év e-commerce tapasztalat
           </p>
 
-          <p style={{ color: "rgba(255,255,255,.74)", fontSize: "1.02rem", lineHeight: 1.85, marginBottom: "1.2rem" }}>
+          <p style={{ color: "rgba(var(--ink-rgb),.74)", fontSize: "1.02rem", lineHeight: 1.85, marginBottom: "1.2rem" }}>
             16 évig vezettem e-commerce és termékadat-csapatokat olyan cégeknél, mint a{" "}
-            <span style={{ color: "#fff", fontWeight: 600 }}>MediaMarkt Magyarország</span> és az{" "}
-            <span style={{ color: "#fff", fontWeight: 600 }}>eMAG (Extreme Digital)</span> — tudom, hogyan
+            <span style={{ color: "var(--text)", fontWeight: 600 }}>MediaMarkt Magyarország</span> és az{" "}
+            <span style={{ color: "var(--text)", fontWeight: 600 }}>eMAG (Extreme Digital)</span> — tudom, hogyan
             működik egy cég belül, és hol vesznek el az órák ismétlődő feladatokban.
           </p>
 
-          <p style={{ color: "rgba(255,255,255,.74)", fontSize: "1.02rem", lineHeight: 1.85, marginBottom: "2rem" }}>
+          <p style={{ color: "rgba(var(--ink-rgb),.74)", fontSize: "1.02rem", lineHeight: 1.85, marginBottom: "2rem" }}>
             2023 óta az AI-ra specializálódtam: az{" "}
-            <span style={{ color: "#fff", fontWeight: 600 }}>AiBoT Academy</span> YouTube-csatornán
+            <span style={{ color: "var(--text)", fontWeight: 600 }}>AiBoT Academy</span> YouTube-csatornán
             magyarul tanítok AI eszközöket és automatizálást. Az AI Flux-szal ezt a két világot kötöm
             össze — valódi, működő megoldásokat építek magyar cégeknek.
           </p>
@@ -96,7 +96,7 @@ export default function Founder() {
               target="_blank" rel="noopener noreferrer"
               style={{
                 display: "inline-flex", alignItems: "center", gap: ".55rem",
-                background: "rgba(0,229,255,.08)", border: "1px solid rgba(0,229,255,.25)",
+                background: "rgba(var(--cyan-rgb),.08)", border: "1px solid rgba(var(--cyan-rgb),.25)",
                 color: "var(--cyan)", fontWeight: 600, fontSize: ".9rem",
                 padding: ".65rem 1.2rem", borderRadius: 8, textDecoration: "none",
               }}
@@ -111,8 +111,8 @@ export default function Founder() {
               target="_blank" rel="noopener noreferrer"
               style={{
                 display: "inline-flex", alignItems: "center", gap: ".55rem",
-                background: "rgba(255,255,255,.04)", border: "1px solid rgba(255,255,255,.12)",
-                color: "rgba(255,255,255,.85)", fontWeight: 600, fontSize: ".9rem",
+                background: "rgba(var(--ink-rgb),.04)", border: "1px solid rgba(var(--ink-rgb),.12)",
+                color: "rgba(var(--ink-rgb),.85)", fontWeight: 600, fontSize: ".9rem",
                 padding: ".65rem 1.2rem", borderRadius: 8, textDecoration: "none",
               }}
             >

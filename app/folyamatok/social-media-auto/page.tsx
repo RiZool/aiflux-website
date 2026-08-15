@@ -42,7 +42,7 @@ const H2 = {
 } as const;
 const P = {
   fontSize: "1rem",
-  color: "rgba(255,255,255,.78)",
+  color: "rgba(var(--ink-rgb),.78)",
   lineHeight: 1.75,
   margin: "0 0 1rem",
   maxWidth: 820,
@@ -56,7 +56,7 @@ function Tick({ ok }: { ok: boolean }) {
       height="16"
       viewBox="0 0 24 24"
       fill="none"
-      stroke={ok ? "var(--cyan)" : "rgba(255,255,255,.28)"}
+      stroke={ok ? "var(--cyan)" : "rgba(var(--ink-rgb),.28)"}
       strokeWidth="2.4"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -74,7 +74,7 @@ function List({ items, ok = true }: { items: string[]; ok?: boolean }) {
       {items.map((t, i) => (
         <li key={i} style={{ display: "flex", gap: ".7rem", alignItems: "flex-start" }}>
           <Tick ok={ok} />
-          <span style={{ fontSize: ".95rem", lineHeight: 1.6, color: "rgba(255,255,255,.8)" }}>{t}</span>
+          <span style={{ fontSize: ".95rem", lineHeight: 1.6, color: "rgba(var(--ink-rgb),.8)" }}>{t}</span>
         </li>
       ))}
     </ul>
@@ -143,8 +143,8 @@ export default function SocialBotDetailsPage() {
                 style={{
                   borderRadius: 14,
                   padding: "1rem 1.4rem",
-                  background: "linear-gradient(145deg, rgba(0,229,255,.09), rgba(0,102,255,.05))",
-                  border: "1px solid rgba(0,229,255,.28)",
+                  background: "linear-gradient(145deg, rgba(var(--cyan-rgb),.09), rgba(var(--blue-rgb),.05))",
+                  border: "1px solid rgba(var(--cyan-rgb),.28)",
                 }}
               >
                 <div
@@ -153,7 +153,7 @@ export default function SocialBotDetailsPage() {
                     fontWeight: 700,
                     letterSpacing: ".1em",
                     textTransform: "uppercase",
-                    color: "rgba(255,255,255,.45)",
+                    color: "rgba(var(--ink-rgb),.45)",
                     marginBottom: ".35rem",
                   }}
                 >
@@ -165,7 +165,7 @@ export default function SocialBotDetailsPage() {
               </div>
             ))}
           </div>
-          <p style={{ fontSize: ".8rem", color: "rgba(255,255,255,.4)", margin: "1rem 0 0" }}>{priceNote}</p>
+          <p style={{ fontSize: ".8rem", color: "rgba(var(--ink-rgb),.4)", margin: "1rem 0 0" }}>{priceNote}</p>
         </div>
       </section>
 
@@ -190,8 +190,8 @@ export default function SocialBotDetailsPage() {
                 style={{
                   borderRadius: 16,
                   padding: "1.6rem",
-                  background: "rgba(255,255,255,.025)",
-                  border: "1px solid rgba(255,255,255,.08)",
+                  background: "rgba(var(--ink-rgb),.025)",
+                  border: "1px solid rgba(var(--ink-rgb),.08)",
                 }}
               >
                 <div style={{ marginBottom: "1.3rem" }}>
@@ -226,8 +226,8 @@ export default function SocialBotDetailsPage() {
             style={{
               borderRadius: 16,
               padding: "1.6rem",
-              background: "rgba(255,255,255,.025)",
-              border: "1px solid rgba(255,255,255,.08)",
+              background: "rgba(var(--ink-rgb),.025)",
+              border: "1px solid rgba(var(--ink-rgb),.08)",
               marginTop: "1.4rem",
             }}
           >
@@ -252,9 +252,9 @@ export default function SocialBotDetailsPage() {
                   borderRadius: 14,
                   padding: "1.2rem 1.4rem",
                   background: a.highlight
-                    ? "linear-gradient(145deg, rgba(0,229,255,.08), rgba(0,102,255,.04))"
-                    : "rgba(255,255,255,.025)",
-                  border: a.highlight ? "1px solid rgba(0,229,255,.3)" : "1px solid rgba(255,255,255,.07)",
+                    ? "linear-gradient(145deg, rgba(var(--cyan-rgb),.08), rgba(var(--blue-rgb),.04))"
+                    : "rgba(var(--ink-rgb),.025)",
+                  border: a.highlight ? "1px solid rgba(var(--cyan-rgb),.3)" : "1px solid rgba(var(--ink-rgb),.07)",
                   display: "flex",
                   flexWrap: "wrap",
                   gap: "1rem",
@@ -289,7 +289,7 @@ export default function SocialBotDetailsPage() {
                       {a.includes.map((t, k) => (
                         <li key={k} style={{ display: "flex", gap: ".55rem", alignItems: "flex-start" }}>
                           <Tick ok />
-                          <span style={{ fontSize: ".85rem", lineHeight: 1.55, color: "rgba(255,255,255,.74)" }}>{t}</span>
+                          <span style={{ fontSize: ".85rem", lineHeight: 1.55, color: "rgba(var(--ink-rgb),.74)" }}>{t}</span>
                         </li>
                       ))}
                     </ul>
@@ -329,8 +329,8 @@ export default function SocialBotDetailsPage() {
                 style={{
                   borderRadius: 14,
                   padding: "1.2rem 1.4rem",
-                  background: "rgba(255,255,255,.025)",
-                  border: "1px solid rgba(255,255,255,.07)",
+                  background: "rgba(var(--ink-rgb),.025)",
+                  border: "1px solid rgba(var(--ink-rgb),.07)",
                 }}
               >
                 <div
@@ -343,7 +343,7 @@ export default function SocialBotDetailsPage() {
                   }}
                 >
                   <span style={{ fontSize: ".97rem", fontWeight: 600, flex: "1 1 220px" }}>{c.what}</span>
-                  <span style={{ fontSize: ".9rem", color: "rgba(255,255,255,.45)", textDecoration: "line-through" }}>
+                  <span style={{ fontSize: ".9rem", color: "rgba(var(--ink-rgb),.45)", textDecoration: "line-through" }}>
                     {c.market}
                   </span>
                   <span
@@ -366,7 +366,7 @@ export default function SocialBotDetailsPage() {
                       lineHeight: 1.65,
                       margin: ".9rem 0 0",
                       paddingTop: ".9rem",
-                      borderTop: "1px solid rgba(255,255,255,.06)",
+                      borderTop: "1px solid rgba(var(--ink-rgb),.06)",
                     }}
                   >
                     {c.note}
@@ -386,8 +386,8 @@ export default function SocialBotDetailsPage() {
             style={{
               borderRadius: 16,
               padding: "1.6rem",
-              background: "rgba(255,255,255,.025)",
-              border: "1px solid rgba(255,255,255,.08)",
+              background: "rgba(var(--ink-rgb),.025)",
+              border: "1px solid rgba(var(--ink-rgb),.08)",
             }}
           >
             <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "grid", gap: ".9rem" }}>
@@ -397,9 +397,9 @@ export default function SocialBotDetailsPage() {
                   style={{
                     fontSize: ".93rem",
                     lineHeight: 1.7,
-                    color: "rgba(255,255,255,.78)",
+                    color: "rgba(var(--ink-rgb),.78)",
                     paddingLeft: "1rem",
-                    borderLeft: "2px solid rgba(0,229,255,.3)",
+                    borderLeft: "2px solid rgba(var(--cyan-rgb),.3)",
                   }}
                 >
                   {t}
@@ -431,12 +431,12 @@ export default function SocialBotDetailsPage() {
                 style={{
                   fontSize: ".88rem",
                   fontWeight: 600,
-                  color: "rgba(255,255,255,.82)",
+                  color: "rgba(var(--ink-rgb),.82)",
                   textDecoration: "none",
                   padding: ".6rem 1.1rem",
                   borderRadius: 100,
-                  background: "rgba(255,255,255,.04)",
-                  border: "1px solid rgba(255,255,255,.1)",
+                  background: "rgba(var(--ink-rgb),.04)",
+                  border: "1px solid rgba(var(--ink-rgb),.1)",
                 }}
               >
                 {r.label} →
@@ -452,7 +452,7 @@ export default function SocialBotDetailsPage() {
               padding: "1rem 2.2rem",
               borderRadius: 100,
               background: "linear-gradient(135deg, var(--cyan), var(--blue))",
-              color: "#000",
+              color: "var(--on-accent)",
               fontWeight: 700,
               fontSize: ".95rem",
               textDecoration: "none",

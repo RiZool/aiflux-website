@@ -13,7 +13,7 @@ export default function PlanIcon({ id, highlight = false, size = 46 }: { id: str
     <div className="icon-box" style={{
       width: size, height: size, borderRadius: 10,
       display: "flex", alignItems: "center", justifyContent: "center",
-      background: highlight ? "rgba(0,229,255,.12)" : "rgba(0,229,255,.07)",
+      background: highlight ? "rgba(var(--cyan-rgb),.12)" : "rgba(var(--cyan-rgb),.07)",
       border: `1px solid rgba(0,229,255,${highlight ? ".35" : ".18"})`,
       flexShrink: 0,
     }}>

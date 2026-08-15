@@ -1,7 +1,8 @@
 ﻿"use client";
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
+import Logo from "./Logo";
+import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
   { label: "Szolgáltatások", href: "/#services" },
@@ -41,9 +42,9 @@ export default function Navbar() {
         position: "fixed", top: 0, left: 0, right: 0, zIndex: 1000,
         display: "flex", alignItems: "center", justifyContent: "space-between",
         padding: ".75rem 5%",
-        background: scrolled || menuOpen ? "rgba(0,0,0,.95)" : "transparent",
+        background: scrolled || menuOpen ? "var(--nav-bg)" : "transparent",
         backdropFilter: scrolled || menuOpen ? "blur(24px)" : "none",
-        borderBottom: scrolled || menuOpen ? "1px solid rgba(0,229,255,.08)" : "1px solid transparent",
+        borderBottom: scrolled || menuOpen ? "1px solid rgba(var(--cyan-rgb),.08)" : "1px solid transparent",
         transition: "all .4s ease",
       }}>
         {/* Scroll progress bar */}
@@ -55,14 +56,12 @@ export default function Navbar() {
           transformOrigin: "left center",
           opacity: scrolled ? 1 : 0,
           transition: "opacity .3s ease",
-          boxShadow: "0 0 8px rgba(0,229,255,.5)",
+          boxShadow: "0 0 8px rgba(var(--cyan-rgb),.5)",
           pointerEvents: "none",
         }} />
         {/* Logo */}
         <Link href="/#hero" onClick={closeMenu} style={{ display: "inline-flex", alignItems: "center", textDecoration: "none" }}>
-          <Image src="/logo.png" alt="AI Flux logo"
-            width={0} height={0} sizes="100vw"
-            style={{ width: "auto", height: "36px" }} priority />
+          <Logo height={36} priority />
         </Link>
 
         {/* Desktop nav links */}
@@ -71,16 +70,22 @@ export default function Navbar() {
           {navLinks.map(({ label, href }) => (
             <li key={label}>
               <Link href={href} className="nav-link" style={{
-                color: "rgba(255,255,255,.78)", textDecoration: "none",
+                color: "rgba(var(--ink-rgb),.78)", textDecoration: "none",
                 fontSize: ".88rem", fontWeight: 500, letterSpacing: ".02em", transition: "color .2s",
               }}
                 onMouseEnter={e => (e.currentTarget.style.color = "var(--cyan)")}
-                onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,.78)")}>
+                onMouseLeave={e => (e.currentTarget.style.color = "rgba(var(--ink-rgb),.78)")}>
                 {label}
               </Link>
             </li>
           ))}
         </ul>
+
+        {/* Jobb oldali csoport: témaváltó + CTA (desktop) / hamburger (mobil) */}
+        <div style={{ display: "flex", alignItems: "center", gap: ".7rem" }}>
+
+        {/* Témaváltó - asztalon és mobilon egyaránt látszik, menü nélkül is */}
+        <ThemeToggle />
 
         {/* Desktop CTA */}
         <Link href="/foglalas" className="hidden-mobile" style={{
@@ -89,7 +94,7 @@ export default function Navbar() {
           fontSize: ".83rem", fontWeight: 600,
           textDecoration: "none", letterSpacing: ".04em", transition: "all .25s",
         }}
-          onMouseEnter={e => { e.currentTarget.style.background = "var(--cyan)"; e.currentTarget.style.color = "#000"; }}
+          onMouseEnter={e => { e.currentTarget.style.background = "var(--cyan)"; e.currentTarget.style.color = "var(--on-accent)"; }}
           onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "var(--cyan)"; }}>
           Ajánlatot kérek
         </Link>
@@ -129,12 +134,13 @@ export default function Navbar() {
             transform: menuOpen ? "rotate(-45deg) translate(5px, -5px)" : "none",
           }} />
         </button>
+        </div>
       </nav>
 
       {/* Mobile overlay menü */}
       <div style={{
         position: "fixed", inset: 0, zIndex: 999,
-        background: "rgba(0,0,0,.97)",
+        background: "var(--overlay-bg)",
         backdropFilter: "blur(20px)",
         display: "flex", flexDirection: "column",
         alignItems: "center", justifyContent: "center",
@@ -158,14 +164,14 @@ export default function Navbar() {
                   fontFamily: "var(--font-heading)",
                   fontSize: "clamp(1.6rem,6vw,2.2rem)",
                   fontWeight: 700,
-                  color: "rgba(255,255,255,.85)",
+                  color: "rgba(var(--ink-rgb),.85)",
                   textDecoration: "none",
                   padding: ".65rem 2rem",
                   letterSpacing: "-.01em",
                   transition: "color .2s",
                 }}
                 onMouseEnter={e => (e.currentTarget.style.color = "var(--cyan)")}
-                onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,.85)")}
+                onMouseLeave={e => (e.currentTarget.style.color = "rgba(var(--ink-rgb),.85)")}
               >
                 {label}
               </Link>
@@ -182,7 +188,7 @@ export default function Navbar() {
             transform: menuOpen ? "translateY(0)" : "translateY(20px)",
             transition: "opacity .4s ease .35s, transform .4s ease .35s",
             background: "linear-gradient(90deg,var(--cyan),var(--blue))",
-            color: "#000", fontWeight: 700,
+            color: "var(--on-accent)", fontWeight: 700,
             padding: ".9rem 2.8rem", borderRadius: 6,
             fontSize: "1rem", textDecoration: "none",
             fontFamily: "var(--font-heading)",
@@ -192,12 +198,22 @@ export default function Navbar() {
           Ajánlatot kérek →
         </Link>
 
+        {/* Témaváltó a mobil menüben is - feliratos változat */}
+        <div style={{
+          marginTop: "1.6rem",
+          opacity: menuOpen ? 1 : 0,
+          transform: menuOpen ? "translateY(0)" : "translateY(20px)",
+          transition: "opacity .4s ease .42s, transform .4s ease .42s",
+        }}>
+          <ThemeToggle variant="pill" />
+        </div>
+
         {/* Email link alul */}
         <a href="mailto:info@aiflux.hu" onClick={closeMenu} style={{
           marginTop: "2rem",
           opacity: menuOpen ? 1 : 0,
           transition: "opacity .4s ease .42s",
-          color: "rgba(255,255,255,.35)",
+          color: "rgba(var(--ink-rgb),.35)",
           fontSize: ".85rem", textDecoration: "none",
         }}>
           info@aiflux.hu

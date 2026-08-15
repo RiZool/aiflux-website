@@ -1,25 +1,134 @@
 @import "tailwindcss";
 
+/* ══════════════════════════════════════════════════════════════
+   TÉMA TOKENEK
+
+   Két téma van: SÖTÉT (alap) és VILÁGOS (`html[data-theme="light"]`).
+   A váltó a <html> elemre teszi a data-theme attribútumot.
+
+   A színek nagy része RGB-csatorna változóként él (`--ink-rgb`,
+   `--cyan-rgb`, `--blue-rgb`), így a komponensekben maradhat az
+   eredeti alfa-érték: rgba(var(--ink-rgb), .78). Témaváltáskor
+   csak a csatornák cserélődnek, az áttetszőség-arányok nem.
+   ══════════════════════════════════════════════════════════════ */
 :root {
+  color-scheme: dark;
+
+  /* Márkaszínek */
   --cyan: #00E5FF;
   --blue: #0066FF;
   --mid: #00AAFF;
+  --cyan-rgb: 0, 229, 255;
+  --blue-rgb: 0, 102, 255;
+
+  /* "Tinta" = az alapszöveg színe. Sötét témán fehér, világoson sötétkék. */
+  --ink-rgb: 255, 255, 255;
+
+  /* Felületek */
   --bg: #000000;
   --bg2: #050510;
   --bg3: #08081a;
+  --bg-elev: #0b0b1f;
+
+  /* Üveg / kártya */
   --glass: rgba(255, 255, 255, 0.04);
   --glass-border: rgba(0, 229, 255, 0.18);
+
+  /* Szöveg */
+  --text: #ffffff;
   --muted: rgba(255, 255, 255, 0.6);
+  --on-accent: #000000;   /* szöveg cyan/gradiens kitöltésen */
+
+  /* Chrome (navbar, mobil menü, lebegő panelek) */
+  --nav-bg: rgba(0, 0, 0, 0.95);
+  --overlay-bg: rgba(0, 0, 0, 0.97);
+  --panel-bg: rgba(5, 8, 22, 0.97);
+
+  /* Árnyékok — világos témán jóval finomabbak és kékes tónusúak */
+  --shadow-sm: 0 8px 24px rgba(0, 0, 0, 0.30);
+  --shadow-md: 0 16px 40px rgba(0, 0, 0, 0.30);
+  --shadow-lg: 0 24px 70px rgba(0, 0, 0, 0.50);
+  --shadow-xl: 0 24px 80px rgba(0, 0, 0, 0.60);
+  --glow-text: drop-shadow(0 0 20px rgba(0, 229, 255, 0.35));
+
+  /* Szekciók mögötti fény-tócsák (sötét kék dörzs a fekete fölött) */
+  --glow-pool-soft: rgba(0, 60, 140, 0.35);
+  --glow-pool-strong: rgba(0, 40, 110, 0.45);
+
+  /* Hibajelzés / ✕ jelek */
+  --danger: rgb(255, 100, 100);
+  --danger-rgb: 255, 80, 80;
+
+  /* Hero réteg-hangolás */
+  --hero-bg: var(--bg);
+  --hero-photo-opacity: 0.35;
+  --hero-scrim: rgba(0, 5, 22, 0.52);
+  --hero-fade: rgba(0, 0, 0, 0.88);
+  --particle-rgb: 0, 229, 255;
+
   /* A --font-heading, --font-inter és --font-display változókat a next/font
      definiálja a <html> elemen — itt NEM szabad felüldefiniálni! */
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* ── VILÁGOS téma ─────────────────────────────────────────────
+   Az aiflux-website-vilagos design-fájl token-rétege alapján.
+   A cyan sötétebbre hangolva, hogy fehér háttéren is olvasható
+   legyen (a #00E5FF fehéren kontraszt nélküli). */
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --cyan: #0088cc;
+  --blue: #0052e0;
+  --mid: #0090ff;
+  --cyan-rgb: 0, 150, 230;
+  --blue-rgb: 0, 90, 230;
+
+  --ink-rgb: 20, 34, 58;
+
+  --bg: #ffffff;
+  --bg2: #f3f8fd;
+  --bg3: #e9f2fc;
+  --bg-elev: #ffffff;
+
+  --glass: #ffffff;
+  --glass-border: rgba(0, 120, 220, 0.18);
+
+  --text: #0b1526;
+  --muted: rgba(20, 34, 58, 0.66);
+  --on-accent: #ffffff;
+
+  --nav-bg: rgba(255, 255, 255, 0.9);
+  --overlay-bg: rgba(255, 255, 255, 0.97);
+  --panel-bg: rgba(255, 255, 255, 0.97);
+
+  --shadow-sm: 0 8px 24px rgba(12, 30, 70, 0.08);
+  --shadow-md: 0 16px 40px rgba(12, 30, 70, 0.10);
+  --shadow-lg: 0 24px 70px rgba(12, 30, 70, 0.12);
+  --shadow-xl: 0 24px 80px rgba(12, 30, 70, 0.14);
+  --glow-text: none;
+
+  /* Fehéren a sötétkék tócsa piszkos foltnak látszana — halvány
+     égszínkék derengés lép a helyére. */
+  --glow-pool-soft: rgba(0, 150, 255, 0.10);
+  --glow-pool-strong: rgba(0, 130, 255, 0.13);
+
+  --danger: rgb(210, 58, 58);
+  --danger-rgb: 226, 59, 59;
+
+  /* Fehér helyett halvány kék derengés — enélkül a hero üresnek hat */
+  --hero-bg: linear-gradient(180deg, #ffffff 0%, #e9f3fd 52%, #ffffff 100%);
+  --hero-photo-opacity: 0.10;
+  --hero-scrim: rgba(255, 255, 255, 0.55);
+  --hero-fade: rgba(255, 255, 255, 0.88);
+  --particle-rgb: 0, 130, 210;
+}
+
 html { scroll-behavior: smooth; }
 
 body {
-  background: #000;
-  color: #fff;
+  background: var(--bg);
+  color: var(--text);
   font-family: var(--font-inter), 'Inter', sans-serif;
   overflow-x: hidden;
 }
@@ -28,11 +137,11 @@ body {
 section[id], footer[id] { scroll-margin-top: 76px; }
 
 /* Selection */
-::selection { background: rgba(0, 229, 255, 0.28); color: #fff; }
+::selection { background: rgba(var(--cyan-rgb), 0.28); color: var(--text); }
 
 /* Scrollbar */
 ::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #000; }
+::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(var(--cyan), var(--blue));
   border-radius: 2px;
@@ -131,8 +240,8 @@ section[id], footer[id] { scroll-margin-top: 76px; }
 }
 .glass-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 20px 60px rgba(0,229,255,.12);
-  border-color: rgba(0,229,255,.4);
+  box-shadow: 0 20px 60px rgba(var(--cyan-rgb),.12);
+  border-color: rgba(var(--cyan-rgb),.4);
 }
 .glass-card:hover::before { opacity: 1; }
 
@@ -145,7 +254,7 @@ section[id], footer[id] { scroll-margin-top: 76px; }
   opacity: 0;
   background: radial-gradient(
     420px circle at var(--mx, 50%) var(--my, 50%),
-    rgba(0, 229, 255, 0.09),
+    rgba(var(--cyan-rgb),0.09),
     transparent 65%
   );
   transition: opacity .4s ease;
@@ -166,6 +275,8 @@ section[id], footer[id] { scroll-margin-top: 76px; }
   position: absolute;
   top: 0; left: -90%;
   width: 55%; height: 100%;
+  /* A fény-söprés mindig fehér: telített gradiens gombon fut végig,
+     tehát nem a téma tintaszínét követi. */
   background: linear-gradient(100deg, transparent, rgba(255,255,255,.55), transparent);
   transform: skewX(-20deg);
   transition: left .6s ease;
@@ -175,7 +286,7 @@ section[id], footer[id] { scroll-margin-top: 76px; }
 .btn-shine:hover::after { left: 140%; }
 
 .btn-glow:hover {
-  box-shadow: 0 0 50px rgba(0,229,255,.55), 0 0 90px rgba(0,229,255,.2) !important;
+  box-shadow: 0 0 50px rgba(var(--cyan-rgb),.55), 0 0 90px rgba(var(--cyan-rgb),.2) !important;
 }
 
 /* Nyíl link — hover-re a nyíl elcsúszik */
@@ -205,8 +316,8 @@ section[id], footer[id] { scroll-margin-top: 76px; }
 /* ── Háttér díszek ────────────────────────────────────────────── */
 .grid-bg {
   background-image:
-    linear-gradient(rgba(0, 229, 255, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 229, 255, 0.045) 1px, transparent 1px);
+    linear-gradient(rgba(var(--cyan-rgb),0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--cyan-rgb),0.045) 1px, transparent 1px);
   background-size: 56px 56px;
   -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 45%, #000 30%, transparent 75%);
   mask-image: radial-gradient(ellipse 75% 65% at 50% 45%, #000 30%, transparent 75%);
@@ -237,7 +348,7 @@ section[id], footer[id] { scroll-margin-top: 76px; }
 .pulse-ring {
   position: absolute;
   top: 50%; left: 50%;
-  border: 1px solid rgba(0, 229, 255, 0.25);
+  border: 1px solid rgba(var(--cyan-rgb),0.25);
   border-radius: 50%;
   pointer-events: none;
   animation: ring-pulse 4.5s var(--ease-out) infinite;
@@ -250,7 +361,7 @@ section[id], footer[id] { scroll-margin-top: 76px; }
   position: absolute;
   inset: -3px;
   border-radius: 50%;
-  border: 1px solid rgba(0, 229, 255, 0.35);
+  border: 1px solid rgba(var(--cyan-rgb),0.35);
   opacity: 0;
   animation: step-ring 3.6s ease-out infinite;
   animation-delay: inherit;
@@ -276,11 +387,11 @@ section[id], footer[id] { scroll-margin-top: 76px; }
   padding: 1px;
   background: conic-gradient(
     from var(--angle),
-    rgba(0, 229, 255, 0.7),
-    rgba(0, 102, 255, 0.1) 30%,
-    rgba(0, 229, 255, 0.05) 50%,
-    rgba(0, 102, 255, 0.4) 75%,
-    rgba(0, 229, 255, 0.7)
+    rgba(var(--cyan-rgb),0.7),
+    rgba(var(--blue-rgb),0.1) 30%,
+    rgba(var(--cyan-rgb),0.05) 50%,
+    rgba(var(--blue-rgb),0.4) 75%,
+    rgba(var(--cyan-rgb),0.7)
   );
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
@@ -312,8 +423,8 @@ section[id], footer[id] { scroll-margin-top: 76px; }
 .glass-card:hover .icon-box,
 .spotlight-card:hover .icon-box {
   transform: scale(1.08) rotate(-4deg);
-  box-shadow: 0 0 24px rgba(0, 229, 255, 0.25);
-  background: rgba(0, 229, 255, 0.14) !important;
+  box-shadow: 0 0 24px rgba(var(--cyan-rgb),0.25);
+  background: rgba(var(--cyan-rgb),0.14) !important;
 }
 
 /* Stat number */
@@ -322,7 +433,7 @@ section[id], footer[id] { scroll-margin-top: 76px; }
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  filter: drop-shadow(0 0 20px rgba(0,229,255,.35));
+  filter: var(--glow-text);
 }
 
 /* Heading font helper class */
@@ -369,8 +480,8 @@ section[id], footer[id] { scroll-margin-top: 76px; }
 .flow-chip {
   display: inline-block;
   font-size: .75rem;
-  color: rgba(255, 255, 255, .78);
-  background: rgba(0, 229, 255, .07);
+  color: rgba(var(--ink-rgb),.78);
+  background: rgba(var(--cyan-rgb),.07);
   border: 1px solid var(--glass-border);
   border-radius: 5px;
   padding: .22rem .55rem;
@@ -388,9 +499,9 @@ section[id], footer[id] { scroll-margin-top: 76px; }
   gap: .7rem;
   margin-top: 1rem;
   padding: .85rem 1.1rem;
-  border: 1px dashed rgba(0, 229, 255, .32);
+  border: 1px dashed rgba(var(--cyan-rgb),.32);
   border-radius: 10px;
-  background: rgba(0, 229, 255, .03);
+  background: rgba(var(--cyan-rgb),.03);
   color: var(--muted);
   font-size: .88rem;
   line-height: 1.5;
@@ -398,6 +509,45 @@ section[id], footer[id] { scroll-margin-top: 76px; }
 @media (max-width: 860px) {
   .flow-grid { grid-template-columns: 1fr; }
   .flow-arrow svg { transform: rotate(90deg); }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   VILÁGOS TÉMA — komponens-finomhangolás
+
+   A tokenek nagy részét már a :root[data-theme="light"] blokk
+   elintézi. Itt csak az marad, ami sötét háttérre lett tervezve
+   és fehéren máshogy kell viselkednie.
+   ══════════════════════════════════════════════════════════════ */
+/* ── Téma-tudatos logó ────────────────────────────────────────
+   A logo.png "AI" felirata fehér — fehér háttéren eltűnne. Tisztán
+   CSS-sel váltunk a két PNG közt, hogy ne legyen hydration-eltérés. */
+.logo-light { display: none; }
+:root[data-theme="light"] .logo-dark { display: none; }
+:root[data-theme="light"] .logo-light { display: block; }
+
+/* Az üvegkártya világoson nem áttetsző — tömör fehér lap,
+   amit finom árnyék emel ki a háttérből. */
+:root[data-theme="light"] .glass-card { box-shadow: var(--shadow-sm); }
+:root[data-theme="light"] .glass-card:hover { box-shadow: 0 22px 55px rgba(var(--blue-rgb), .16); }
+
+/* Az orbok fehéren hamar szennyesnek látszanak — halványítjuk őket. */
+:root[data-theme="light"] .orb { opacity: .6; }
+
+/* A rács vonalai fehéren kontrasztosabbak kell legyenek. */
+:root[data-theme="light"] .grid-bg {
+  background-image:
+    linear-gradient(rgba(var(--cyan-rgb), 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--cyan-rgb), 0.07) 1px, transparent 1px);
+}
+
+/* Fehér háttéren a szórt cyan-fény elmosódik — helyette vetett árnyék. */
+:root[data-theme="light"] .btn-glow:hover {
+  box-shadow: 0 10px 30px rgba(var(--blue-rgb), .32), 0 2px 10px rgba(var(--blue-rgb), .18) !important;
+}
+
+/* Témaváltás — lágy átmenet, hogy ne villanjon a lap */
+body {
+  transition: background-color .3s ease, color .3s ease;
 }
 
 @media (prefers-reduced-motion: reduce) {

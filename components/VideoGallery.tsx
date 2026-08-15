@@ -46,7 +46,7 @@ export default function VideoGallery({ videos }: { videos: CaseVideo[] }) {
               width: "100%",
               height: "auto",
               aspectRatio: `${v.width ?? 1080} / ${v.height ?? 1920}`,
-              background: "#000",
+              background: "var(--bg)",
               objectFit: "contain",
             }}
           >

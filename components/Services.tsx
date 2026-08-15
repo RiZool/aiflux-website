@@ -16,7 +16,7 @@ const services = [
     features: ["Next.js & React", "SEO-first felépítés", "3× gyorsabb szállítás"],
     icon: (
       <svg viewBox="0 0 26 26" fill="none" stroke="url(#ic1)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ width: 26, height: 26 }}>
-        <defs><linearGradient id="ic1" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#00E5FF" /><stop offset="1" stopColor="#0066FF" /></linearGradient></defs>
+        <defs><linearGradient id="ic1" x1="0" y1="0" x2="1" y2="1"><stop style={{ stopColor: "var(--cyan)" }} /><stop offset="1" style={{ stopColor: "var(--blue)" }} /></linearGradient></defs>
         <rect x="2" y="3" width="22" height="16" rx="2" />
         <path d="M8 19v4M18 19v4M5 23h16" />
         <path d="M7 9l3 3-3 3M13 15h6" />
@@ -30,7 +30,7 @@ const services = [
     features: ["Make & n8n folyamatok", "AI automatizmusok", "Hírlevél & e-mail automatizálás"],
     icon: (
       <svg viewBox="0 0 26 26" fill="none" stroke="url(#ic2)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ width: 26, height: 26 }}>
-        <defs><linearGradient id="ic2" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#00E5FF" /><stop offset="1" stopColor="#0066FF" /></linearGradient></defs>
+        <defs><linearGradient id="ic2" x1="0" y1="0" x2="1" y2="1"><stop style={{ stopColor: "var(--cyan)" }} /><stop offset="1" style={{ stopColor: "var(--blue)" }} /></linearGradient></defs>
         <circle cx="5" cy="13" r="2" /><circle cx="13" cy="5" r="2" />
         <circle cx="21" cy="13" r="2" /><circle cx="13" cy="21" r="2" />
         <path d="M7 13h4M13 7v4M15 13h4M13 15v4" />
@@ -45,7 +45,7 @@ const services = [
     features: ["RAG-alapú tudásbázis", "Többcsatornás telepítés", "Magyar nyelvű AI"],
     icon: (
       <svg viewBox="0 0 26 26" fill="none" stroke="url(#ic3)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ width: 26, height: 26 }}>
-        <defs><linearGradient id="ic3" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#00E5FF" /><stop offset="1" stopColor="#0066FF" /></linearGradient></defs>
+        <defs><linearGradient id="ic3" x1="0" y1="0" x2="1" y2="1"><stop style={{ stopColor: "var(--cyan)" }} /><stop offset="1" style={{ stopColor: "var(--blue)" }} /></linearGradient></defs>
         <path d="M4 6h18a1 1 0 011 1v10a1 1 0 01-1 1H6l-4 3V7a1 1 0 011-1z" />
         <circle cx="9" cy="12" r="1.2" fill="url(#ic3)" />
         <circle cx="13" cy="12" r="1.2" fill="url(#ic3)" />
@@ -92,10 +92,10 @@ export default function Services() {
             onMouseMove={trackSpotlight}
             style={{ padding: "2.4rem" }}>
             <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: "1.5rem", position: "relative", zIndex: 1 }}>
-              <div className="icon-box" style={{ width: 52, height: 52, background: "rgba(0,229,255,.08)", border: "1px solid rgba(0,229,255,.2)", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <div className="icon-box" style={{ width: 52, height: 52, background: "rgba(var(--cyan-rgb),.08)", border: "1px solid rgba(var(--cyan-rgb),.2)", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center" }}>
                 {s.icon}
               </div>
-              <span style={{ fontSize: ".72rem", fontWeight: 700, color: "rgba(0,229,255,.4)", letterSpacing: ".1em" }}>
+              <span style={{ fontSize: ".72rem", fontWeight: 700, color: "rgba(var(--cyan-rgb),.4)", letterSpacing: ".1em" }}>
                 {s.tag}
               </span>
             </div>
@@ -113,8 +113,8 @@ export default function Services() {
                 <span key={j} style={{
                   fontSize: ".75rem", fontWeight: 500,
                   color: "var(--cyan)", letterSpacing: ".04em",
-                  background: "rgba(0,229,255,.07)",
-                  border: "1px solid rgba(0,229,255,.15)",
+                  background: "rgba(var(--cyan-rgb),.07)",
+                  border: "1px solid rgba(var(--cyan-rgb),.15)",
                   borderRadius: 100, padding: ".25rem .75rem",
                 }}>
                   {f}

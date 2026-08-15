@@ -73,7 +73,7 @@ export default function ZoomableImage({ src, alt, width, height, sizes, priority
           width: 42,
           height: 42,
           borderRadius: "50%",
-          border: "1px solid rgba(255,255,255,.2)",
+          border: "1px solid rgba(var(--ink-rgb),.2)",
           background: "rgba(0,0,0,.4)",
           color: "#fff",
           fontSize: 22,

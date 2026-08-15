@@ -69,6 +69,14 @@ export default function Hero() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
+    // A részecskeszín a témából jön (világoson sötétebb kék, hogy fehéren is látszódjon).
+    // MutationObserver figyeli a témaváltást, mert a canvas nem "örökli" a CSS-t.
+    const readParticleRgb = () =>
+      getComputedStyle(document.documentElement).getPropertyValue("--particle-rgb").trim() || "0,229,255";
+    let particleRgb = readParticleRgb();
+    const themeObserver = new MutationObserver(() => { particleRgb = readParticleRgb(); });
+    themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+
     let animId: number;
     type Particle = { x: number; y: number; size: number; speed: number; opacity: number; dir: number };
     const pts: Particle[] = [];
@@ -99,14 +107,14 @@ export default function Hero() {
         if (p.y < -8) { p.y = canvas.height + 8; p.x = Math.random() * canvas.width; }
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(0,229,255,${p.opacity})`;
+        ctx.fillStyle = `rgba(${particleRgb},${p.opacity})`;
         ctx.fill();
       }
       animId = requestAnimationFrame(draw);
     };
     draw();
 
-    return () => { cancelAnimationFrame(animId); ro.disconnect(); };
+    return () => { cancelAnimationFrame(animId); ro.disconnect(); themeObserver.disconnect(); };
   }, []);
 
   return (
@@ -116,12 +124,12 @@ export default function Hero() {
       style={{
         position: "relative", width: "100%", height: "100vh",
         minHeight: 700, display: "flex", alignItems: "center",
-        justifyContent: "center", overflow: "hidden", background: "#000",
+        justifyContent: "center", overflow: "hidden", background: "var(--hero-bg)",
       }}
     >
       {/* Háttér kép - sötétítve */}
       <Image src="/hero.jpg" alt="AI Flux - technológiai háttér" fill priority
-        style={{ objectFit: "cover", objectPosition: "center 30%", opacity: 0.35 }} />
+        style={{ objectFit: "cover", objectPosition: "center 30%", opacity: "var(--hero-photo-opacity)" as unknown as number }} />
 
       {/* Particles */}
       <canvas ref={canvasRef} aria-hidden="true" style={{
@@ -130,16 +138,16 @@ export default function Hero() {
       }} />
 
       {/* Gradient rétegek */}
-      <div style={{ position: "absolute", inset: 0, zIndex: 2, background: "rgba(0,5,22,.52)", pointerEvents: "none" }} />
-      <div style={{ position: "absolute", inset: 0, zIndex: 2, pointerEvents: "none", background: "radial-gradient(ellipse 65% 55% at 50% 52%, rgba(0,100,255,.14) 0%, transparent 70%)" }} />
-      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, zIndex: 2, height: "55%", pointerEvents: "none", background: "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,.88) 70%, #000 100%)" }} />
+      <div style={{ position: "absolute", inset: 0, zIndex: 2, background: "var(--hero-scrim)", pointerEvents: "none" }} />
+      <div style={{ position: "absolute", inset: 0, zIndex: 2, pointerEvents: "none", background: "radial-gradient(ellipse 65% 55% at 50% 52%, rgba(var(--blue-rgb),.14) 0%, transparent 70%)" }} />
+      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, zIndex: 2, height: "55%", pointerEvents: "none", background: "linear-gradient(to bottom, transparent 0%, var(--hero-fade) 70%, var(--bg) 100%)" }} />
 
       {/* Finom rács-háttér */}
       <div className="grid-bg" aria-hidden="true" style={{ position: "absolute", inset: 0, zIndex: 2, pointerEvents: "none" }} />
 
       {/* Lebegő fény-orbok */}
-      <div className="orb orb-a" aria-hidden="true" style={{ width: 380, height: 380, top: "12%", left: "8%", zIndex: 2, background: "radial-gradient(circle, rgba(0,229,255,.13) 0%, transparent 70%)" }} />
-      <div className="orb orb-b" aria-hidden="true" style={{ width: 460, height: 460, bottom: "8%", right: "5%", zIndex: 2, background: "radial-gradient(circle, rgba(0,102,255,.16) 0%, transparent 70%)" }} />
+      <div className="orb orb-a" aria-hidden="true" style={{ width: 380, height: 380, top: "12%", left: "8%", zIndex: 2, background: "radial-gradient(circle, rgba(var(--cyan-rgb),.13) 0%, transparent 70%)" }} />
+      <div className="orb orb-b" aria-hidden="true" style={{ width: 460, height: 460, bottom: "8%", right: "5%", zIndex: 2, background: "radial-gradient(circle, rgba(var(--blue-rgb),.16) 0%, transparent 70%)" }} />
 
       {/* Fő tartalom - lépcsőzetes belépő animáció */}
       <div style={{ position: "relative", zIndex: 3, textAlign: "center", padding: "0 1.5rem", maxWidth: 860 }}>
@@ -149,10 +157,10 @@ export default function Hero() {
           marginBottom: "2rem", padding: ".38rem 1.05rem", borderRadius: 100,
           fontSize: ".7rem", fontWeight: 600, letterSpacing: ".14em",
           textTransform: "uppercase", color: "var(--cyan)",
-          background: "rgba(0,229,255,.07)", border: "1px solid rgba(0,229,255,.28)",
+          background: "rgba(var(--cyan-rgb),.07)", border: "1px solid rgba(var(--cyan-rgb),.28)",
           ...stagger(visible, 0),
         }}>
-          <span className="pulse-dot" style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--cyan)", display: "inline-block", boxShadow: "0 0 6px rgba(0,229,255,.7)" }} />
+          <span className="pulse-dot" style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--cyan)", display: "inline-block", boxShadow: "0 0 6px rgba(var(--cyan-rgb),.7)" }} />
           AI-Natív Fejlesztő Ügynökség · Magyarország
         </div>
 
@@ -164,7 +172,7 @@ export default function Hero() {
           marginBottom: "1.2rem", letterSpacing: "-.02em",
           ...stagger(visible, 1),
         }}>
-          <span style={{ display: "block", color: "#fff" }}>Az AI nem helyettesít,</span>
+          <span style={{ display: "block", color: "var(--text)" }}>Az AI nem helyettesít,</span>
           <span style={{ display: "block" }}>
             csupán <span className="gradient-text accent-display" style={{ fontWeight: 800 }}>FELERŐSÍT.</span>
           </span>
@@ -178,7 +186,7 @@ export default function Hero() {
           fontFamily: "'Courier New', monospace",
           ...stagger(visible, 2),
         }}>
-          <span style={{ color: "rgba(0,229,255,.4)" }}>{"// "}</span>
+          <span style={{ color: "rgba(var(--cyan-rgb),.4)" }}>{"// "}</span>
           <span style={{ color: "var(--cyan)" }}>{typed}</span>
           <span className="blink" style={{ marginLeft: 1, color: "var(--cyan)" }}>▋</span>
         </div>
@@ -186,7 +194,7 @@ export default function Hero() {
         {/* Alcím */}
         <p style={{
           fontSize: "clamp(.92rem,1.5vw,1.07rem)",
-          color: "rgba(255,255,255,.67)",
+          color: "rgba(var(--ink-rgb),.67)",
           maxWidth: 555, margin: "0 auto 3rem", lineHeight: 1.85,
           ...stagger(visible, 3),
         }}>
@@ -199,10 +207,10 @@ export default function Hero() {
           <a href="/foglalas" className="btn-shine btn-glow arrow-link" style={{
             display: "inline-flex", alignItems: "center", gap: ".5rem",
             background: "linear-gradient(90deg,var(--cyan),var(--blue))",
-            color: "#000", fontWeight: 700, padding: ".9rem 2.4rem",
+            color: "var(--on-accent)", fontWeight: 700, padding: ".9rem 2.4rem",
             borderRadius: 6, textDecoration: "none", fontSize: ".97rem",
             letterSpacing: ".04em", fontFamily: "var(--font-heading)",
-            boxShadow: "0 0 28px rgba(0,229,255,.4), 0 0 55px rgba(0,229,255,.14)",
+            boxShadow: "0 0 28px rgba(var(--cyan-rgb),.4), 0 0 55px rgba(var(--cyan-rgb),.14)",
             cursor: "pointer",
           }}>
             Ingyenes konzultáció
@@ -213,14 +221,14 @@ export default function Hero() {
           <a href="#services" style={{
             display: "inline-flex", alignItems: "center",
             background: "transparent",
-            border: "1px solid rgba(255,255,255,.2)", color: "rgba(255,255,255,.82)",
+            border: "1px solid rgba(var(--ink-rgb),.2)", color: "rgba(var(--ink-rgb),.82)",
             padding: ".9rem 2.4rem", borderRadius: 6,
             textDecoration: "none", fontSize: ".97rem", fontWeight: 500,
             cursor: "pointer",
             transition: "border-color .25s, color .25s",
           }}
-            onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(0,229,255,.4)"; e.currentTarget.style.color = "var(--cyan)"; }}
-            onMouseLeave={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,.2)"; e.currentTarget.style.color = "rgba(255,255,255,.82)"; }}
+            onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(var(--cyan-rgb),.4)"; e.currentTarget.style.color = "var(--cyan)"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.borderColor = "rgba(var(--ink-rgb),.2)"; e.currentTarget.style.color = "rgba(var(--ink-rgb),.82)"; }}
           >
             Szolgáltatások
           </a>
@@ -232,14 +240,14 @@ export default function Hero() {
         position: "absolute", bottom: "2.5rem", left: "50%",
         transform: "translateX(-50%)", zIndex: 3,
         display: "flex", flexDirection: "column", alignItems: "center", gap: ".5rem",
-        color: "rgba(255,255,255,.32)", fontSize: ".67rem",
+        color: "rgba(var(--ink-rgb),.32)", fontSize: ".67rem",
         letterSpacing: ".15em", textTransform: "uppercase",
       }}>
         <span>Tovább</span>
         <div className="scroll-arrow" style={{
           width: 13, height: 13,
-          borderRight: "1px solid rgba(255,255,255,.28)",
-          borderBottom: "1px solid rgba(255,255,255,.28)",
+          borderRight: "1px solid rgba(var(--ink-rgb),.28)",
+          borderBottom: "1px solid rgba(var(--ink-rgb),.28)",
           transform: "rotate(45deg)",
         }} />
       </div>

@@ -57,7 +57,7 @@ export default function Stats() {
       aria-label="Eredményeink számokban"
       style={{ background: "var(--bg3)", padding: "5rem 6% 7rem", position: "relative", overflow: "hidden" }}>
 
-      <div style={{ position: "absolute", width: 700, height: 700, background: "radial-gradient(circle,rgba(0,102,255,.06) 0%,transparent 70%)", top: "50%", left: "50%", transform: "translate(-50%,-50%)", pointerEvents: "none" }} />
+      <div style={{ position: "absolute", width: 700, height: 700, background: "radial-gradient(circle,rgba(var(--blue-rgb),.06) 0%,transparent 70%)", top: "50%", left: "50%", transform: "translate(-50%,-50%)", pointerEvents: "none" }} />
 
       <div className="reveal" style={{ textAlign: "center", marginBottom: "4.5rem" }}>
         <p style={{ fontSize: ".74rem", fontWeight: 600, letterSpacing: ".18em", textTransform: "uppercase", color: "var(--cyan)", marginBottom: "1rem" }}>
@@ -74,14 +74,14 @@ export default function Stats() {
         </p>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px,1fr))", gap: "2px", maxWidth: 960, margin: "0 auto", border: "1px solid rgba(0,229,255,.1)", borderRadius: 16, overflow: "hidden" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px,1fr))", gap: "2px", maxWidth: 960, margin: "0 auto", border: "1px solid rgba(var(--cyan-rgb),.1)", borderRadius: 16, overflow: "hidden" }}>
         {stats.map((s, i) => (
           <div key={i} className={`reveal ${["", "delay-1", "delay-2", "delay-3"][i]}`}
-            style={{ background: "rgba(0,229,255,.03)", padding: "2.8rem 1.25rem", textAlign: "center", transition: "background .3s" }}
-            onMouseEnter={e => (e.currentTarget.style.background = "rgba(0,229,255,.07)")}
-            onMouseLeave={e => (e.currentTarget.style.background = "rgba(0,229,255,.03)")}>
+            style={{ background: "rgba(var(--cyan-rgb),.03)", padding: "2.8rem 1.25rem", textAlign: "center", transition: "background .3s" }}
+            onMouseEnter={e => (e.currentTarget.style.background = "rgba(var(--cyan-rgb),.07)")}
+            onMouseLeave={e => (e.currentTarget.style.background = "rgba(var(--cyan-rgb),.03)")}>
             <CountUp target={s.target} suffix={s.suffix} fixed={s.fixed} />
-            <div style={{ fontWeight: 600, fontSize: ".95rem", marginBottom: ".35rem", color: "#fff" }}>
+            <div style={{ fontWeight: 600, fontSize: ".95rem", marginBottom: ".35rem", color: "var(--text)" }}>
               {s.label}
             </div>
             <div style={{ color: "var(--muted)", fontSize: ".8rem", lineHeight: 1.5 }}>

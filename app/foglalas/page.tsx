@@ -18,13 +18,13 @@ export default function FoglalasPage() {
       <div style={{
         paddingTop: "72px",
         background: "linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%)",
-        borderBottom: "1px solid rgba(0,229,255,0.1)",
+        borderBottom: "1px solid rgba(var(--cyan-rgb),0.1)",
       }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "4rem 1.5rem 3rem", textAlign: "center" }}>
           {/* Badge */}
           <div style={{
             display: "inline-flex", alignItems: "center", gap: "0.5rem",
-            background: "rgba(0,229,255,0.08)", border: "1px solid rgba(0,229,255,0.2)",
+            background: "rgba(var(--cyan-rgb),0.08)", border: "1px solid rgba(var(--cyan-rgb),0.2)",
             borderRadius: 20, padding: "0.35rem 0.9rem", marginBottom: "1.25rem",
           }}>
             <span style={{ width: 7, height: 7, borderRadius: "50%", background: "var(--cyan)", display: "inline-block" }} className="pulse-dot" />
@@ -43,7 +43,7 @@ export default function FoglalasPage() {
           </h1>
 
           <p style={{
-            color: "rgba(255,255,255,0.6)", maxWidth: 560,
+            color: "rgba(var(--ink-rgb),0.6)", maxWidth: 560,
             margin: "0 auto", fontSize: "1rem", lineHeight: 1.7,
           }}>
             Töltsd ki az alábbi kérdőívet és válassz egy szabad időpontot.

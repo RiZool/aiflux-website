@@ -70,8 +70,8 @@ export default function LogoAnimated({ height = 38 }: { height?: number }) {
       >
         <defs>
           <linearGradient id="f-anim-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#00E5FF" />
-            <stop offset="100%" stopColor="#0066FF" />
+            <stop offset="0%" style={{ stopColor: "var(--cyan)" }} />
+            <stop offset="100%" style={{ stopColor: "var(--blue)" }} />
           </linearGradient>
         </defs>
 

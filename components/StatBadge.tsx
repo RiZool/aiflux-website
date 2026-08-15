@@ -24,10 +24,10 @@ export default function StatBadge({ value, unit, label, size = 98 }: Props) {
         textAlign: "center",
         padding: size * 0.1,
         background:
-          "radial-gradient(circle at 50% 30%, rgba(0,229,255,.16), rgba(0,102,255,.04) 72%)",
+          "radial-gradient(circle at 50% 30%, rgba(var(--cyan-rgb),.16), rgba(var(--blue-rgb),.04) 72%)",
         border: "1px solid var(--glass-border)",
         boxShadow:
-          "inset 0 0 22px rgba(0,229,255,.13), 0 0 18px rgba(0,229,255,.08)",
+          "inset 0 0 22px rgba(var(--cyan-rgb),.13), 0 0 18px rgba(var(--cyan-rgb),.08)",
       }}
     >
       <span
@@ -35,7 +35,7 @@ export default function StatBadge({ value, unit, label, size = 98 }: Props) {
           fontSize: size * 0.083,
           letterSpacing: ".05em",
           textTransform: "uppercase",
-          color: "rgba(255,255,255,.58)",
+          color: "rgba(var(--ink-rgb),.58)",
           lineHeight: 1.15,
         }}
       >

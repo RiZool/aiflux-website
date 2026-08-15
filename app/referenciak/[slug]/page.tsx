@@ -42,7 +42,7 @@ const H2 = {
   letterSpacing: "-.01em",
   margin: "0 0 1.1rem",
 } as const;
-const P = { fontSize: "1.02rem", color: "rgba(255,255,255,.82)", lineHeight: 1.75, margin: "0 0 1rem", maxWidth: 860 } as const;
+const P = { fontSize: "1.02rem", color: "rgba(var(--ink-rgb),.82)", lineHeight: 1.75, margin: "0 0 1rem", maxWidth: 860 } as const;
 
 export default async function CaseStudyPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -98,7 +98,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
           </Link>
 
           <div style={{ display: "flex", flexWrap: "wrap", gap: ".5rem", alignItems: "center", marginBottom: "1.1rem" }}>
-            <span style={{ fontSize: ".74rem", letterSpacing: ".06em", textTransform: "uppercase", color: "var(--cyan)", background: "rgba(0,229,255,.08)", border: "1px solid var(--glass-border)", borderRadius: 6, padding: ".26rem .65rem" }}>
+            <span style={{ fontSize: ".74rem", letterSpacing: ".06em", textTransform: "uppercase", color: "var(--cyan)", background: "rgba(var(--cyan-rgb),.08)", border: "1px solid var(--glass-border)", borderRadius: 6, padding: ".26rem .65rem" }}>
               {cs.industry}
             </span>
             <span style={{ fontSize: ".85rem", color: "var(--muted)" }}>{cs.client}</span>
@@ -112,11 +112,11 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
 
           <div style={{ display: "flex", flexWrap: "wrap", gap: ".45rem", alignItems: "center" }}>
             {cs.tags.map((t) => (
-              <span key={t} style={{ fontSize: ".74rem", color: "rgba(255,255,255,.7)", border: "1px solid rgba(255,255,255,.12)", borderRadius: 5, padding: ".24rem .6rem" }}>
+              <span key={t} style={{ fontSize: ".74rem", color: "rgba(var(--ink-rgb),.7)", border: "1px solid rgba(var(--ink-rgb),.12)", borderRadius: 5, padding: ".24rem .6rem" }}>
                 {t}
               </span>
             ))}
-            <span style={{ fontSize: ".78rem", color: "rgba(255,255,255,.4)", marginLeft: ".3rem" }}>{publishedHu}</span>
+            <span style={{ fontSize: ".78rem", color: "rgba(var(--ink-rgb),.4)", marginLeft: ".3rem" }}>{publishedHu}</span>
           </div>
 
           {cs.heroImage && (
@@ -234,7 +234,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
           <h2 className="font-heading" style={{ ...H2, fontSize: "1.2rem" }}>Felhasznált technológiák</h2>
           <div style={{ display: "flex", flexWrap: "wrap", gap: ".5rem" }}>
             {cs.techStack.map((t) => (
-              <span key={t} style={{ fontSize: ".84rem", color: "rgba(255,255,255,.8)", background: "var(--glass)", border: "1px solid var(--glass-border)", borderRadius: 6, padding: ".35rem .8rem" }}>
+              <span key={t} style={{ fontSize: ".84rem", color: "rgba(var(--ink-rgb),.8)", background: "var(--glass)", border: "1px solid var(--glass-border)", borderRadius: 6, padding: ".35rem .8rem" }}>
                 {t}
               </span>
             ))}
@@ -253,7 +253,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
             <Link
               href="/foglalas"
               className="btn-shine btn-glow"
-              style={{ display: "inline-block", background: "linear-gradient(90deg,var(--cyan),var(--blue))", color: "#000", fontWeight: 700, padding: ".9rem 2.2rem", borderRadius: 6, fontSize: "1rem", textDecoration: "none", letterSpacing: ".03em" }}
+              style={{ display: "inline-block", background: "linear-gradient(90deg,var(--cyan),var(--blue))", color: "var(--on-accent)", fontWeight: 700, padding: ".9rem 2.2rem", borderRadius: 6, fontSize: "1rem", textDecoration: "none", letterSpacing: ".03em" }}
             >
               Ingyenes konzultációt kérek →
             </Link>

@@ -107,7 +107,7 @@ export default function ReferenciakPage() {
                     letterSpacing: ".06em",
                     textTransform: "uppercase",
                     color: "var(--cyan)",
-                    background: "rgba(0,229,255,.08)",
+                    background: "rgba(var(--cyan-rgb),.08)",
                     border: "1px solid var(--glass-border)",
                     borderRadius: 6,
                     padding: ".25rem .6rem",
@@ -137,8 +137,8 @@ export default function ReferenciakPage() {
                     key={t}
                     style={{
                       fontSize: ".72rem",
-                      color: "rgba(255,255,255,.7)",
-                      border: "1px solid rgba(255,255,255,.12)",
+                      color: "rgba(var(--ink-rgb),.7)",
+                      border: "1px solid rgba(var(--ink-rgb),.12)",
                       borderRadius: 5,
                       padding: ".22rem .55rem",
                     }}

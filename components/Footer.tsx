@@ -1,6 +1,6 @@
 ﻿"use client";
-import Image from "next/image";
 import Link from "next/link";
+import Logo from "./Logo";
 
 const socials = [
   {
@@ -38,14 +38,12 @@ export default function Footer() {
   return (
     <footer
       aria-label="Lábléc"
-      style={{ background: "#000", borderTop: "1px solid rgba(0,229,255,.08)", padding: "3.5rem 6% 2rem", position: "relative", zIndex: 1 }}>
+      style={{ background: "var(--bg)", borderTop: "1px solid rgba(var(--cyan-rgb),.08)", padding: "3.5rem 6% 2rem", position: "relative", zIndex: 1 }}>
 
       <div className="footer-grid" style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr", gap: "3rem", marginBottom: "3rem" }}>
         <div>
           <Link href="/#hero" style={{ display: "inline-flex", alignItems: "center", textDecoration: "none", marginBottom: "1rem" }}>
-            <Image src="/logo.png" alt="AI Flux logo"
-                width={0} height={0} sizes="100vw"
-                style={{ width: "auto", height: "32px" }} />
+            <Logo height={32} />
           </Link>
           <p style={{ color: "var(--muted)", fontSize: ".88rem", lineHeight: 1.8, maxWidth: 280 }}>
             Magyar AI-natív fejlesztő ügynökség. Intelligens weboldalak, automatizált folyamatok és chatbot rendszerek - a jövő eszközei, ma.
@@ -87,16 +85,16 @@ export default function Footer() {
         </div>
       </div>
 
-      <div style={{ borderTop: "1px solid rgba(255,255,255,.05)", paddingTop: "1.5rem", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "1rem" }}>
-        <p style={{ color: "rgba(255,255,255,.25)", fontSize: ".82rem" }}>
+      <div style={{ borderTop: "1px solid rgba(var(--ink-rgb),.05)", paddingTop: "1.5rem", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "1rem" }}>
+        <p style={{ color: "rgba(var(--ink-rgb),.25)", fontSize: ".82rem" }}>
           © 2026 AI Flux · aiflux.hu · Minden jog fenntartva.
         </p>
         <div style={{ display: "flex", gap: ".75rem" }}>
           {socials.map(({ title, href, icon }) => (
             <a key={title} href={href} title={title} aria-label={title}
-              style={{ width: 36, height: 36, border: "1px solid rgba(255,255,255,.1)", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", color: "rgba(255,255,255,.4)", textDecoration: "none", transition: "all .25s" }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = "var(--cyan)"; e.currentTarget.style.color = "var(--cyan)"; e.currentTarget.style.boxShadow = "0 0 16px rgba(0,229,255,.2)"; e.currentTarget.style.transform = "translateY(-2px)"; }}
-              onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,.1)"; e.currentTarget.style.color = "rgba(255,255,255,.4)"; e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.transform = "none"; }}>
+              style={{ width: 36, height: 36, border: "1px solid rgba(var(--ink-rgb),.1)", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", color: "rgba(var(--ink-rgb),.4)", textDecoration: "none", transition: "all .25s" }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = "var(--cyan)"; e.currentTarget.style.color = "var(--cyan)"; e.currentTarget.style.boxShadow = "0 0 16px rgba(var(--cyan-rgb),.2)"; e.currentTarget.style.transform = "translateY(-2px)"; }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(var(--ink-rgb),.1)"; e.currentTarget.style.color = "rgba(var(--ink-rgb),.4)"; e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.transform = "none"; }}>
               {icon}
             </a>
           ))}

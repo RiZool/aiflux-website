@@ -49,8 +49,8 @@ export default function FAQ() {
               className={`reveal ${i < 5 ? ["", "delay-1", "delay-2", "delay-1", "delay-2"][i] : ""}`}
               style={{
                 borderRadius: 12,
-                border: isOpen ? "1px solid rgba(0,229,255,.3)" : "1px solid rgba(255,255,255,.07)",
-                background: isOpen ? "rgba(0,229,255,.04)" : "rgba(255,255,255,.02)",
+                border: isOpen ? "1px solid rgba(var(--cyan-rgb),.3)" : "1px solid rgba(var(--ink-rgb),.07)",
+                background: isOpen ? "rgba(var(--cyan-rgb),.04)" : "rgba(var(--ink-rgb),.02)",
                 overflow: "hidden",
                 transition: "border-color .25s, background .25s",
               }}
@@ -64,14 +64,14 @@ export default function FAQ() {
                   padding: "1.1rem 1.4rem",
                   background: "none", border: "none", cursor: "pointer",
                   fontFamily: "var(--font-heading)", fontSize: ".97rem", fontWeight: 600,
-                  color: isOpen ? "var(--cyan)" : "rgba(255,255,255,.9)",
+                  color: isOpen ? "var(--cyan)" : "rgba(var(--ink-rgb),.9)",
                   transition: "color .25s",
                 }}
               >
                 {item.q}
                 <svg
                   width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke={isOpen ? "var(--cyan)" : "rgba(255,255,255,.4)"}
+                  stroke={isOpen ? "var(--cyan)" : "rgba(var(--ink-rgb),.4)"}
                   strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
                   aria-hidden="true"
                   style={{ flexShrink: 0, transition: "transform .3s, stroke .25s", transform: isOpen ? "rotate(45deg)" : "rotate(0deg)" }}

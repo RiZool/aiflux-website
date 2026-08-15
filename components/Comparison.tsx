@@ -15,7 +15,7 @@ const rowIcons: Record<string, ReactNode> = {
 
 function RowIcon({ name }: { name: string }) {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(0,229,255,.75)"
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(var(--cyan-rgb),.75)"
       strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"
       style={{ flexShrink: 0 }}>
       {rowIcons[name]}
@@ -43,7 +43,7 @@ const stats = [
 function CheckIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" style={{ flexShrink: 0 }}>
-      <circle cx="8" cy="8" r="7.5" fill="rgba(0,229,255,.12)" stroke="rgba(0,229,255,.35)" />
+      <circle cx="8" cy="8" r="7.5" fill="rgba(var(--cyan-rgb),.12)" stroke="rgba(var(--cyan-rgb),.35)" />
       <path d="M5 8.2l2 2 4-4" stroke="var(--cyan)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
@@ -52,8 +52,8 @@ function CheckIcon() {
 function CrossIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" style={{ flexShrink: 0 }}>
-      <circle cx="8" cy="8" r="7.5" fill="rgba(255,80,80,.08)" stroke="rgba(255,80,80,.2)" />
-      <path d="M5.5 5.5l5 5M10.5 5.5l-5 5" stroke="rgba(255,100,100,.7)" strokeWidth="1.4" strokeLinecap="round" />
+      <circle cx="8" cy="8" r="7.5" fill="rgba(var(--danger-rgb),.08)" stroke="rgba(var(--danger-rgb),.28)" />
+      <path d="M5.5 5.5l5 5M10.5 5.5l-5 5" stroke="var(--danger)" strokeWidth="1.4" strokeLinecap="round" />
     </svg>
   );
 }
@@ -79,8 +79,8 @@ export default function Comparison() {
       style={{ background: "var(--bg3)", padding: "5rem 6% 7rem", position: "relative", overflow: "hidden" }}
     >
       {/* Háttér */}
-      <div style={{ position: "absolute", width: 700, height: 700, borderRadius: "50%", background: "radial-gradient(circle, rgba(0,102,255,.06) 0%, transparent 70%)", top: "50%", left: "50%", transform: "translate(-50%,-50%)", pointerEvents: "none" }} />
-      <div style={{ position: "absolute", width: 400, height: 400, borderRadius: "50%", background: "radial-gradient(circle, rgba(0,229,255,.04) 0%, transparent 70%)", top: "10%", right: "8%", pointerEvents: "none" }} />
+      <div style={{ position: "absolute", width: 700, height: 700, borderRadius: "50%", background: "radial-gradient(circle, rgba(var(--blue-rgb),.06) 0%, transparent 70%)", top: "50%", left: "50%", transform: "translate(-50%,-50%)", pointerEvents: "none" }} />
+      <div style={{ position: "absolute", width: 400, height: 400, borderRadius: "50%", background: "radial-gradient(circle, rgba(var(--cyan-rgb),.04) 0%, transparent 70%)", top: "10%", right: "8%", pointerEvents: "none" }} />
 
       <div style={{ maxWidth: 920, margin: "0 auto" }}>
 
@@ -105,8 +105,8 @@ export default function Comparison() {
           {stats.map((s, i) => (
             <div key={i} style={{
               display: "flex", alignItems: "center", gap: ".75rem",
-              background: "rgba(0,229,255,.05)",
-              border: "1px solid rgba(0,229,255,.15)",
+              background: "rgba(var(--cyan-rgb),.05)",
+              border: "1px solid rgba(var(--cyan-rgb),.15)",
               borderRadius: 100, padding: ".55rem 1.4rem",
             }}>
               <span style={{
@@ -115,7 +115,7 @@ export default function Comparison() {
               }}>
                 {s.value}
               </span>
-              <span style={{ fontSize: ".8rem", color: "rgba(255,255,255,.55)", fontWeight: 500 }}>
+              <span style={{ fontSize: ".8rem", color: "rgba(var(--ink-rgb),.55)", fontWeight: 500 }}>
                 {s.label}
               </span>
             </div>
@@ -130,10 +130,10 @@ export default function Comparison() {
             position: "absolute",
             top: 44, bottom: 0,
             right: 0, width: "calc(100% / 3)",
-            background: "linear-gradient(180deg, rgba(0,229,255,.05) 0%, rgba(0,102,255,.03) 100%)",
-            borderLeft: "1px solid rgba(0,229,255,.15)",
-            borderRight: "1px solid rgba(0,229,255,.15)",
-            borderBottom: "1px solid rgba(0,229,255,.15)",
+            background: "linear-gradient(180deg, rgba(var(--cyan-rgb),.05) 0%, rgba(var(--blue-rgb),.03) 100%)",
+            borderLeft: "1px solid rgba(var(--cyan-rgb),.15)",
+            borderRight: "1px solid rgba(var(--cyan-rgb),.15)",
+            borderBottom: "1px solid rgba(var(--cyan-rgb),.15)",
             borderRadius: "0 0 16px 0",
             pointerEvents: "none", zIndex: 0,
           }} />
@@ -151,10 +151,10 @@ export default function Comparison() {
               <div style={{
                 display: "inline-block",
                 fontSize: ".72rem", fontWeight: 700, letterSpacing: ".1em",
-                textTransform: "uppercase", color: "rgba(255,255,255,.3)",
+                textTransform: "uppercase", color: "rgba(var(--ink-rgb),.3)",
                 padding: ".3rem .85rem", borderRadius: 100,
-                border: "1px solid rgba(255,255,255,.08)",
-                background: "rgba(255,255,255,.03)",
+                border: "1px solid rgba(var(--ink-rgb),.08)",
+                background: "rgba(var(--ink-rgb),.03)",
               }}>
                 Hagyományos
               </div>
@@ -167,10 +167,10 @@ export default function Comparison() {
                 fontSize: ".78rem", fontWeight: 800, letterSpacing: ".08em",
                 textTransform: "uppercase",
                 padding: ".35rem 1rem", borderRadius: 100,
-                background: "linear-gradient(90deg, rgba(0,229,255,.15), rgba(0,102,255,.12))",
-                border: "1px solid rgba(0,229,255,.35)",
+                background: "linear-gradient(90deg, rgba(var(--cyan-rgb),.15), rgba(var(--blue-rgb),.12))",
+                border: "1px solid rgba(var(--cyan-rgb),.35)",
                 color: "var(--cyan)",
-                boxShadow: "0 0 16px rgba(0,229,255,.1)",
+                boxShadow: "0 0 16px rgba(var(--cyan-rgb),.1)",
               }}>
                 <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
                   <circle cx="5" cy="5" r="4" fill="var(--cyan)" />
@@ -181,7 +181,7 @@ export default function Comparison() {
           </div>
 
           {/* Táblázat sorok */}
-          <div style={{ borderRadius: 16, overflow: "hidden", border: "1px solid rgba(255,255,255,.07)", position: "relative", zIndex: 1 }}>
+          <div style={{ borderRadius: 16, overflow: "hidden", border: "1px solid rgba(var(--ink-rgb),.07)", position: "relative", zIndex: 1 }}>
             {rows.map((row, i) => {
               const isHov = hoveredRow === i;
               return (
@@ -194,9 +194,9 @@ export default function Comparison() {
                     alignItems: "center",
                     padding: "0 1.2rem",
                     background: isHov
-                      ? "rgba(0,229,255,.04)"
-                      : i % 2 === 0 ? "rgba(255,255,255,.02)" : "transparent",
-                    borderBottom: i < rows.length - 1 ? "1px solid rgba(255,255,255,.05)" : "none",
+                      ? "rgba(var(--cyan-rgb),.04)"
+                      : i % 2 === 0 ? "rgba(var(--ink-rgb),.02)" : "transparent",
+                    borderBottom: i < rows.length - 1 ? "1px solid rgba(var(--ink-rgb),.05)" : "none",
                     transition: "background .18s ease",
                     minHeight: 58,
                   }}
@@ -204,7 +204,7 @@ export default function Comparison() {
                   {/* Sor label */}
                   <div style={{ display: "flex", alignItems: "center", gap: ".6rem", padding: ".85rem 0" }}>
                     <RowIcon name={row.icon} />
-                    <span style={{ fontSize: ".88rem", fontWeight: 500, color: isHov ? "rgba(255,255,255,.9)" : "rgba(255,255,255,.65)", transition: "color .18s" }}>
+                    <span style={{ fontSize: ".88rem", fontWeight: 500, color: isHov ? "rgba(var(--ink-rgb),.9)" : "rgba(var(--ink-rgb),.65)", transition: "color .18s" }}>
                       {row.label}
                     </span>
                   </div>
@@ -212,7 +212,7 @@ export default function Comparison() {
                   {/* Hagyományos érték */}
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: ".5rem", padding: ".85rem 0" }}>
                     <CrossIcon />
-                    <span style={{ fontSize: ".84rem", color: "rgba(255,255,255,.32)", lineHeight: 1.35 }}>
+                    <span style={{ fontSize: ".84rem", color: "rgba(var(--ink-rgb),.32)", lineHeight: 1.35 }}>
                       {row.traditional}
                     </span>
                   </div>
@@ -220,7 +220,7 @@ export default function Comparison() {
                   {/* AIFlux érték */}
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: ".5rem", padding: ".85rem 0" }}>
                     <CheckIcon />
-                    <span style={{ fontSize: ".86rem", fontWeight: 600, color: isHov ? "#fff" : "rgba(255,255,255,.9)", lineHeight: 1.35, transition: "color .18s" }}>
+                    <span style={{ fontSize: ".86rem", fontWeight: 600, color: isHov ? "var(--text)" : "rgba(var(--ink-rgb),.9)", lineHeight: 1.35, transition: "color .18s" }}>
                       {row.aiflux}
                     </span>
                   </div>
@@ -234,7 +234,7 @@ export default function Comparison() {
             position: "absolute", bottom: 0, right: 0,
             width: "calc(100% / 3)", height: 16,
             borderRadius: "0 0 16px 0",
-            background: "linear-gradient(90deg, transparent, rgba(0,229,255,.08))",
+            background: "linear-gradient(90deg, transparent, rgba(var(--cyan-rgb),.08))",
             pointerEvents: "none", zIndex: 2,
           }} />
         </div>
@@ -249,14 +249,14 @@ export default function Comparison() {
             style={{
               display: "inline-flex", alignItems: "center", gap: ".6rem",
               background: "linear-gradient(90deg,var(--cyan),var(--blue))",
-              color: "#000", fontWeight: 700, padding: ".88rem 2.4rem",
+              color: "var(--on-accent)", fontWeight: 700, padding: ".88rem 2.4rem",
               borderRadius: 8, fontSize: ".95rem", textDecoration: "none",
               letterSpacing: ".04em", fontFamily: "var(--font-heading)",
-              boxShadow: "0 0 32px rgba(0,229,255,.28)",
+              boxShadow: "0 0 32px rgba(var(--cyan-rgb),.28)",
               transition: "box-shadow .25s, transform .25s",
             }}
-            onMouseEnter={e => { e.currentTarget.style.boxShadow = "0 0 48px rgba(0,229,255,.45)"; e.currentTarget.style.transform = "translateY(-2px)"; }}
-            onMouseLeave={e => { e.currentTarget.style.boxShadow = "0 0 32px rgba(0,229,255,.28)"; e.currentTarget.style.transform = "none"; }}
+            onMouseEnter={e => { e.currentTarget.style.boxShadow = "0 0 48px rgba(var(--cyan-rgb),.45)"; e.currentTarget.style.transform = "translateY(-2px)"; }}
+            onMouseLeave={e => { e.currentTarget.style.boxShadow = "0 0 32px rgba(var(--cyan-rgb),.28)"; e.currentTarget.style.transform = "none"; }}
           >
             Ingyenes konzultáció
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
